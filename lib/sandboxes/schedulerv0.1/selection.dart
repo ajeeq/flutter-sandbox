@@ -22,8 +22,7 @@ import 'package:sandbox_riverpod/models/selection_parameter.dart';
 import 'package:sandbox_riverpod/providers/course_providers.dart';
 import 'package:sandbox_riverpod/providers/selection_providers.dart';
 
-// TODO: Please change to ConsumerStatefulWidget
-// TODO: Rename notifiers object to controller
+
 class Selection extends ConsumerStatefulWidget {
   @override
   _SelectionState createState() => _SelectionState();
@@ -69,9 +68,9 @@ class _SelectionState extends ConsumerState<Selection> {
     final selectionListState = ref.watch(selectionListProvider);
 
     // declaring notifiers for updating riverpod states
-    final CampusNameNotifier campusN = ref.read(campusNameProvider.notifier);
-    final CourseListNotifier courseListN = ref.read(courseListProvider.notifier);
-    final SelectionListNotifier selectionListN = ref.read(selectionListProvider.notifier);
+    final CampusNameNotifier campusController = ref.read(campusNameProvider.notifier);
+    final CourseListNotifier courseListController = ref.read(courseListProvider.notifier);
+    final SelectionListNotifier selectionListController = ref.read(selectionListProvider.notifier);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -139,7 +138,7 @@ class _SelectionState extends ConsumerState<Selection> {
                           _selectedCampus = selectedString.toString();
 
                           // updating selected campus name in state(riverpod)
-                          campusN.updateSelectedCampusName(_selectedCampus);
+                          campusController.updateSelectedCampusName(_selectedCampus);
 
                           print("==================================");
                           print("Campus selected: " + _selectedCampus);
@@ -157,7 +156,7 @@ class _SelectionState extends ConsumerState<Selection> {
                             print("==================================");
 
                             // updating course list state using Riverpod
-                            courseListN.updateCourseList(l);
+                            courseListController.updateCourseList(l);
                           });
                         },
                         fieldViewBuilder: (context, controller, focusNode, onEditingComplete) {
@@ -244,7 +243,7 @@ class _SelectionState extends ConsumerState<Selection> {
             label: const Text('Done'),
             onPressed: () async {
               // adding user course selection using Riverpod
-              selectionListN.addSelection(SelectionParameter(
+              selectionListController.addSelection(SelectionParameter(
                 campusSelected: _selectedCampus,
                 courseSelected: courseNameState.toString(),
                 groupSelected: groupNameState.toString()

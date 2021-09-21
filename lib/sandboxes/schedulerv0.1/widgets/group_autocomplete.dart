@@ -6,8 +6,7 @@ import 'package:substring_highlight/substring_highlight.dart';
 // Providers
 import 'package:sandbox_riverpod/providers/group_providers.dart';
 
-// TODO: Please change to ConsumerStatefulWidget
-// TODO: Rename notifiers object to controller
+
 class GroupAutocomplete extends ConsumerStatefulWidget {
   @override
   _GroupAutocompleteState createState() => _GroupAutocompleteState();
@@ -22,7 +21,7 @@ class _GroupAutocompleteState extends ConsumerState<GroupAutocomplete> {
     final groupListState = ref.watch(groupListProvider);
 
     // declaring notifiers for updating riverpod states
-    final GroupNameNotifier groupNameN = ref.read(groupNameProvider.notifier);
+    final GroupNameNotifier groupNameController = ref.read(groupNameProvider.notifier);
 
     return Autocomplete(
       optionsBuilder: (TextEditingValue textEditingValue) {
@@ -60,7 +59,7 @@ class _GroupAutocompleteState extends ConsumerState<GroupAutocomplete> {
       },
       onSelected: (selectedString) {
         // updating selected group name in state(riverpod)
-        groupNameN.updateSelectedGroupName(selectedString.toString());
+        groupNameController.updateSelectedGroupName(selectedString.toString());
       },
       fieldViewBuilder: (context, controller, focusNode, onEditingComplete) {
         this.controller = controller;

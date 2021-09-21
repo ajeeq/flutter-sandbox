@@ -14,8 +14,7 @@ import 'package:sandbox_riverpod/providers/campus_providers.dart';
 import 'package:sandbox_riverpod/providers/course_providers.dart';
 import 'package:sandbox_riverpod/providers/group_providers.dart';
 
-// TODO: Please change to ConsumerStatefulWidget
-// TODO: Rename notifiers object to controller
+
 class CourseAutocomplete extends ConsumerStatefulWidget {
   @override
   _CourseAutocompleteState createState() => _CourseAutocompleteState();
@@ -31,8 +30,8 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
     final campusNameState = ref.watch(campusNameProvider);
 
       // declaring notifiers for updating riverpod states
-    final CourseNameNotifier courseNameN = ref.read(courseNameProvider.notifier);
-    final GroupListNotifier groupListN = ref.read(groupListProvider.notifier);
+    final CourseNameNotifier courseNameController = ref.read(courseNameProvider.notifier);
+    final GroupListNotifier groupListController = ref.read(groupListProvider.notifier);
 
     return Autocomplete(
       optionsBuilder: (TextEditingValue textEditingValue) {
@@ -71,7 +70,7 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
       },
       onSelected: (selectedString) async {
         // updating selected course name in state(riverpod)
-        courseNameN.updateSelectedCourseName(selectedString.toString());
+        courseNameController.updateSelectedCourseName(selectedString.toString());
 
         // NOTE: course name is from selectedString above
         // NOTE: campus name is campusNameState in provider declared above
@@ -93,7 +92,7 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
           print("==================================");
 
           // updating group list state
-          groupListN.updateGroupList(l);
+          groupListController.updateGroupList(l);
         });
       },
       fieldViewBuilder: (context, controller, focusNode, onEditingComplete) {
