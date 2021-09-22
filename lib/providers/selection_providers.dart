@@ -12,4 +12,8 @@ class SelectionListNotifier extends StateNotifier<List<SelectionParameter>> {
     state = [...state, sp]; // previous state + new added user object
   }
 
+  deleteSelection(SelectionParameter sp) {
+    state = state.where((_selection) => _selection.courseSelected != sp.courseSelected).toList();
+  }
+
 }

@@ -26,7 +26,8 @@ class Home extends ConsumerWidget{
     final selectionListState = ref.watch(selectionListProvider);
 
     // declaring notifiers for updating riverpod states
-    final DetailListNotifier detailListN = ref.read(detailListProvider.notifier);
+    final DetailListNotifier detailListController = ref.read(detailListProvider.notifier);
+    final SelectionListNotifier selectionListController = ref.read(selectionListProvider.notifier);
         
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +61,9 @@ class Home extends ConsumerWidget{
                   child: ListTile(
                     title: Text(selectionListState[i].courseSelected),
                     trailing: Icon(Icons.delete),
-                    onTap: () {},
+                    onTap: () {
+                      selectionListController.deleteSelection(selectionListState[i]);
+                    },
                   ),
                 ),
                   
@@ -100,7 +103,7 @@ class Home extends ConsumerWidget{
                 print("==================================");
         
                 // updating details list returned from API using Riverpod
-                detailListN.updateDetailList(jsonStringData);
+                detailListController.updateDetailList(jsonStringData);
     
                 Navigator.pushNamed(context, "/result");
               });
