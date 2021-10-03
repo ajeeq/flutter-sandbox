@@ -14,4 +14,4 @@ A new Flutter project - using Riverpod state management and of course, for learn
 | schedulerv0.1  | Rebuild from schedulerv2, able to collect list of selected course in Selection screen<br>returned list of course details in Result screen |
 | schedulerv0.2  | Rebuild from schedulerv0.1, added SharedPreference |
 
-*As of 21/09/2021
+*As of 04/10/2021
