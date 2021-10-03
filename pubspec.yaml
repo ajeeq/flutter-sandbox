@@ -35,6 +35,7 @@ dependencies:
   equatable: ^2.0.3
   substring_highlight: ^1.0.33
   flutter_dotenv: ^5.0.2
+  shared_preferences: ^2.0.8
 
 dev_dependencies:
   flutter_test:

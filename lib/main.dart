@@ -1,7 +1,13 @@
 // Import directives
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// .env file for loading environment variables
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+// SharedPreferences
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/result_prefs.dart';
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/selection_prefs.dart';
 
 // Sandbox - basic
 // import 'package:sandbox_riverpod/sandboxes/basic/BasicHome.dart';
@@ -63,16 +69,19 @@ import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
 // }
 
 Future main() async {
+  // Loading env file for accessing secured environment variables
   await dotenv.load(fileName: "local.env");
-
+  
   runApp(
-    ProviderScope(
+    const ProviderScope(
       child: MyApp(),
     )
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

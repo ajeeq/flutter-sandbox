@@ -12,5 +12,6 @@ A new Flutter project - using Riverpod state management and of course, for learn
 | userlist       | User List App learned from Cheetah Coding YouTube channel |
 | weather        | Unfinished App learned from ResoCoder |
 | schedulerv0.1  | Rebuild from schedulerv2, able to collect list of selected course in Selection screen<br>returned list of course details in Result screen |
+| schedulerv0.2  | Rebuild from schedulerv0.1, added SharedPreference |
 
 *As of 21/09/2021

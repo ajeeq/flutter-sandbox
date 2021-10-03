@@ -5,6 +5,7 @@
 // Import directives
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Services
 import 'package:sandbox_riverpod/services.dart';
@@ -17,27 +18,101 @@ import 'package:sandbox_riverpod/models/selection_parameter.dart';
 import 'package:sandbox_riverpod/providers/selection_providers.dart';
 import 'package:sandbox_riverpod/providers/detail_providers.dart';
 
-class Home extends ConsumerWidget{
-  Home({Key? key}) : super(key: key);
+// Utilities - SharedPreference
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/selection_prefs.dart';
+
+class Home extends ConsumerStatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends ConsumerState<Home>{
+  // List<SelectionParameter> _selectionListStatePref = SelectionPreferences.selectionListStatePref;
+  List<SelectionParameter> selectionListState = [];
+
+  
+  
+  @override
+  void initState() {
+    super.initState();
+
+    SelectionPreferences.getSelectionStatePrefs("selectionListPref").then((value) {
+      selectionListState = value;
+      print("Data loaded from SharedPreference");
+      print(value);
+
+      // if(selectionListState == []) {
+      //   selectionListState = ref.watch(selectionListProvider);
+      //   print("Data loaded from Riverpod");
+      // }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    
+
+    
+
     // declaring riverpod state providers
-    final selectionListState = ref.watch(selectionListProvider);
+    // final selectionListState = ref.watch(selectionListProvider);
 
     // declaring notifiers for updating riverpod states
-    final DetailListNotifier detailListController = ref.read(detailListProvider.notifier);
     final SelectionListNotifier selectionListController = ref.read(selectionListProvider.notifier);
+    final DetailListNotifier detailListController = ref.read(detailListProvider.notifier);
+
+    // getSelectionStatePrefs('selectionListPref').then((value) =>
+    //   _selectionListStatePref = value
+    // );
+
+    // If selectionList is not exist in SharedPreference, take value from Riverpod, vice versa
+    // if(_selectionListStatePref != []) {
+    //   selectionListState = ref.watch(selectionListProvider);
+    //   print("Data loaded from Riverpod");
+
+    //   if(selectionListState == []) {
+    //     print("Data loaded from SharedPreference");
+        
+    //   }
+    // }
+
+    
+
+
+    // Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+    // final prefs = await SharedPreferences.getInstance();
+    // final myString = prefs.getString('my_string_key') ?? '';
+
+    // String userPref = _prefs.getString('user');
+    // Map<String,dynamic> userMap = jsonDecode(userPref) as Map<String, dynamic>;
+
+    
+
+    // _selectionListState = _prefs.then((SharedPreferences prefs) {
+    //   String selectionListState = (prefs.getString('selectionListPref')) ?? '';
+    //   return (jsonDecode(selectionListState));
+    // }) as List<SelectionParameter>;
+
+    // Future<int> getIntFromLocalMemory(String key) async {
+    //   var pref = await SharedPreferences.getInstance();
+    //   var number = pref.getInt(key) ?? 0;
+    //   return number;
+    // }
+
+    
         
     return Scaffold(
       appBar: AppBar(
-        title: Text("Scheduler V0.1"),
+        title: const Text("Scheduler V0.1"),
       ),
       body: selectionListState.isEmpty
         ? Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+              children: const <Widget>[
                 Text(
                   'Empty :(',
                 ),
@@ -45,11 +120,11 @@ class Home extends ConsumerWidget{
             ),
           )
         : Container(
-            margin: EdgeInsets.symmetric(vertical: 20.0),
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            margin: const EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: ListView(
               children: <Widget>[
-                Text(
+                const Text(
                   'Course List',
                   style: TextStyle(
                     fontFamily: 'avenir',
@@ -60,7 +135,7 @@ class Home extends ConsumerWidget{
                 for (var i=0; i<selectionListState.length; i++) Card(
                   child: ListTile(
                     title: Text(selectionListState[i].courseSelected),
-                    trailing: Icon(Icons.delete),
+                    trailing: const Icon(Icons.delete),
                     onTap: () {
                       selectionListController.deleteSelection(selectionListState[i]);
                     },
@@ -84,7 +159,7 @@ class Home extends ConsumerWidget{
             },
           ),
   
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
   
           FloatingActionButton(
             tooltip: "Fetch Details",
@@ -110,7 +185,7 @@ class Home extends ConsumerWidget{
             },
           ),
 
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
 
           FloatingActionButton(
             tooltip: "Debug that shown in Snackbar",

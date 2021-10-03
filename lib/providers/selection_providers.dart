@@ -16,4 +16,12 @@ class SelectionListNotifier extends StateNotifier<List<SelectionParameter>> {
     state = state.where((_selection) => _selection.courseSelected != sp.courseSelected).toList();
   }
 
+  updateSelection(List<SelectionParameter> sp) {
+    state = sp;
+  }
+
+  getSelection() {
+    return state;
+  }
+
 }
