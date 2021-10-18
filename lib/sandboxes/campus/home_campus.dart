@@ -19,22 +19,23 @@ class HomeCampus extends ConsumerWidget {
           builder: (context, WidgetRef ref, child) {
             AsyncValue<List<CampusElement>> campuses = ref.watch(campusListProvider);
 
-            return campuses.when(
-              loading: () => Center(child: const CircularProgressIndicator()),
-              error: (e, st) => const Text("Error"),
-              data: (data) {
-                print("data"+ data.toString());
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      title: Text(((data[index].id + 1).toString()) + " - " + (data[index].campus)),
-                    );
-                  }
-                );
-              },
-            );
+            // return campuses.when(
+            //   loading: () => Center(child: const CircularProgressIndicator()),
+            //   error: (e, st) => const Text("Error"),
+            //   data: (data) {
+            //     print("data"+ data.toString());
+            //     return ListView.builder(
+            //       shrinkWrap: true,
+            //       itemCount: data.length,
+            //       itemBuilder: (BuildContext context, int index) {
+            //         return ListTile(
+            //           title: Text(((data[index].id + 1).toString()) + " - " + (data[index].campus)),
+            //         );
+            //       }
+            //     );
+            //   },
+            // );
+            return Expanded(child: Text("text"));
           }
         )
       )

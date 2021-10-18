@@ -44,7 +44,7 @@ class TodosNotifier extends StateNotifier<AsyncValue<List<Todo>>> {
       final todos = await read(todoRepositoryProvider).retrieveTodos();
       state = AsyncValue.data(todos);
     } on TodoException catch (e, st) {
-      state = AsyncValue.error(e, st);
+      state = AsyncValue.error(e, stackTrace: st);
     }
   }
 
@@ -54,7 +54,7 @@ class TodosNotifier extends StateNotifier<AsyncValue<List<Todo>>> {
       final todos = await read(todoRepositoryProvider).retrieveTodos();
       state = AsyncValue.data(todos);
     } on TodoException catch (e, st) {
-      state = AsyncValue.error(e, st);
+      state = AsyncValue.error(e, stackTrace: st);
     }
   }
 
@@ -63,7 +63,7 @@ class TodosNotifier extends StateNotifier<AsyncValue<List<Todo>>> {
       final todos = await read(todoRepositoryProvider).retrieveTodos();
       state = AsyncValue.data(todos);
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      state = AsyncValue.error(e, stackTrace: st);
     }
   }
 

@@ -93,11 +93,11 @@ class BasicHome extends ConsumerWidget {
               style: Theme.of(context).textTheme.headline4,
             ),
             Divider(),
-            streamAsyncValue.when(
-              data: (data) => Text('StreamProvider value: $data'),
-              loading: () => CircularProgressIndicator(),
-              error: (e, st) => Text('Error: $e'),
-            ),
+            // streamAsyncValue.when(
+            //   data: (data) => Text('StreamProvider value: $data'),
+            //   loading: () => CircularProgressIndicator(),
+            //   error: (e, st) => Text('Error: $e'),
+            // ),
             Divider(),
           ],
         ),

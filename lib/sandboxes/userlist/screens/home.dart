@@ -36,17 +36,17 @@ class HomeState extends State<Home> {
         return Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
           appBar: AppBar(
-            title: name.when(
-                    data: (name) => Text(
-                      name,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    loading: () => Text(
-                      "Loading...",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    error: (e, stackTrace) => Text("Error!!!"),
-                  ),
+            // title: name.when(
+            //         data: (name) => Text(
+            //           name,
+            //           style: TextStyle(color: Colors.white),
+            //         ),
+            //         loading: () => Text(
+            //           "Loading...",
+            //           style: TextStyle(color: Colors.white),
+            //         ),
+            //         error: (e, stackTrace) => Text("Error!!!"),
+            //       ),
             // leading: Center(
             //   child: time.when(
             //           data: (value) => Text(

@@ -84,51 +84,52 @@ class __TodoListState extends State<_TodoList> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Consumer(
-        builder: (context, ref, child) {
-          final todosState = ref.watch(todosNotifierProvider);
-          return todosState.when(
-            data: (todos) {
-              return RefreshIndicator(
-                onRefresh: () {
-                  return ref.read(todosNotifierProvider.notifier).refresh();
-                },
-                child: ListView(
-                  children: [
-                    ...todos
-                        .map(
-                          (todo) => ProviderScope(
-                            overrides: [_currentTodo.overrideWithValue(todo)],
-                            child: const TodoItem(),
-                          ),
-                        )
-                        .toList()
-                  ],
-                ),
-              );
-            },
-            loading: () => const Center(
-              child: CircularProgressIndicator(),
-            ),
-            error: (e, st) => Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Todos could not be loaded'),
-                  ElevatedButton(
-                    onPressed: () {
-                      ref
-                          .read(todosNotifierProvider.notifier)
-                          .retryLoadingTodo();
-                    },
-                    child: const Text('Retry'),
-                  )
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+      // child: Consumer(
+      //   builder: (context, ref, child) {
+      //     final todosState = ref.watch(todosNotifierProvider);
+      //     return todosState.when(
+      //       data: (todos) {
+      //         return RefreshIndicator(
+      //           onRefresh: () {
+      //             return ref.read(todosNotifierProvider.notifier).refresh();
+      //           },
+      //           child: ListView(
+      //             children: [
+      //               ...todos
+      //                   .map(
+      //                     (todo) => ProviderScope(
+      //                       overrides: [_currentTodo.overrideWithValue(todo)],
+      //                       child: const TodoItem(),
+      //                     ),
+      //                   )
+      //                   .toList()
+      //             ],
+      //           ),
+      //         );
+      //       },
+      //       loading: () => Center(
+      //         child: CircularProgressIndicator(),
+      //       ),
+      //       error: (e, stackTrace: st) => Center(
+      //         child: Column(
+      //           mainAxisAlignment: MainAxisAlignment.center,
+      //           children: [
+      //             Text('Todos could not be loaded'),
+      //             ElevatedButton(
+      //               onPressed: () {
+      //                 ref
+      //                     .read(todosNotifierProvider.notifier)
+      //                     .retryLoadingTodo();
+      //               },
+      //               child: Text('Retry'),
+      //             )
+      //           ],
+      //         ),
+      //       ),
+      //     );
+      //   },
+      // ),
+      child: Text("Text")
     );
   }
 }
@@ -139,28 +140,29 @@ class _CompletedTodos extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final todosState = ref.watch(completedTodosProvider);
-    return todosState.when(
-      data: (todos) {
-        return ListView(
-          children: [
-            ...todos
-                .map(
-                  (todo) => ProviderScope(
-                    overrides: [_currentTodo.overrideWithValue(todo)],
-                    child: const TodoItem(),
-                  ),
-                )
-                .toList()
-          ],
-        );
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      error: (e, st) => const Center(
-        child: Text('Something went wrong'),
-      ),
-    );
+    // return todosState.when(
+    //   data: (todos) {
+    //     return ListView(
+    //       children: [
+    //         ...todos
+    //             .map(
+    //               (todo) => ProviderScope(
+    //                 overrides: [_currentTodo.overrideWithValue(todo)],
+    //                 child: const TodoItem(),
+    //               ),
+    //             )
+    //             .toList()
+    //       ],
+    //     );
+    //   },
+    //   loading: () => Center(
+    //     child: CircularProgressIndicator(),
+    //   ),
+    //   error: (e, stackTrace: st) => Center(
+    //     child: Text('Something went wrong'),
+    //   ),
+    // );
+    return Expanded(child: Text("Text"));
   }
 }
 

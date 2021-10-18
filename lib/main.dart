@@ -1,6 +1,8 @@
 // Import directives
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 // .env file for loading environment variables
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -22,6 +24,8 @@ import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/selection_prefs.d
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/home.dart';
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/selection.dart';
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
+
+import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hiveDarkMode.dart';
 
 /**
  * sandbox - userlist
@@ -71,6 +75,8 @@ import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
 Future main() async {
   // Loading env file for accessing secured environment variables
   await dotenv.load(fileName: "local.env");
+  await Hive.initFlutter();
+  await Hive.openBox("darkModeTutorial");
   
   runApp(
     const ProviderScope(
@@ -88,7 +94,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // main -> sandbox project entry (now = schedulerv0.1)
-        '/': (context) => Home(),
+        '/': (context) => HiveDarkMode(),
 
         // schedulerv0.1
         '/selection': (context) => Selection(),

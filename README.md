@@ -13,5 +13,6 @@ A new Flutter project - using Riverpod state management and of course, for learn
 | weather        | Unfinished App learned from ResoCoder |
 | schedulerv0.1  | Rebuild from schedulerv2, able to collect list of selected course in Selection screen<br>returned list of course details in Result screen |
 | schedulerv0.2  | Rebuild from schedulerv0.1, added SharedPreference |
+| hive_darkmode  | Dark Mode app using Hive, sample taken from github - hivedb |
 
-*As of 21/09/2021
+*As of 19/10/2021
