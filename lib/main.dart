@@ -31,6 +31,9 @@ import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hive_darkmode.dart';
 // Sandbox - hive_counter
 import 'package:sandbox_riverpod/sandboxes/hive_counter/hive_counter.dart';
 
+// Sandbox - hive_books
+import 'package:sandbox_riverpod/sandboxes/hive_books/hive_books.dart';
+
 
 /**
  * sandbox - userlist
@@ -81,7 +84,8 @@ Future main() async {
   // Loading env file for accessing secured environment variables
   await dotenv.load(fileName: "local.env");
   await Hive.initFlutter();
-  await Hive.openBox("darkModeTutorial");
+  await Hive.openBox("darkModeTutorial"); //hive_darkmode
+  await Hive.openBox<String>("favorite_books"); //hive_books
   
   runApp(
     const ProviderScope(
@@ -98,8 +102,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        // main -> sandbox project entry (now = schedulerv0.1)
-        '/': (context) => HiveCounter(),
+        // main -> sandbox project entry (now = hive_books)
+        '/': (context) => HiveBooks(),
 
         // schedulerv0.1
         '/selection': (context) => Selection(),

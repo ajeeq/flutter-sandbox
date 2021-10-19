@@ -15,5 +15,6 @@ A new Flutter project - using Riverpod state management and of course, for learn
 | schedulerv0.2  | Rebuild from schedulerv0.1, added SharedPreference |
 | hive_darkmode  | Dark Mode app using Hive, sample taken from github - hivedb |
 | hive_counter   | Counter app from github - hivedb |
+| hive_books     | backup_restore_books app from github - hivedb |
 
 *As of 20/10/2021
