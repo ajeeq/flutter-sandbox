@@ -25,7 +25,12 @@ import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/home.dart';
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/selection.dart';
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
 
-import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hiveDarkMode.dart';
+// Sandbox - hive_darkmode
+import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hive_darkmode.dart';
+
+// Sandbox - hive_counter
+import 'package:sandbox_riverpod/sandboxes/hive_counter/hive_counter.dart';
+
 
 /**
  * sandbox - userlist
@@ -94,7 +99,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // main -> sandbox project entry (now = schedulerv0.1)
-        '/': (context) => HiveDarkMode(),
+        '/': (context) => HiveCounter(),
 
         // schedulerv0.1
         '/selection': (context) => Selection(),
