@@ -1,12 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sandbox_riverpod/models/course.dart';
 
-final courseListProvider = StateNotifierProvider<CourseListNotifier, List<String>>((ref) => CourseListNotifier());
+final courseListProvider = StateNotifierProvider<CourseListNotifier, List<CourseElement>>((ref) => CourseListNotifier());
 final courseNameProvider = StateNotifierProvider((ref) => CourseNameNotifier());
 
-class CourseListNotifier extends StateNotifier<List<String>> {
+class CourseListNotifier extends StateNotifier<List<CourseElement>> {
   CourseListNotifier() : super([]);
 
-  updateCourseList(List<String> l) {
+  updateCourseList(List<CourseElement> l) {
     state = [];
     state = l;
   }

@@ -20,10 +20,10 @@ import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/selection_prefs.d
 // Sandbox - campus
 // import 'package:sandbox_riverpod/sandboxes/campus/home_campus.dart';
 
-// Sandbox - schedulerv0.1
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/home.dart';
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/selection.dart';
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
+// Sandbox - schedulerv0.2
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/home.dart';
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/selection.dart';
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/result.dart';
 
 // Sandbox - hive_darkmode
 import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hive_darkmode.dart';
@@ -103,7 +103,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // main -> sandbox project entry (now = hive_books)
-        '/': (context) => HiveBooks(),
+        '/': (context) => Home(),
 
         // schedulerv0.1
         '/selection': (context) => Selection(),

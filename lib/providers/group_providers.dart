@@ -1,12 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sandbox_riverpod/models/group.dart';
 
-final groupListProvider = StateNotifierProvider<GroupListNotifier, List<String>>((_) => GroupListNotifier());
+final groupListProvider = StateNotifierProvider<GroupListNotifier, List<GroupArray>>((_) => GroupListNotifier());
 final groupNameProvider = StateNotifierProvider((_) => GroupNameNotifier());
 
-class GroupListNotifier extends StateNotifier<List<String>> {
+class GroupListNotifier extends StateNotifier<List<GroupArray>> {
   GroupListNotifier() : super([]);
   
-  updateGroupList(List<String> l) {
+  updateGroupList(List<GroupArray> l) {
     state = [];
     state = l;
   }

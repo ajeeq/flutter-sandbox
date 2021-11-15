@@ -106,7 +106,7 @@ class _HomeState extends ConsumerState<Home>{
         
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Scheduler V0.1"),
+        title: const Text("Scheduler V0.2"),
       ),
       body: selectionListState.isEmpty
         ? Center(

@@ -30,7 +30,7 @@ class _GroupAutocompleteState extends ConsumerState<GroupAutocomplete> {
         if (textEditingValue.text.isEmpty) {
           return const Iterable<String>.empty();
         } else {
-          return groupListState.where((word) => word
+          return groupListState.map((e) => e.group).where((word) => word
             .toLowerCase()
             .contains(textEditingValue.text.toLowerCase()));
         }
