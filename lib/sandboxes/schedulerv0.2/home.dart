@@ -145,6 +145,39 @@ class _HomeState extends ConsumerState<Home>{
               ],
             ),
           ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Dictionary'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                // Navigator.pop(context);
+                Navigator.pushNamed(context, '/dictionary');
+              },
+            ),
+            ListTile(
+              title: const Text('Settings'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                // Navigator.pop(context);
+                Navigator.pushNamed(context, '/settings');
+              },
+            ),
+          ]
+        )
+      ),
           
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,

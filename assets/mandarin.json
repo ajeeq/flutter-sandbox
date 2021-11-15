@@ -1,0 +1,40 @@
+{
+    "mandarin": [
+      {
+        "id": 1,
+        "pinyin": "dàxué",
+        "latinized_pinyin": "daxue",
+        "meaning_malay": "universiti",
+        "meaning_english": "university",
+        "chinese_char": "",
+        "tag": [
+          "TMC451",
+          "CS230"
+        ]
+      },
+      {
+        "id": 2,
+        "pinyin": "diànyǐngyuàn",
+        "latinized_pinyin": "dianyingyuan",
+        "meaning_malay": "panggung wayang",
+        "meaning_english": "cinema",
+        "chinese_char": "",
+        "tag": [
+          "TMC451",
+          "CS230"
+        ]
+      },
+      {
+        "id": 3,
+        "pinyin": "gōngchéngshī",
+        "latinized_pinyin": "gongchengshi",
+        "meaning_malay": "jurutera",
+        "meaning_english": "engineer",
+        "chinese_char": "",
+        "tag": [
+          "TMC451",
+          "CS230"
+        ]
+      }
+    ]
+  }

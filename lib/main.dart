@@ -24,6 +24,9 @@ import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/selection_prefs.d
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/home.dart';
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/selection.dart';
 import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/result.dart';
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/settings.dart';
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/translate.dart';
+import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/dictionary.dart';
 
 // Sandbox - hive_darkmode
 import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hive_darkmode.dart';
@@ -107,9 +110,12 @@ class MyApp extends StatelessWidget {
 
         // schedulerv0.1
         '/selection': (context) => Selection(),
-
-        // schedulerv0.1
         '/result': (context) => Result(),
+
+        // schedulerv0.2
+        '/settings': (context) => Settings(),
+        '/dictionary': (context) => Dictionary(),
+        '/translate': (context) => Translate(),
       },
     );
   }
