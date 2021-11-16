@@ -153,7 +153,7 @@ class _HomeState extends ConsumerState<Home>{
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Text('UiTM Scheduler 0.1.1'),
             ),
             ListTile(
               title: const Text('Dictionary'),

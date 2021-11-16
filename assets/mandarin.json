@@ -1,40 +1,2816 @@
 {
-    "mandarin": [
-      {
-        "id": 1,
-        "pinyin": "dàxué",
-        "latinized_pinyin": "daxue",
-        "meaning_malay": "universiti",
-        "meaning_english": "university",
-        "chinese_char": "",
-        "tag": [
-          "TMC451",
-          "CS230"
-        ]
-      },
-      {
-        "id": 2,
-        "pinyin": "diànyǐngyuàn",
-        "latinized_pinyin": "dianyingyuan",
-        "meaning_malay": "panggung wayang",
-        "meaning_english": "cinema",
-        "chinese_char": "",
-        "tag": [
-          "TMC451",
-          "CS230"
-        ]
-      },
-      {
-        "id": 3,
-        "pinyin": "gōngchéngshī",
-        "latinized_pinyin": "gongchengshi",
-        "meaning_malay": "jurutera",
-        "meaning_english": "engineer",
-        "chinese_char": "",
-        "tag": [
-          "TMC451",
-          "CS230"
-        ]
-      }
-    ]
-  }
+  "dictionary_version": "0.1.0",
+  "date_modified": "16/11/2021",
+  "current_changelog": "initial copy from .txt",
+  "mandarin": [
+    {
+      "id": 0,
+      "pinyin": "a",
+      "latinized_pinyin": "a",
+      "meaning_malay": "kata seru",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 1,
+      "pinyin": "Àilìsī",
+      "latinized_pinyin": "Ailisi",
+      "meaning_malay": "Alice",
+      "meaning_english": "Alice",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 2,
+      "pinyin": "Àimàn",
+      "latinized_pinyin": "Aiman",
+      "meaning_malay": "Aiman",
+      "meaning_english": "Aiman",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 3,
+      "pinyin": "bā",
+      "latinized_pinyin": "ba",
+      "meaning_malay": "lapan",
+      "meaning_english": "eight",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 4,
+      "pinyin": "bàba",
+      "latinized_pinyin": "baba",
+      "meaning_malay": "bapa, ayah",
+      "meaning_english": "dad, father",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 5,
+      "pinyin": "bàngōngshì",
+      "latinized_pinyin": "bangongshi",
+      "meaning_malay": "pejabat",
+      "meaning_english": "office",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 6,
+      "pinyin": "bàozhǐ",
+      "latinized_pinyin": "baozhi",
+      "meaning_malay": "surat khabar",
+      "meaning_english": "newspaper",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 7,
+      "pinyin": "bómǔ",
+      "latinized_pinyin": "bomu",
+      "meaning_malay": "makcik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 8,
+      "pinyin": "bú zài",
+      "latinized_pinyin": "bu zai",
+      "meaning_malay": "tidak berada (di sesuatu tempat)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 9,
+      "pinyin": "búshì",
+      "latinized_pinyin": "bushi",
+      "meaning_malay": "bukan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 10,
+      "pinyin": "chàng",
+      "latinized_pinyin": "chang",
+      "meaning_malay": "nyanyi",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 11,
+      "pinyin": "chángcháng",
+      "latinized_pinyin": "changchang",
+      "meaning_malay": "selalu",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 12,
+      "pinyin": "chànggē",
+      "latinized_pinyin": "changge",
+      "meaning_malay": "menyanyi",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 13,
+      "pinyin": "Chén",
+      "latinized_pinyin": "Chen",
+      "meaning_malay": "Chen (nama keluarga)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 14,
+      "pinyin": "Chén Lìlíng",
+      "latinized_pinyin": "Chen Liling",
+      "meaning_malay": "Chen Liling",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 15,
+      "pinyin": "chīfàn",
+      "latinized_pinyin": "chifan",
+      "meaning_malay": "makan nasi",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 16,
+      "pinyin": "chúfáng",
+      "latinized_pinyin": "chufang",
+      "meaning_malay": "dapur",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 17,
+      "pinyin": "chūshēng",
+      "latinized_pinyin": "chusheng",
+      "meaning_malay": "lahir",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 18,
+      "pinyin": "dǎ bǎolíngqiú",
+      "latinized_pinyin": "da baolingqiu",
+      "meaning_malay": "bermain bowling",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 19,
+      "pinyin": "dǎ yǔmáoqiú",
+      "latinized_pinyin": "da yumaoqiu",
+      "meaning_malay": "bermain badminton",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 20,
+      "pinyin": "dǎsǎo",
+      "latinized_pinyin": "dasao",
+      "meaning_malay": "membersih",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 21,
+      "pinyin": "dàxué",
+      "latinized_pinyin": "daxue",
+      "meaning_malay": "universiti",
+      "meaning_english": "university",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 22,
+      "pinyin": "de",
+      "latinized_pinyin": "de",
+      "meaning_malay": "punya",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 23,
+      "pinyin": "de shíhou",
+      "latinized_pinyin": "de shihou",
+      "meaning_malay": "apabila ...; semasa...",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 24,
+      "pinyin": "diǎn",
+      "latinized_pinyin": "dian",
+      "meaning_malay": "pukul",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 25,
+      "pinyin": "diànshì",
+      "latinized_pinyin": "dianshi",
+      "meaning_malay": "televisyen",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 26,
+      "pinyin": "diànyǐng",
+      "latinized_pinyin": "dianying",
+      "meaning_malay": "wayang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 27,
+      "pinyin": "diànyǐngyuàn",
+      "latinized_pinyin": "dianyingyuan",
+      "meaning_malay": "panggung wayang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 28,
+      "pinyin": "diànzibào",
+      "latinized_pinyin": "dianzibao",
+      "meaning_malay": "e-surat khabar",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 29,
+      "pinyin": "dìdi",
+      "latinized_pinyin": "didi",
+      "meaning_malay": "adik lelaki",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 30,
+      "pinyin": "dōngxi",
+      "latinized_pinyin": "dongxi",
+      "meaning_malay": "barang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 31,
+      "pinyin": "duì",
+      "latinized_pinyin": "dui",
+      "meaning_malay": "betul",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 32,
+      "pinyin": "duìbuqǐ",
+      "latinized_pinyin": "duibuqi",
+      "meaning_malay": "maaf",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 33,
+      "pinyin": "èr",
+      "latinized_pinyin": "er",
+      "meaning_malay": "dua",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 34,
+      "pinyin": "èrshí",
+      "latinized_pinyin": "ershi",
+      "meaning_malay": "dua puluh",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 35,
+      "pinyin": "érzi",
+      "latinized_pinyin": "erzi",
+      "meaning_malay": "anak lelaki",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 36,
+      "pinyin": "fángjiān",
+      "latinized_pinyin": "fangjian",
+      "meaning_malay": "bilik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 37,
+      "pinyin": "fùxí",
+      "latinized_pinyin": "fuxi",
+      "meaning_malay": "mengulangkaji",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 38,
+      "pinyin": "gāoxìng",
+      "latinized_pinyin": "gaoxing",
+      "meaning_malay": "gembira; senang hati",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 39,
+      "pinyin": "gè",
+      "latinized_pinyin": "ge",
+      "meaning_malay": "orang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 40,
+      "pinyin": "gēge",
+      "latinized_pinyin": "gege",
+      "meaning_malay": "abang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 41,
+      "pinyin": "gōngchéngshī",
+      "latinized_pinyin": "gongchengshi",
+      "meaning_malay": "jurutera",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 42,
+      "pinyin": "gōngkè",
+      "latinized_pinyin": "gongke",
+      "meaning_malay": "tugasan; kerja sekolah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 43,
+      "pinyin": "gōngwùyuán",
+      "latinized_pinyin": "gongwuyuan",
+      "meaning_malay": "penjawat awam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 44,
+      "pinyin": "gōngyuán",
+      "latinized_pinyin": "gongyuan",
+      "meaning_malay": "taman",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 45,
+      "pinyin": "gōngzuò",
+      "latinized_pinyin": "gongzuo",
+      "meaning_malay": "kerja, bekerja",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 46,
+      "pinyin": "gòuwù zhōngxīn",
+      "latinized_pinyin": "gouwu zhongxin",
+      "meaning_malay": "pusat beli-belah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 47,
+      "pinyin": "Guāndān",
+      "latinized_pinyin": "Guandan",
+      "meaning_malay": "Kuantan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 48,
+      "pinyin": "Gǔjìn",
+      "latinized_pinyin": "Gujin",
+      "meaning_malay": "Kuching",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 49,
+      "pinyin": "hái méiyǒu",
+      "latinized_pinyin": "hai meiyou",
+      "meaning_malay": "masih belum",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 50,
+      "pinyin": "háizi",
+      "latinized_pinyin": "haizi",
+      "meaning_malay": "anak",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 51,
+      "pinyin": "hào",
+      "latinized_pinyin": "hao",
+      "meaning_malay": "hari bulan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 52,
+      "pinyin": "hào",
+      "latinized_pinyin": "hao",
+      "meaning_malay": "nombor",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 53,
+      "pinyin": "hǎo",
+      "latinized_pinyin": "hao",
+      "meaning_malay": "baik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 54,
+      "pinyin": "hǎo jiǔ bú jiàn",
+      "latinized_pinyin": "hao jiu bu jian",
+      "meaning_malay": "sudah lama tidak berjumpa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 55,
+      "pinyin": "hǎo péngyou",
+      "latinized_pinyin": "hao pengyou",
+      "meaning_malay": "kawan baik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 56,
+      "pinyin": "hǎode",
+      "latinized_pinyin": "haode",
+      "meaning_malay": "baiklah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 57,
+      "pinyin": "hàomǎ",
+      "latinized_pinyin": "haoma",
+      "meaning_malay": "nombor (telefon)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 58,
+      "pinyin": "hé",
+      "latinized_pinyin": "he",
+      "meaning_malay": "dan; dengan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 59,
+      "pinyin": "hēchá",
+      "latinized_pinyin": "hecha",
+      "meaning_malay": "minum (teh)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 60,
+      "pinyin": "hěn",
+      "latinized_pinyin": "hen",
+      "meaning_malay": "sangat",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 61,
+      "pinyin": "hěn shǎo",
+      "latinized_pinyin": "hen shao",
+      "meaning_malay": "jarang jarang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 62,
+      "pinyin": "huānyíng",
+      "latinized_pinyin": "huanying",
+      "meaning_malay": "selamat datang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 63,
+      "pinyin": "Huáyǔ",
+      "latinized_pinyin": "Huayu",
+      "meaning_malay": "bahasa Mandarin",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 64,
+      "pinyin": "Huáyǔ piàn",
+      "latinized_pinyin": "Huayu pian",
+      "meaning_malay": "filem Mandarin",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 65,
+      "pinyin": "huí",
+      "latinized_pinyin": "hui",
+      "meaning_malay": "balik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 66,
+      "pinyin": "jǐ",
+      "latinized_pinyin": "ji",
+      "meaning_malay": "berapa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 67,
+      "pinyin": "Jí dǎ",
+      "latinized_pinyin": "Ji da",
+      "meaning_malay": "Kedah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 68,
+      "pinyin": "jǐ hào",
+      "latinized_pinyin": "ji hao",
+      "meaning_malay": "berapakah nombor",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 69,
+      "pinyin": "jǐ yuè",
+      "latinized_pinyin": "ji yue",
+      "meaning_malay": "bulan berapa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 70,
+      "pinyin": "jiā",
+      "latinized_pinyin": "jia",
+      "meaning_malay": "rumah; keluarga",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 71,
+      "pinyin": "jiàn",
+      "latinized_pinyin": "jian",
+      "meaning_malay": "jumpa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 72,
+      "pinyin": "jiǎngzuò",
+      "latinized_pinyin": "jiangzuo",
+      "meaning_malay": "ceramah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 73,
+      "pinyin": "jiào",
+      "latinized_pinyin": "jiao",
+      "meaning_malay": "dipanggil",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 74,
+      "pinyin": "jiāo",
+      "latinized_pinyin": "jiao",
+      "meaning_malay": "menghantar",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 75,
+      "pinyin": "jiàoshì",
+      "latinized_pinyin": "jiaoshi",
+      "meaning_malay": "bilik kuliah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 76,
+      "pinyin": "jiātíng zhǔfù",
+      "latinized_pinyin": "jiating zhufu",
+      "meaning_malay": "surirumah-tangga",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 77,
+      "pinyin": "Jiāyǎ",
+      "latinized_pinyin": "Jiaya",
+      "meaning_malay": "Jaya",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 78,
+      "pinyin": "jiéhūn",
+      "latinized_pinyin": "jiehun",
+      "meaning_malay": "berkahwin",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 79,
+      "pinyin": "jiějie",
+      "latinized_pinyin": "jiejie",
+      "meaning_malay": "kakak",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 80,
+      "pinyin": "Jílándān",
+      "latinized_pinyin": "Jilandan",
+      "meaning_malay": "Kelantan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 81,
+      "pinyin": "Jílóngpō",
+      "latinized_pinyin": "Jilongpo",
+      "meaning_malay": "Kuala Lumpur",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 82,
+      "pinyin": "jǐngchá",
+      "latinized_pinyin": "jingcha",
+      "meaning_malay": "polis",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 83,
+      "pinyin": "jǐngchájú",
+      "latinized_pinyin": "jingchaju",
+      "meaning_malay": "balai polis",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 84,
+      "pinyin": "jīnglǐ",
+      "latinized_pinyin": "jingli",
+      "meaning_malay": "pengurus",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 85,
+      "pinyin": "jīnnián",
+      "latinized_pinyin": "jīnnián",
+      "meaning_malay": "tahun ini",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 86,
+      "pinyin": "jīntiān",
+      "latinized_pinyin": "jintian",
+      "meaning_malay": "hari ini",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 87,
+      "pinyin": "jiǔ",
+      "latinized_pinyin": "jiu",
+      "meaning_malay": "sembilan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 88,
+      "pinyin": "kāihuì",
+      "latinized_pinyin": "kaihui",
+      "meaning_malay": "bermesyuarat",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 89,
+      "pinyin": "kǎlā OK",
+      "latinized_pinyin": "kala OK",
+      "meaning_malay": "karaoke",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 90,
+      "pinyin": "kàn",
+      "latinized_pinyin": "kan",
+      "meaning_malay": "tengok; menonton; membaca",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 91,
+      "pinyin": "kǎoshì",
+      "latinized_pinyin": "kaoshi",
+      "meaning_malay": "mengadakan peperiksaan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 92,
+      "pinyin": "kè",
+      "latinized_pinyin": "ke",
+      "meaning_malay": "kelas",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 93,
+      "pinyin": "kèběn",
+      "latinized_pinyin": "keben",
+      "meaning_malay": "buku teks",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 94,
+      "pinyin": "kěyǐ",
+      "latinized_pinyin": "keyi",
+      "meaning_malay": "boleh",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 95,
+      "pinyin": "kuàijìshī",
+      "latinized_pinyin": "kuaijishi",
+      "meaning_malay": "akauntan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 96,
+      "pinyin": "lái",
+      "latinized_pinyin": "lai",
+      "meaning_malay": "datang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 97,
+      "pinyin": "lǎojiā",
+      "latinized_pinyin": "laojia",
+      "meaning_malay": "kampung halaman",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 98,
+      "pinyin": "lǎoshī",
+      "latinized_pinyin": "laoshi",
+      "meaning_malay": "cikgu",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 99,
+      "pinyin": "le",
+      "latinized_pinyin": "le",
+      "meaning_malay": "lah (partikel)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 100,
+      "pinyin": "Lǐ",
+      "latinized_pinyin": "Li",
+      "meaning_malay": "Li",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 101,
+      "pinyin": "líng",
+      "latinized_pinyin": "ling",
+      "meaning_malay": "sifar",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 102,
+      "pinyin": "liǎng",
+      "latinized_pinyin": "liang",
+      "meaning_malay": "dua",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 103,
+      "pinyin": "Liú",
+      "latinized_pinyin": "Liu",
+      "meaning_malay": "Liu (nama keluarga)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 104,
+      "pinyin": "liù",
+      "latinized_pinyin": "liu",
+      "meaning_malay": "enam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 105,
+      "pinyin": "lóu",
+      "latinized_pinyin": "lou",
+      "meaning_malay": "tingkat; aras",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 106,
+      "pinyin": "ma",
+      "latinized_pinyin": "ma",
+      "meaning_malay": "kah (partikel)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 107,
+      "pinyin": "mǎi",
+      "latinized_pinyin": "mai",
+      "meaning_malay": "membeli",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 108,
+      "pinyin": "mǎi dōngxi",
+      "latinized_pinyin": "mai dongxi",
+      "meaning_malay": "membeli-belah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 109,
+      "pinyin": "Mǎlā Gōngyì Dàxué",
+      "latinized_pinyin": "Mala Gongyi Daxue",
+      "meaning_malay": "Mala Gongyi Daxue",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 110,
+      "pinyin": "Mǎláixīyà",
+      "latinized_pinyin": "Malaixiya",
+      "meaning_malay": "Malaysia",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 111,
+      "pinyin": "māma",
+      "latinized_pinyin": "mama",
+      "meaning_malay": "emak; ibu",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 112,
+      "pinyin": "máng",
+      "latinized_pinyin": "mang",
+      "meaning_malay": "sibuk",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 113,
+      "pinyin": "méi guānxi",
+      "latinized_pinyin": "mei guanxi",
+      "meaning_malay": "tidak mengapa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 114,
+      "pinyin": "mèimei",
+      "latinized_pinyin": "meimei",
+      "meaning_malay": "adik perempuan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 115,
+      "pinyin": "méiyǒu",
+      "latinized_pinyin": "meiyou",
+      "meaning_malay": "tiada; tidak mempunyai",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 116,
+      "pinyin": "míngnían",
+      "latinized_pinyin": "mingnian",
+      "meaning_malay": "tahun depan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 117,
+      "pinyin": "míngtiān",
+      "latinized_pinyin": "mingtian",
+      "meaning_malay": "esok",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 118,
+      "pinyin": "míngzi",
+      "latinized_pinyin": "mingzi",
+      "meaning_malay": "nama",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 119,
+      "pinyin": "Mòhàn",
+      "latinized_pinyin": "Mohan",
+      "meaning_malay": "Mohan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 120,
+      "pinyin": "Mùlán",
+      "latinized_pinyin": "Mulan",
+      "meaning_malay": "Mulan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 121,
+      "pinyin": "nà",
+      "latinized_pinyin": "na",
+      "meaning_malay": "kalau begitu; jadi",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 122,
+      "pinyin": "nà",
+      "latinized_pinyin": "na",
+      "meaning_malay": "itu",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 123,
+      "pinyin": "nǎlǐ",
+      "latinized_pinyin": "nali",
+      "meaning_malay": "mana",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 124,
+      "pinyin": "nán",
+      "latinized_pinyin": "nan",
+      "meaning_malay": "lelaki",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 125,
+      "pinyin": "nán péngyou",
+      "latinized_pinyin": "nan pengyou",
+      "meaning_malay": "teman lelaki",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 126,
+      "pinyin": "ne",
+      "latinized_pinyin": "ne",
+      "meaning_malay": "partikel modus",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 127,
+      "pinyin": "nǐ",
+      "latinized_pinyin": "ni",
+      "meaning_malay": "awak",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 128,
+      "pinyin": "nǐ hǎo",
+      "latinized_pinyin": "ni hao",
+      "meaning_malay": "salam sejahtera",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 129,
+      "pinyin": "nián",
+      "latinized_pinyin": "nian",
+      "meaning_malay": "tahun",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 130,
+      "pinyin": "nǐmen",
+      "latinized_pinyin": "nimen",
+      "meaning_malay": "kamu semua",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 131,
+      "pinyin": "nín",
+      "latinized_pinyin": "nin",
+      "meaning_malay": "anda (sopan)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 132,
+      "pinyin": "nǚ",
+      "latinized_pinyin": "nu",
+      "meaning_malay": "perempuan; wanita",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 133,
+      "pinyin": "nǚ péngyou",
+      "latinized_pinyin": "nu pengyou",
+      "meaning_malay": "teman wanita",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 134,
+      "pinyin": "nǚ ér",
+      "latinized_pinyin": "nu er",
+      "meaning_malay": "anak perempuan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 135,
+      "pinyin": "pǎobù",
+      "latinized_pinyin": "paobu",
+      "meaning_malay": "berjoging",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 136,
+      "pinyin": "péngyou",
+      "latinized_pinyin": "pengyou",
+      "meaning_malay": "kawan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 137,
+      "pinyin": "piàoliang",
+      "latinized_pinyin": "piaoliang",
+      "meaning_malay": "cantik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 138,
+      "pinyin": "qī",
+      "latinized_pinyin": "qi",
+      "meaning_malay": "tujuh",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 139,
+      "pinyin": "qǐchuáng",
+      "latinized_pinyin": "qichuang",
+      "meaning_malay": "bangun tidur",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 140,
+      "pinyin": "qǐng",
+      "latinized_pinyin": "qing",
+      "meaning_malay": "jemput",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 141,
+      "pinyin": "qǐng",
+      "latinized_pinyin": "qing",
+      "meaning_malay": "belanja",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 142,
+      "pinyin": "qīngzhēnsì",
+      "latinized_pinyin": "qingzhensi",
+      "meaning_malay": "masjid",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 143,
+      "pinyin": "qù",
+      "latinized_pinyin": "qu",
+      "meaning_malay": "pergi",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 144,
+      "pinyin": "qū",
+      "latinized_pinyin": "qu",
+      "meaning_malay": "seksyen",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 145,
+      "pinyin": "rén",
+      "latinized_pinyin": "ren",
+      "meaning_malay": "orang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 146,
+      "pinyin": "rènshi",
+      "latinized_pinyin": "renshi",
+      "meaning_malay": "mengenali",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 147,
+      "pinyin": "Róufó",
+      "latinized_pinyin": "Roufo",
+      "meaning_malay": "Johor",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 148,
+      "pinyin": "sān",
+      "latinized_pinyin": "san",
+      "meaning_malay": "tiga",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 149,
+      "pinyin": "Shā’ānán",
+      "latinized_pinyin": "Sha'anan",
+      "meaning_malay": "Shah Alam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 150,
+      "pinyin": "Shālāyuè",
+      "latinized_pinyin": "Shalayue",
+      "meaning_malay": "Sarawak",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 151,
+      "pinyin": "shángké",
+      "latinized_pinyin": "shangke",
+      "meaning_malay": "menghadiri kuliah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 152,
+      "pinyin": "shàngwǎng",
+      "latinized_pinyin": "shangwang",
+      "meaning_malay": "melayari internet",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 153,
+      "pinyin": "shéi",
+      "latinized_pinyin": "shei",
+      "meaning_malay": "siapa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 154,
+      "pinyin": "shēngrì",
+      "latinized_pinyin": "shengri",
+      "meaning_malay": "hari lahir",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 155,
+      "pinyin": "shēngrì kuaìlè",
+      "latinized_pinyin": "shengri kuaile",
+      "meaning_malay": "selamat hari lahir",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 156,
+      "pinyin": "shénme",
+      "latinized_pinyin": "shenme",
+      "meaning_malay": "apa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 157,
+      "pinyin": "shénme shíhou",
+      "latinized_pinyin": "shenme shihou",
+      "meaning_malay": "bilakah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 158,
+      "pinyin": "shí",
+      "latinized_pinyin": "shi",
+      "meaning_malay": "sepuluh",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 159,
+      "pinyin": "shì",
+      "latinized_pinyin": "shi",
+      "meaning_malay": "ialah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 160,
+      "pinyin": "shìde",
+      "latinized_pinyin": "shide",
+      "meaning_malay": "ya",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 161,
+      "pinyin": "shíhou",
+      "latinized_pinyin": "shihou",
+      "meaning_malay": "masa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 162,
+      "pinyin": "shǒuji",
+      "latinized_pinyin": "shouji",
+      "meaning_malay": "telefon bimbit",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 163,
+      "pinyin": "shū",
+      "latinized_pinyin": "shu",
+      "meaning_malay": "buku",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 164,
+      "pinyin": "shuìjiào",
+      "latinized_pinyin": "shuijiao",
+      "meaning_malay": "tidur",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 165,
+      "pinyin": "sì",
+      "latinized_pinyin": "si",
+      "meaning_malay": "empat",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 166,
+      "pinyin": "suì",
+      "latinized_pinyin": "sui",
+      "meaning_malay": "tahun (umur)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 167,
+      "pinyin": "sùshè",
+      "latinized_pinyin": "sushe",
+      "meaning_malay": "asrama",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 168,
+      "pinyin": "tā",
+      "latinized_pinyin": "ta",
+      "meaning_malay": "dia",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 169,
+      "pinyin": "tàitai",
+      "latinized_pinyin": "taitai",
+      "meaning_malay": "isteri",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 170,
+      "pinyin": "tāmen",
+      "latinized_pinyin": "tamen",
+      "meaning_malay": "mereka",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 171,
+      "pinyin": "tī zúqiú",
+      "latinized_pinyin": "ti ziqiu",
+      "meaning_malay": "bermain bola sepak",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 172,
+      "pinyin": "tiàowǔ",
+      "latinized_pinyin": "tiaowu",
+      "meaning_malay": "menari",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 173,
+      "pinyin": "tīng",
+      "latinized_pinyin": "ting",
+      "meaning_malay": "mendengar",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 174,
+      "pinyin": "tīnggē",
+      "latinized_pinyin": "tingge",
+      "meaning_malay": "mendengar lagu",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 175,
+      "pinyin": "tóngxué",
+      "latinized_pinyin": "tongxue",
+      "meaning_malay": "rakan sekelas",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 176,
+      "pinyin": "túshūguǎn",
+      "latinized_pinyin": "tushuguan",
+      "meaning_malay": "perpustakaan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 177,
+      "pinyin": "wǎn’ān",
+      "latinized_pinyin": "wan'an",
+      "meaning_malay": "selamat malam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 178,
+      "pinyin": "Wáng",
+      "latinized_pinyin": "Wang",
+      "meaning_malay": "Wang (nama keluarga)",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 179,
+      "pinyin": "wǎnshang",
+      "latinized_pinyin": "wanshang",
+      "meaning_malay": "malam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 180,
+      "pinyin": "wǎnshang hǎo",
+      "latinized_pinyin": "wanshang hao",
+      "meaning_malay": "selamat malam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 181,
+      "pinyin": "wéi",
+      "latinized_pinyin": "wei",
+      "meaning_malay": "helo",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 182,
+      "pinyin": "wǒ",
+      "latinized_pinyin": "wo",
+      "meaning_malay": "saya",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 183,
+      "pinyin": "wǒmen",
+      "latinized_pinyin": "women",
+      "meaning_malay": "kami; kita",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 184,
+      "pinyin": "wǔ",
+      "latinized_pinyin": "wu",
+      "meaning_malay": "lima",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 185,
+      "pinyin": "xǐ",
+      "latinized_pinyin": "xi",
+      "meaning_malay": "mencuci",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 186,
+      "pinyin": "xiānsheng",
+      "latinized_pinyin": "xiansheng",
+      "meaning_malay": "encik; suami",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 187,
+      "pinyin": "xiànzài",
+      "latinized_pinyin": "xianzai",
+      "meaning_malay": "sekarang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 188,
+      "pinyin": "xiǎojiě",
+      "latinized_pinyin": "xiaojie",
+      "meaning_malay": "cik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 189,
+      "pinyin": "xiàwǔ",
+      "latinized_pinyin": "xiawu",
+      "meaning_malay": "petang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 190,
+      "pinyin": "xiàwǔ hǎo",
+      "latinized_pinyin": "xiawu hao",
+      "meaning_malay": "selamat petang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 191,
+      "pinyin": "Xīdì",
+      "latinized_pinyin": "Xidi",
+      "meaning_malay": "Siti",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 192,
+      "pinyin": "xièxie",
+      "latinized_pinyin": "xiexie",
+      "meaning_malay": "terima kasih",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 193,
+      "pinyin": "xǐhuan",
+      "latinized_pinyin": "xihuan",
+      "meaning_malay": "suka",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 194,
+      "pinyin": "xīngqī",
+      "latinized_pinyin": "xingqi",
+      "meaning_malay": "minggu",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 195,
+      "pinyin": "xīngqī’ér",
+      "latinized_pinyin": "xingqi'er",
+      "meaning_malay": "Selasa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 196,
+      "pinyin": "xīngqī’jǐ",
+      "latinized_pinyin": "xingqi'ji",
+      "meaning_malay": "hari apa",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 197,
+      "pinyin": "xiōngdì jiěmèi",
+      "latinized_pinyin": "xiongdi jiemei",
+      "meaning_malay": "adik-beradik",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 198,
+      "pinyin": "xìzhǔrèn",
+      "latinized_pinyin": "xizhuren",
+      "meaning_malay": "ketua program",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 199,
+      "pinyin": "xué",
+      "latinized_pinyin": "xue",
+      "meaning_malay": "belajar",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 200,
+      "pinyin": "Xuělán’é",
+      "latinized_pinyin": "Xuelan'e",
+      "meaning_malay": "Selangor",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 201,
+      "pinyin": "xuésheng",
+      "latinized_pinyin": "xuesheng",
+      "meaning_malay": "pelajar",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 202,
+      "pinyin": "yào",
+      "latinized_pinyin": "yao",
+      "meaning_malay": "hendak",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 203,
+      "pinyin": "yào búyào",
+      "latinized_pinyin": "yao buyao",
+      "meaning_malay": "mahukah",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 204,
+      "pinyin": "yě",
+      "latinized_pinyin": "ye",
+      "meaning_malay": "juga",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 205,
+      "pinyin": "yī",
+      "latinized_pinyin": "yi",
+      "meaning_malay": "satu",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 206,
+      "pinyin": "Yíbǎo",
+      "latinized_pinyin": "Yibao",
+      "meaning_malay": "Ipoh",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 207,
+      "pinyin": "yīfu",
+      "latinized_pinyin": "yifu",
+      "meaning_malay": "baju",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 208,
+      "pinyin": "yínháng",
+      "latinized_pinyin": "yinhang",
+      "meaning_malay": "bank",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 209,
+      "pinyin": "yìqǐ",
+      "latinized_pinyin": "yiqi",
+      "meaning_malay": "bersama-sama",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 210,
+      "pinyin": "yīshēng",
+      "latinized_pinyin": "yisheng",
+      "meaning_malay": "doktor",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 211,
+      "pinyin": "yǒu",
+      "latinized_pinyin": "you",
+      "meaning_malay": "ada; mempunyai",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 212,
+      "pinyin": "yǒu kòng",
+      "latinized_pinyin": "you kong",
+      "meaning_malay": "ada masa lapang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 213,
+      "pinyin": "yóuxì",
+      "latinized_pinyin": "youxi",
+      "meaning_malay": "permainan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 214,
+      "pinyin": "yóuyǒng",
+      "latinized_pinyin": "youyong",
+      "meaning_malay": "berenang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 215,
+      "pinyin": "yuè",
+      "latinized_pinyin": "yue",
+      "meaning_malay": "bulan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC451",
+        "CS230"
+      ]
+    },
+    {
+      "id": 216,
+      "pinyin": "yùndòng",
+      "latinized_pinyin": "yundong",
+      "meaning_malay": "bersenam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 217,
+      "pinyin": "zài",
+      "latinized_pinyin": "zai",
+      "meaning_malay": "di",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 218,
+      "pinyin": "zàijiàn",
+      "latinized_pinyin": "zaijian",
+      "meaning_malay": "jumpa lagi; selamat tinggal",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 219,
+      "pinyin": "zǎoshang",
+      "latinized_pinyin": "zaoshang",
+      "meaning_malay": "pagi",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 220,
+      "pinyin": "zǎoshang hǎo",
+      "latinized_pinyin": "zaoshang hao",
+      "meaning_malay": "selamat pagi",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 221,
+      "pinyin": "zhè",
+      "latinized_pinyin": "zhè",
+      "meaning_malay": "ini",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 222,
+      "pinyin": "zhèngzài",
+      "latinized_pinyin": "zhengzai",
+      "meaning_malay": "sedang",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 223,
+      "pinyin": "Zhōngguó",
+      "latinized_pinyin": "Zhongguo",
+      "meaning_malay": "Negara China",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 224,
+      "pinyin": "zhōngwǔ",
+      "latinized_pinyin": "zhongwu",
+      "meaning_malay": "tengah hari",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 225,
+      "pinyin": "zhōngwǔ hǎo",
+      "latinized_pinyin": "zhongwu hao",
+      "meaning_malay": "selamat tengah hari",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 226,
+      "pinyin": "zhù",
+      "latinized_pinyin": "zhu",
+      "meaning_malay": "tinggal",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 227,
+      "pinyin": "zhù",
+      "latinized_pinyin": "zhu",
+      "meaning_malay": "mengucapkan",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 228,
+      "pinyin": "zǒu ba",
+      "latinized_pinyin": "zou ba",
+      "meaning_malay": "jom",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 229,
+      "pinyin": "zuò",
+      "latinized_pinyin": "zuo",
+      "meaning_malay": "duduk",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 230,
+      "pinyin": "zuò",
+      "latinized_pinyin": "zuo",
+      "meaning_malay": "buat",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 231,
+      "pinyin": "zuò lǐbai",
+      "latinized_pinyin": "zuo libai",
+      "meaning_malay": "solat",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 232,
+      "pinyin": "zuòfàn",
+      "latinized_pinyin": "zuofan",
+      "meaning_malay": "memasak",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    },
+    {
+      "id": 233,
+      "pinyin": "zuótiān",
+      "latinized_pinyin": "zuotian",
+      "meaning_malay": "semalam",
+      "meaning_english": "",
+      "chinese_char": "",
+      "tag": [
+        "TMC401",
+        "CS230"
+      ]
+    }
+    
+  ]
+}

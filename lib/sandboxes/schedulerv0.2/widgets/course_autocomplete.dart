@@ -79,7 +79,7 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
         // NOTE: campus name is campusNameState in provider declared above
   
         print("==================================");
-        print("Provider-campusName: " + campusNameState);
+        print("Provider-campusName: " + campusNameState.toString());
         print("Provider-courseName: " + selectedString.toString());
         print("==================================");
     

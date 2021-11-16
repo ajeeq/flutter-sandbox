@@ -15,11 +15,16 @@ class Dictionary extends ConsumerWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text("Language Translation Available:"),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, "/translate");
               },
-              child: const Text('Mandarin'),
+              child: const Text('Mandarin -> English/Malay'),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('English/Malay -> Mandarin'),
             ),
           ],
         ),
