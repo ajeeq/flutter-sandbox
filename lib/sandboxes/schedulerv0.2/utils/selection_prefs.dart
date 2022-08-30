@@ -1,20 +1,20 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sandbox_riverpod/models/selection_parameter.dart';
+import 'package:sandbox_riverpod/models/selected.dart';
 
 class SelectionPreferences {
-  // List<SelectionParameter> _selectionListStatePref = [];
-  // List<SelectionParameter> get selectionListStatePref => _selectionListStatePref;
+  // List<Selected> _selectionListStatePref = [];
+  // List<Selected> get selectionListStatePref => _selectionListStatePref;
 
-  static Future<List<SelectionParameter>> getSelectionStatePrefs(String key) async {
+  static Future<List<Selected>> getSelectionStatePrefs(String key) async {
     var prefs = await SharedPreferences.getInstance();
     final rawJson = (prefs.getString(key)) ?? '';
 
     if (rawJson != '') {
-      final List<SelectionParameter> _selectionListStatePref = selectionParameterFromJson(rawJson);
+      final List<Selected> _selectionListStatePref = selectedFromJson(rawJson);
       return _selectionListStatePref;
     }
     else {
-      final List<SelectionParameter> _selectionListStatePref = [];
+      final List<Selected> _selectionListStatePref = [];
       return _selectionListStatePref;
     }
   }

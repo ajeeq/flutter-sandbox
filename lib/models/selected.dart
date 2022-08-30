@@ -1,32 +1,37 @@
 // To parse this JSON data, do
 //
-//     final selectionParameter = selectionParameterFromJson(jsonString);
+//     final selected = selectedFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
-List<SelectionParameter> selectionParameterFromJson(String str) => List<SelectionParameter>.from(json.decode(str).map((x) => SelectionParameter.fromJson(x)));
+List<Selected> selectedFromJson(String str) => List<Selected>.from(json.decode(str).map((x) => Selected.fromJson(x)));
 
-String selectionParameterToJson(List<SelectionParameter> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String selectedToJson(List<Selected> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class SelectionParameter {
-    SelectionParameter({
+class Selected {
+    Selected({
         required this.campusSelected,
+        required this.facultySelected,
         required this.courseSelected,
         required this.groupSelected,
     });
 
     String campusSelected;
+    String facultySelected;
     String courseSelected;
     String groupSelected;
 
-    factory SelectionParameter.fromJson(Map<String, dynamic> json) => SelectionParameter(
+    factory Selected.fromJson(Map<String, dynamic> json) => Selected(
         campusSelected: json["campusSelected"],
+        facultySelected: json["facultySelected"],
         courseSelected: json["courseSelected"],
         groupSelected: json["groupSelected"],
     );
 
     Map<String, dynamic> toJson() => {
         "campusSelected": campusSelected,
+        "facultySelected": facultySelected,
         "courseSelected": courseSelected,
         "groupSelected": groupSelected,
     };

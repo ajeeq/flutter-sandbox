@@ -20,7 +20,7 @@ final courseListFutureProvider = FutureProvider.autoDispose.family<List<CourseEl
   return Services.getCourses(campusName);
 });
 
-final groupListFutureProvider = FutureProvider.autoDispose.family<List<GroupArray>, GroupParameter>((ref, gp) {
+final groupListFutureProvider = FutureProvider.autoDispose.family<List<GroupElement>, GroupParameter>((ref, gp) {
   return Services.getGroup(gp.campusName, gp.courseName);
 });
 

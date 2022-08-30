@@ -2,6 +2,7 @@
 //
 //     final group = groupFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 Group groupFromJson(String str) => Group.fromJson(json.decode(str));
@@ -10,22 +11,30 @@ String groupToJson(Group data) => json.encode(data.toJson());
 
 class Group {
     Group({
-        required this.groupArray,
+        required this.valid,
+        required this.statusCode,
+        required this.groups,
     });
 
-    List<GroupArray> groupArray;
+    String valid;
+    int statusCode;
+    List<GroupElement> groups;
 
     factory Group.fromJson(Map<String, dynamic> json) => Group(
-        groupArray: List<GroupArray>.from(json["groupArray"].map((x) => GroupArray.fromJson(x))),
+        valid: json["valid"],
+        statusCode: json["statusCode"],
+        groups: List<GroupElement>.from(json["groups"].map((x) => GroupElement.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "groupArray": List<dynamic>.from(groupArray.map((x) => x.toJson())),
+        "valid": valid,
+        "statusCode": statusCode,
+        "groups": List<dynamic>.from(groups.map((x) => x.toJson())),
     };
 }
 
-class GroupArray {
-    GroupArray({
+class GroupElement {
+    GroupElement({
         required this.group,
         required this.id,
     });
@@ -33,7 +42,7 @@ class GroupArray {
     String group;
     int id;
 
-    factory GroupArray.fromJson(Map<String, dynamic> json) => GroupArray(
+    factory GroupElement.fromJson(Map<String, dynamic> json) => GroupElement(
         group: json["group"],
         id: json["id"],
     );

@@ -56,6 +56,7 @@ class Services {
     var url = Uri.parse("${dotenv.env['API_BASE_URI_COURSE']}");
     var body = {
       "campusInputUser": value,
+      "facultyInputUser": "",
     };
     
     try {
@@ -76,10 +77,11 @@ class Services {
   }
 
   // Fetching group list
-  static Future<List<GroupArray>> getGroup(campus, course) async {
+  static Future<List<GroupElement>> getGroup(campus, course) async {
     var url = Uri.parse("${dotenv.env['API_BASE_URI_GROUP']}");
     var body = {
       "campusInputUser": campus,
+      "facultyInputUser": "",
       "courseInputUser": course,
     };
     
@@ -88,7 +90,7 @@ class Services {
 
       if(response.statusCode == 200) {
         final groupList = groupFromJson(response.body);
-        return groupList.groupArray;
+        return groupList.groups;
       }
       else {
         final groupList = null;
@@ -107,6 +109,7 @@ class Services {
       'Content-Type': 'application/json; charset=UTF-8',
     };
     var body = rawJson;
+    print(rawJson);
 
     try {
       final response = await http.post(url, headers: headers, body: body);

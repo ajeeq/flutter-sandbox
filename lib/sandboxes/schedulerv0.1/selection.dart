@@ -16,11 +16,11 @@ import 'package:sandbox_riverpod/services.dart';
 // Models
 import 'package:sandbox_riverpod/models/campus.dart';
 import 'package:sandbox_riverpod/models/course.dart';
-import 'package:sandbox_riverpod/models/selection_parameter.dart';
+import 'package:sandbox_riverpod/models/selected.dart';
 
 // Providers
 import 'package:sandbox_riverpod/providers/course_providers.dart';
-import 'package:sandbox_riverpod/providers/selection_providers.dart';
+import 'package:sandbox_riverpod/providers/selected_providers.dart';
 
 
 class Selection extends ConsumerStatefulWidget {
@@ -61,12 +61,12 @@ class _SelectionState extends ConsumerState<Selection> {
     // declaring riverpod state providers
     final courseNameState = ref.watch(courseNameProvider);
     final groupNameState = ref.watch(groupNameProvider);
-    final selectionListState = ref.watch(selectionListProvider);
+    final selectionListState = ref.watch(selectedListProvider);
 
     // declaring notifiers for updating riverpod states
     final CampusNameNotifier campusController = ref.read(campusNameProvider.notifier);
     final CourseListNotifier courseListController = ref.read(courseListProvider.notifier);
-    final SelectionListNotifier selectionListController = ref.read(selectionListProvider.notifier);
+    final SelectedListNotifier selectionListController = ref.read(selectedListProvider.notifier);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -235,8 +235,9 @@ class _SelectionState extends ConsumerState<Selection> {
             label: const Text('Done'),
             onPressed: () async {
               // adding user course selection using Riverpod
-              selectionListController.addSelection(SelectionParameter(
+              selectionListController.addSelected(Selected(
                 campusSelected: _selectedCampus,
+                facultySelected: "",
                 courseSelected: courseNameState.toString(),
                 groupSelected: groupNameState.toString()
               ));

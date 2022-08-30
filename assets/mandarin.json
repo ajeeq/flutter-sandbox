@@ -2810,6 +2810,222 @@
         "TMC401",
         "CS230"
       ]
+    },
+    {
+      "id": 234,
+      "pinyin": "ba",
+      "latinized_pinyin": "ba",
+      "meaning_malay": "lah(kb)",
+      "meaning_english": "particle(aux)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 235,
+      "pinyin": "bāngzhù",
+      "latinized_pinyin": "bangzhu",
+      "meaning_malay": "pertolongan(kn)",
+      "meaning_english": "assistance; help(n)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 236,
+      "pinyin": "bàogào",
+      "latinized_pinyin": "baogao",
+      "meaning_malay": "laporan(kn)",
+      "meaning_english": "report(n)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 237,
+      "pinyin": "bàojǐng",
+      "latinized_pinyin": "baojing",
+      "meaning_malay": "membuat laporan polis",
+      "meaning_english": "lodge a police report",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 238,
+      "pinyin": "Bāyǎ Dǎo",
+      "latinized_pinyin": "Baya Dao",
+      "meaning_malay": "Pulau Payar(knk)",
+      "meaning_english": "Payar Island(pn)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 239,
+      "pinyin": "bèifèn",
+      "latinized_pinyin": "beifen",
+      "meaning_malay": "fail sandar(kn)",
+      "meaning_english": "backup(n)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 240,
+      "pinyin": "bǐ",
+      "latinized_pinyin": "bi",
+      "meaning_malay": "lebih ... daripada",
+      "meaning_english": "particle use for comparison(-er than)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 241,
+      "pinyin": "biànlìdiàn",
+      "latinized_pinyin": "bianlididan",
+      "meaning_malay": "kedai serbaneka",
+      "meaning_english": "convenience store",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 242,
+      "pinyin": "bing",
+      "latinized_pinyin": "bìng",
+      "meaning_malay": "penyakit(kn)",
+      "meaning_english": "sickness; disease(n)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 243,
+      "pinyin": "bìngjià",
+      "latinized_pinyin": "bìngjia",
+      "meaning_malay": "cuti sakit",
+      "meaning_english": "medical leave",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 244,
+      "pinyin": "bìngjiàdān",
+      "latinized_pinyin": "bìngjiadan",
+      "meaning_malay": "sijil cuti sakit",
+      "meaning_english": "medical certificate",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 245,
+      "pinyin": "bìngrén",
+      "latinized_pinyin": "bingren",
+      "meaning_malay": "pesakit(kn)",
+      "meaning_english": "patient(n)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 246,
+      "pinyin": "bìyè",
+      "latinized_pinyin": "biye",
+      "meaning_malay": "tamat pengajian; habis belajar",
+      "meaning_english": "graduate; finish school",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 247,
+      "pinyin": "bówùguǎn",
+      "latinized_pinyin": "bowuguan",
+      "meaning_malay": "muzium(kn)",
+      "meaning_english": "museum(n)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 248,
+      "pinyin": "bù shūfu",
+      "latinized_pinyin": "bu shufu",
+      "meaning_malay": "tidak sihat",
+      "meaning_english": "unwell(adj)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 249,
+      "pinyin": "bùhǎoyìsi",
+      "latinized_pinyin": "buhaoyisi",
+      "meaning_malay": "maaf(kerana segan)",
+      "meaning_english": "sorry, excuse me",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 250,
+      "pinyin": "bújiàn",
+      "latinized_pinyin": "bujian",
+      "meaning_malay": "hilang(v)",
+      "meaning_english": "lost(v)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
+    },
+    {
+      "id": 251,
+      "pinyin": "búyào",
+      "latinized_pinyin": "buyao",
+      "meaning_malay": "jangan(kk)",
+      "meaning_english": "do not(v)",
+      "chinese_char": "",
+      "tag": [
+        "TMC501",
+        "CS230"
+      ]
     }
     
   ]

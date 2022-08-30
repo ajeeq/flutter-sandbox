@@ -11,10 +11,10 @@ import 'package:sandbox_riverpod/services.dart';
 
 // Models
 import 'package:sandbox_riverpod/models/detail.dart';
-import 'package:sandbox_riverpod/models/selection_parameter.dart';
+import 'package:sandbox_riverpod/models/selected.dart';
 
 // Providers
-import 'package:sandbox_riverpod/providers/selection_providers.dart';
+import 'package:sandbox_riverpod/providers/selected_providers.dart';
 import 'package:sandbox_riverpod/providers/detail_providers.dart';
 
 class Home extends ConsumerWidget{
@@ -23,11 +23,11 @@ class Home extends ConsumerWidget{
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // declaring riverpod state providers
-    final selectionListState = ref.watch(selectionListProvider);
+    final selectionListState = ref.watch(selectedListProvider);
 
     // declaring notifiers for updating riverpod states
     final DetailListNotifier detailListController = ref.read(detailListProvider.notifier);
-    final SelectionListNotifier selectionListController = ref.read(selectionListProvider.notifier);
+    final SelectedListNotifier selectionListController = ref.read(selectedListProvider.notifier);
         
     return Scaffold(
       appBar: AppBar(
@@ -62,7 +62,7 @@ class Home extends ConsumerWidget{
                     title: Text(selectionListState[i].courseSelected),
                     trailing: Icon(Icons.delete),
                     onTap: () {
-                      selectionListController.deleteSelection(selectionListState[i]);
+                      selectionListController.deleteSelected(selectionListState[i]);
                     },
                   ),
                 ),
@@ -93,7 +93,7 @@ class Home extends ConsumerWidget{
             child: const Icon(Icons.find_in_page),
             onPressed: () async {
               // reading campus, course, group in Provider state
-              final jsonString = selectionParameterToJson(selectionListState);
+              final jsonString = selectedToJson(selectionListState);
     
               Services.getDetails(jsonString).then((details) {
                 final List<DetailElement> jsonStringData = details;
@@ -118,7 +118,7 @@ class Home extends ConsumerWidget{
             backgroundColor: Colors.lightBlue,
             child: const Icon(Icons.miscellaneous_services),
             onPressed: () async {
-              final jsonString = selectionParameterToJson(selectionListState);
+              final jsonString = selectedToJson(selectionListState);
 
               final snackBar = SnackBar(
                 content: Text("Selection input: " + jsonString),
