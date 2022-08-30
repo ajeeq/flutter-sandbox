@@ -61,12 +61,12 @@ class _SelectionState extends ConsumerState<Selection> {
     // declaring riverpod state providers
     final courseNameState = ref.watch(courseNameProvider);
     final groupNameState = ref.watch(groupNameProvider);
-    final selectionListState = ref.watch(selectedListProvider);
+    final selectedListState = ref.watch(selectedListProvider);
 
     // declaring notifiers for updating riverpod states
     final CampusNameNotifier campusController = ref.read(campusNameProvider.notifier);
     final CourseListNotifier courseListController = ref.read(courseListProvider.notifier);
-    final SelectedListNotifier selectionListController = ref.read(selectedListProvider.notifier);
+    final SelectedListNotifier selectedListController = ref.read(selectedListProvider.notifier);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -235,7 +235,7 @@ class _SelectionState extends ConsumerState<Selection> {
             label: const Text('Done'),
             onPressed: () async {
               // adding user course selection using Riverpod
-              selectionListController.addSelected(Selected(
+              selectedListController.addSelected(Selected(
                 campusSelected: _selectedCampus,
                 facultySelected: "",
                 courseSelected: courseNameState.toString(),
@@ -244,7 +244,7 @@ class _SelectionState extends ConsumerState<Selection> {
               // Unhandled Exception: type 'List<SelectionParameter>' is not a subtype of type 'String'
               
               print("==================================");
-              print("Updated CourseListInputProvider-courseList: " + selectionListState.toString());
+              print("Updated CourseListInputProvider-courseList: " + selectedListState.toString());
               print("==================================");
   
               Navigator.pop(context);

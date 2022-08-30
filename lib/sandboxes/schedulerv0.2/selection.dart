@@ -64,7 +64,7 @@ class _SelectionState extends ConsumerState<Selection> {
     // declaring riverpod state providers
     final courseNameState = ref.watch(courseNameProvider);
     final groupNameState = ref.watch(groupNameProvider);
-    final selectionListState = ref.watch(selectedListProvider);
+    final selectedListState = ref.watch(selectedListProvider);
 
     // declaring notifiers for updating riverpod states
     final CampusNameNotifier campusController =
@@ -241,7 +241,7 @@ class _SelectionState extends ConsumerState<Selection> {
 
           print("==================================");
           print("Updated SelectionParameter object: " +
-              selectionListState.toString());
+              selectedListState.toString());
           print("==================================");
 
           print("==================================");
