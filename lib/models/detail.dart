@@ -2,6 +2,7 @@
 //
 //     final detail = detailFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 Detail detailFromJson(String str) => Detail.fromJson(json.decode(str));
@@ -10,16 +11,20 @@ String detailToJson(Detail data) => json.encode(data.toJson());
 
 class Detail {
     Detail({
+        required this.statusCode,
         required this.details,
     });
 
+    int statusCode;
     List<DetailElement> details;
 
     factory Detail.fromJson(Map<String, dynamic> json) => Detail(
+        statusCode: json["statusCode"],
         details: List<DetailElement>.from(json["details"].map((x) => DetailElement.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
+        "statusCode": statusCode,
         "details": List<dynamic>.from(details.map((x) => x.toJson())),
     };
 }
@@ -27,6 +32,7 @@ class Detail {
 class DetailElement {
     DetailElement({
         required this.campus,
+        required this.faculty,
         required this.course,
         required this.group,
         required this.start,
@@ -38,6 +44,7 @@ class DetailElement {
     });
 
     String campus;
+    String faculty;
     String course;
     String group;
     String start;
@@ -49,6 +56,7 @@ class DetailElement {
 
     factory DetailElement.fromJson(Map<String, dynamic> json) => DetailElement(
         campus: json["campus"],
+        faculty: json["faculty"],
         course: json["course"],
         group: json["group"],
         start: json["start"],
@@ -61,6 +69,7 @@ class DetailElement {
 
     Map<String, dynamic> toJson() => {
         "campus": campus,
+        "faculty": faculty,
         "course": course,
         "group": group,
         "start": start,
