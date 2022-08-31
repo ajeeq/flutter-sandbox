@@ -6,6 +6,7 @@ import 'package:sandbox_riverpod/services.dart';
 
 // Models
 import 'package:sandbox_riverpod/models/campus.dart';
+import 'package:sandbox_riverpod/models/campus_parameter.dart';
 import 'package:sandbox_riverpod/models/course.dart';
 import 'package:sandbox_riverpod/models/detail.dart';
 import 'package:sandbox_riverpod/models/group.dart';
@@ -16,12 +17,12 @@ final campusListFutureProvider = FutureProvider.autoDispose<List<CampusElement>>
   return Services.getCampuses();
 });
 
-final courseListFutureProvider = FutureProvider.autoDispose.family<List<CourseElement>, String>((ref, campusName) {
-  return Services.getCourses(campusName);
+final courseListFutureProvider = FutureProvider.autoDispose.family<List<CourseElement>, CampusParameter>((ref, c) {
+  return Services.getCourses(c.campusName, c.facultyName);
 });
 
 final groupListFutureProvider = FutureProvider.autoDispose.family<List<GroupElement>, GroupParameter>((ref, gp) {
-  return Services.getGroup(gp.campusName, gp.courseName);
+  return Services.getGroup(gp.campusName, gp.facultyName, gp.courseName);
 });
 
 final detailListFutureProvider = FutureProvider.autoDispose.family<List<DetailElement>, Map>((ref, rj) {

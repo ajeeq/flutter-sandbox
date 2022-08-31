@@ -148,7 +148,7 @@ class _SelectionState extends ConsumerState<Selection> {
                             print("Campus selected: " + _selectedCampus);
                             print("==================================");
 
-                            Services.getCourses(selectedString).then((courses) {
+                            Services.getCourses(selectedString, "").then((courses) {
                               final List<CourseElement> jsonStringData =
                                   courses;
 

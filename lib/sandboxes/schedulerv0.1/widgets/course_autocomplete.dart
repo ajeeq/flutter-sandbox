@@ -31,6 +31,7 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
     // declaring riverpod state providers
     final List<CourseElement> courseListState = ref.watch(courseListProvider);
     final campusNameState = ref.watch(campusNameProvider);
+    final facultyNameState = ref.watch(facultyNameProvider);
 
       // declaring notifiers for updating riverpod states
     final CourseNameNotifier courseNameController = ref.read(courseNameProvider.notifier);
@@ -80,10 +81,11 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
   
         print("==================================");
         print("Provider-campusName: " + campusNameState.toString());
+        print("Provider-facultyName: " + facultyNameState.toString());
         print("Provider-courseName: " + selectedString.toString());
         print("==================================");
     
-        Services.getGroup(campusNameState, selectedString).then((groups) {
+        Services.getGroup(campusNameState, facultyNameState, selectedString).then((groups) {
           final List<GroupElement> jsonStringData = groups;
     
           print("==================================");

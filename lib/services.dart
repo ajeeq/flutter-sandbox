@@ -51,12 +51,33 @@ class Services {
     }
   }
 
+  // Fetching campus list
+  static Future<List<Faculty>> getFaculties() async {
+    var url = Uri.parse("${dotenv.env['API_BASE_URI_CAMPUS']}");
+    
+    try {
+      final response = await http.get(url);
+
+      if(response.statusCode == 200) {
+        final facultyList = campusFromJson(response.body);
+        return facultyList.faculties;
+      }
+      else {
+        final facultyList = null;
+        return facultyList;
+      }
+    }
+    catch (e) {
+      throw e;
+    }
+  }
+
   // Fetching course list
-  static Future<List<CourseElement>> getCourses(value) async {
+  static Future<List<CourseElement>> getCourses(selectedCampus, selectedFaculty) async {
     var url = Uri.parse("${dotenv.env['API_BASE_URI_COURSE']}");
     var body = {
-      "campusInputUser": value,
-      "facultyInputUser": "",
+      "campusInputUser": selectedCampus,
+      "facultyInputUser": selectedFaculty,
     };
     
     try {
@@ -77,12 +98,12 @@ class Services {
   }
 
   // Fetching group list
-  static Future<List<GroupElement>> getGroup(campus, course) async {
+  static Future<List<GroupElement>> getGroup(selectedCampus, selectedFaculty, selectedCourse) async {
     var url = Uri.parse("${dotenv.env['API_BASE_URI_GROUP']}");
     var body = {
-      "campusInputUser": campus,
-      "facultyInputUser": "",
-      "courseInputUser": course,
+      "campusInputUser": selectedCampus,
+      "facultyInputUser": selectedFaculty,
+      "courseInputUser": selectedCourse,
     };
     
     try {
