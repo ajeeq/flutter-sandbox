@@ -59,12 +59,12 @@ class Result extends ConsumerWidget {
                               ListTile(
                                 title: Text("Group: " + detailListState[i].group),
                               ),
-                              ListTile(
-                                title: Text("Start: " + detailListState[i].start),
-                              ),
-                              ListTile(
-                                title: Text("End: " + detailListState[i].end),
-                              ),
+                              // ListTile(
+                              //   title: Text("Start: " + detailListState[i].start),
+                              // ),
+                              // ListTile(
+                              //   title: Text("End: " + detailListState[i].end),
+                              // ),
                               ListTile(
                                 title: Text("Day: " + detailListState[i].day),
                               ),

@@ -59,30 +59,30 @@ class _HiveBooksState extends State<HiveBooks> {
     favoriteBooksBox.put(index, books[index]);
   }
 
-  Future<void> createBackup() async {
-    if (favoriteBooksBox.isEmpty) {
-      _scaffoldKey.currentState!.showSnackBar(
-        SnackBar(content: Text('Pick a favorite book.')),
-      );
-      return;
-    }
-    _scaffoldKey.currentState!.showSnackBar(
-      SnackBar(content: Text('Creating backup...')),
-    );
-    Map<String, String> map = favoriteBooksBox
-        .toMap()
-        .map((key, value) => MapEntry(key.toString(), value));
-    String json = jsonEncode(map);
-    Directory dir = await _getDirectory();
-    String formattedDate = DateTime.now()
-        .toString()
-        .replaceAll('.', '-')
-        .replaceAll(' ', '-')
-        .replaceAll(':', '-');
-    String path = '${dir.path}$formattedDate.hivebackup';
-    File backupFile = File(path);
-    await backupFile.writeAsString(json);
-  }
+  // Future<void> createBackup() async {
+  //   if (favoriteBooksBox.isEmpty) {
+  //     _scaffoldKey.currentState!.showSnackBar(
+  //       SnackBar(content: Text('Pick a favorite book.')),
+  //     );
+  //     return;
+  //   }
+  //   _scaffoldKey.currentState!.showSnackBar(
+  //     SnackBar(content: Text('Creating backup...')),
+  //   );
+  //   Map<String, String> map = favoriteBooksBox
+  //       .toMap()
+  //       .map((key, value) => MapEntry(key.toString(), value));
+  //   String json = jsonEncode(map);
+  //   Directory dir = await _getDirectory();
+  //   String formattedDate = DateTime.now()
+  //       .toString()
+  //       .replaceAll('.', '-')
+  //       .replaceAll(' ', '-')
+  //       .replaceAll(':', '-');
+  //   String path = '${dir.path}$formattedDate.hivebackup';
+  //   File backupFile = File(path);
+  //   await backupFile.writeAsString(json);
+  // }
 
   Future<Directory> _getDirectory() async {
     Directory? directory = await getExternalStorageDirectory();
@@ -94,19 +94,19 @@ class _HiveBooksState extends State<HiveBooks> {
     return newDirectory;
   }
 
-  Future<void> restoreBackup() async {
-    _scaffoldKey.currentState!.showSnackBar(
-      SnackBar(content: Text('Restoring backup...')),
-    );
-    File file = (await FilePicker.platform.pickFiles(
-      type: FileType.any,
-    )) as File;
-    if (file == null) return;
-    favoriteBooksBox.clear();
-    Map<dynamic, dynamic> map = jsonDecode(await file.readAsString()) as Map<dynamic, dynamic>;
-    Map<int, String> newMap = map.map<int, String>((key, value) => MapEntry(int.parse(key), value));
-    favoriteBooksBox.putAll(newMap);
-  }
+  // Future<void> restoreBackup() async {
+  //   _scaffoldKey.currentState!.showSnackBar(
+  //     SnackBar(content: Text('Restoring backup...')),
+  //   );
+  //   File file = (await FilePicker.platform.pickFiles(
+  //     type: FileType.any,
+  //   )) as File;
+  //   if (file == null) return;
+  //   favoriteBooksBox.clear();
+  //   Map<dynamic, dynamic> map = jsonDecode(await file.readAsString()) as Map<dynamic, dynamic>;
+  //   Map<int, String> newMap = map.map<int, String>((key, value) => MapEntry(int.parse(key), value));
+  //   favoriteBooksBox.putAll(newMap);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -122,11 +122,11 @@ class _HiveBooksState extends State<HiveBooks> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.backup),
-              onPressed: createBackup,
+              onPressed: () {},
             ),
             IconButton(
               icon: Icon(Icons.restore),
-              onPressed: restoreBackup,
+              onPressed: () {},
             ),
           ],
         ),

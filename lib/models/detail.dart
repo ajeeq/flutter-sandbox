@@ -2,7 +2,7 @@
 //
 //     final detail = detailFromJson(jsonString);
 
-import 'package:meta/meta.dart';
+// import 'package:meta/meta.dart';
 import 'dart:convert';
 
 Detail detailFromJson(String str) => Detail.fromJson(json.decode(str));
@@ -47,8 +47,8 @@ class DetailElement {
     String faculty;
     String course;
     String group;
-    String start;
-    String end;
+    int start;
+    int end;
     String day;
     String mode;
     String status;

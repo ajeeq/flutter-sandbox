@@ -21,12 +21,17 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:sandbox_riverpod/sandboxes/campus/home_campus.dart';
 
 // Sandbox - schedulerv0.1
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/home.dart';
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/selection.dart';
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
+// import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/home.dart';
+// import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/selection.dart';
+// import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
 // import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/settings.dart';
 // import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/translate.dart';
 // import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/dictionary.dart';
+
+// Sandbox - timetable
+import 'package:sandbox_riverpod/sandboxes/timetable/home.dart';
+import 'package:sandbox_riverpod/sandboxes/timetable/selection.dart';
+import 'package:sandbox_riverpod/sandboxes/timetable/result.dart';
 
 // Sandbox - hive_darkmode
 import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hive_darkmode.dart';
@@ -110,10 +115,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        // main -> sandbox project entry (now = schedulerv0.1)
+        // main -> sandbox project entry (now = timetable)
         '/': (context) => Home(),
 
-        // schedulerv0.1
+        
         '/selection': (context) => Selection(),
         '/result': (context) => Result(),
 
