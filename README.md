@@ -1,6 +1,6 @@
 # sandbox
 
-A new Flutter project - using Riverpod state management and of course, for learning purposes.
+A new Flutter project - projects organized in sandbox folder, for learning purposes.
 
 ## Sandbox List
 
