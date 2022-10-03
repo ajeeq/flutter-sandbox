@@ -6,13 +6,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latinize/latinize.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/mandarin.dart';
+import 'package:flutter_sandbox/models/mandarin.dart';
 
 // Services
-import 'package:sandbox_riverpod/services.dart';
+import 'package:flutter_sandbox/services.dart';
 
 // Riverpod Providers
-import 'package:sandbox_riverpod/providers/language_providers.dart';
+import 'package:flutter_sandbox/providers/language_providers.dart';
 
 class Translate extends ConsumerStatefulWidget {
   const Translate({ Key? key }) : super(key: key);

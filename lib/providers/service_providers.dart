@@ -2,15 +2,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // API Services
-import 'package:sandbox_riverpod/services.dart';
+import 'package:flutter_sandbox/services.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/campus.dart';
-import 'package:sandbox_riverpod/models/campus_parameter.dart';
-import 'package:sandbox_riverpod/models/course.dart';
-import 'package:sandbox_riverpod/models/detail.dart';
-import 'package:sandbox_riverpod/models/group.dart';
-import 'package:sandbox_riverpod/models/group_parameter.dart';
+import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/campus_parameter.dart';
+import 'package:flutter_sandbox/models/course.dart';
+import 'package:flutter_sandbox/models/detail.dart';
+import 'package:flutter_sandbox/models/group.dart';
+import 'package:flutter_sandbox/models/group_parameter.dart';
 
 // TODO: Use FutureProvider instead of calling Service class methods
 final campusListFutureProvider = FutureProvider.autoDispose<List<CampusElement>>((ref) {

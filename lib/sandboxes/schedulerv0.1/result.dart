@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Provider
-import 'package:sandbox_riverpod/providers/detail_providers.dart';
+import 'package:flutter_sandbox/providers/detail_providers.dart';
 
 class Result extends ConsumerWidget {
   Result({Key? key}) : super(key: key);

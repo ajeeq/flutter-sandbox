@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sandbox_riverpod/models/group.dart';
+import 'package:flutter_sandbox/models/group.dart';
 
 final groupListProvider = StateNotifierProvider<GroupListNotifier, List<GroupElement>>((_) => GroupListNotifier());
 final groupNameProvider = StateNotifierProvider((_) => GroupNameNotifier());

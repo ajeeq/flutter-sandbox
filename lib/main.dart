@@ -8,42 +8,42 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // SharedPreferences
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/result_prefs.dart';
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/selection_prefs.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/utils/result_prefs.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/utils/selection_prefs.dart';
 
 // Sandbox - basic
-// import 'package:sandbox_riverpod/sandboxes/basic/BasicHome.dart';
+// import 'package:flutter_sandbox/sandboxes/basic/BasicHome.dart';
 
 // Sandbox - userlist
-// import 'package:sandbox_riverpod/sandboxes/userlist/screens/home.dart';
+// import 'package:flutter_sandbox/sandboxes/userlist/screens/home.dart';
 
 // Sandbox - campus
-// import 'package:sandbox_riverpod/sandboxes/campus/home_campus.dart';
+// import 'package:flutter_sandbox/sandboxes/campus/home_campus.dart';
 
 // Sandbox - schedulerv0.1
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/home.dart';
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/selection.dart';
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/result.dart';
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/settings.dart';
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/translate.dart';
-// import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/dictionary.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.1/home.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.1/selection.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.1/result.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/settings.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/translate.dart';
+// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/dictionary.dart';
 
 // Sandbox - timetable
-import 'package:sandbox_riverpod/sandboxes/timetable/home.dart';
-import 'package:sandbox_riverpod/sandboxes/timetable/selection.dart';
-import 'package:sandbox_riverpod/sandboxes/timetable/result.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/home.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/selection.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/result.dart';
 
 // Sandbox - hive_darkmode
-import 'package:sandbox_riverpod/sandboxes/hive_darkmode/hive_darkmode.dart';
+import 'package:flutter_sandbox/sandboxes/hive_darkmode/hive_darkmode.dart';
 
 // Sandbox - hive_counter
-import 'package:sandbox_riverpod/sandboxes/hive_counter/hive_counter.dart';
+import 'package:flutter_sandbox/sandboxes/hive_counter/hive_counter.dart';
 
 // Sandbox - hive_books
-import 'package:sandbox_riverpod/sandboxes/hive_books/hive_books.dart';
+import 'package:flutter_sandbox/sandboxes/hive_books/hive_books.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/selected.dart';
+import 'package:flutter_sandbox/models/selected.dart';
 
 
 /**

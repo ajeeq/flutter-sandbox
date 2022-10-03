@@ -7,22 +7,22 @@ import 'package:substring_highlight/substring_highlight.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Widgets
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/widgets/course_autocomplete.dart';
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.1/widgets/group_autocomplete.dart';
+import 'package:flutter_sandbox/sandboxes/schedulerv0.1/widgets/course_autocomplete.dart';
+import 'package:flutter_sandbox/sandboxes/schedulerv0.1/widgets/group_autocomplete.dart';
 
 // API Services
-import 'package:sandbox_riverpod/services.dart';
+import 'package:flutter_sandbox/services.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/campus.dart';
-import 'package:sandbox_riverpod/models/course.dart';
-import 'package:sandbox_riverpod/models/selected.dart';
+import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/course.dart';
+import 'package:flutter_sandbox/models/selected.dart';
 
 // Providers
-import 'package:sandbox_riverpod/providers/campus_providers.dart';
-import 'package:sandbox_riverpod/providers/course_providers.dart';
-import 'package:sandbox_riverpod/providers/group_providers.dart';
-import 'package:sandbox_riverpod/providers/selected_providers.dart';
+import 'package:flutter_sandbox/providers/campus_providers.dart';
+import 'package:flutter_sandbox/providers/course_providers.dart';
+import 'package:flutter_sandbox/providers/group_providers.dart';
+import 'package:flutter_sandbox/providers/selected_providers.dart';
 
 class Selection extends ConsumerStatefulWidget {
   const Selection({Key? key}) : super(key: key);

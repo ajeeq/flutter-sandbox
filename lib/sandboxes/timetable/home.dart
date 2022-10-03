@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Services
-import 'package:sandbox_riverpod/services.dart';
+import 'package:flutter_sandbox/services.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/detail.dart';
-import 'package:sandbox_riverpod/models/selected.dart';
+import 'package:flutter_sandbox/models/detail.dart';
+import 'package:flutter_sandbox/models/selected.dart';
 
 // Providers
-import 'package:sandbox_riverpod/providers/selected_providers.dart';
-import 'package:sandbox_riverpod/providers/detail_providers.dart';
+import 'package:flutter_sandbox/providers/selected_providers.dart';
+import 'package:flutter_sandbox/providers/detail_providers.dart';
 
 class Home extends ConsumerWidget{
   const Home({Key? key}) : super(key: key);

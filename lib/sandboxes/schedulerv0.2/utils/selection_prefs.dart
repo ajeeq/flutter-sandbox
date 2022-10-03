@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sandbox_riverpod/models/selected.dart';
+import 'package:flutter_sandbox/models/selected.dart';
 
 class SelectionPreferences {
   // List<Selected> _selectionListStatePref = [];

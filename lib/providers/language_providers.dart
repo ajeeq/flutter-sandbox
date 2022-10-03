@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/mandarin.dart';
+import 'package:flutter_sandbox/models/mandarin.dart';
 
 final inputWordProvider = StateNotifierProvider((_) => InputWordNotifier());
 final mandarinListProvider = StateNotifierProvider<MandarinListNotifier, List<Mandarin>>((ref) => MandarinListNotifier());

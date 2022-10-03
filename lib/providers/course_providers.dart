@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sandbox_riverpod/models/course.dart';
+import 'package:flutter_sandbox/models/course.dart';
 
 final courseListProvider = StateNotifierProvider<CourseListNotifier, List<CourseElement>>((ref) => CourseListNotifier());
 final courseNameProvider = StateNotifierProvider((ref) => CourseNameNotifier());

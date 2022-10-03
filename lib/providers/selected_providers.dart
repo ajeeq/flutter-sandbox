@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Model
-import 'package:sandbox_riverpod/models/selected.dart';
+import 'package:flutter_sandbox/models/selected.dart';
 
 final selectedListProvider = StateNotifierProvider<SelectedListNotifier, List<Selected>>((_) => SelectedListNotifier());
 

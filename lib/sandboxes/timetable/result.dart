@@ -7,16 +7,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sandbox_riverpod/models/detail.dart';
+import 'package:flutter_sandbox/models/detail.dart';
 // import '../../Flutter_Weekly_TimeTable-master/lib/weekly_timetable.dart';
 // import '../../timetable_view-master/lib/timetable_view.dart';
 import './timetable_view.dart';
 
 // Services
-import 'package:sandbox_riverpod/services.dart';
+import 'package:flutter_sandbox/services.dart';
 
 // Provider
-import 'package:sandbox_riverpod/providers/detail_providers.dart';
+import 'package:flutter_sandbox/providers/detail_providers.dart';
 
 class Result extends ConsumerWidget{
   Result({Key? key}) : super(key: key);

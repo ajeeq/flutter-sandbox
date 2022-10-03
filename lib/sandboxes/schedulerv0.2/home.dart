@@ -9,20 +9,20 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Services
-import 'package:sandbox_riverpod/services.dart';
+import 'package:flutter_sandbox/services.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/detail.dart';
-import 'package:sandbox_riverpod/models/selected.dart';
+import 'package:flutter_sandbox/models/detail.dart';
+import 'package:flutter_sandbox/models/selected.dart';
 
 // Providers
-import 'package:sandbox_riverpod/providers/selected_providers.dart';
-import 'package:sandbox_riverpod/providers/detail_providers.dart';
+import 'package:flutter_sandbox/providers/selected_providers.dart';
+import 'package:flutter_sandbox/providers/detail_providers.dart';
 
 // Utilities - SharedPreference
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/utils/selection_prefs.dart';
+import 'package:flutter_sandbox/sandboxes/schedulerv0.2/utils/selection_prefs.dart';
 
-import 'package:sandbox_riverpod/sandboxes/schedulerv0.2/selection.dart';
+import 'package:flutter_sandbox/sandboxes/schedulerv0.2/selection.dart';
 
 class Home extends ConsumerStatefulWidget {
   const Home({Key? key}) : super(key: key);

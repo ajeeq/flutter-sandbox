@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
 // Providers
-import 'package:sandbox_riverpod/providers/group_providers.dart';
+import 'package:flutter_sandbox/providers/group_providers.dart';
 
 
 class GroupAutocomplete extends ConsumerStatefulWidget {

@@ -1,4 +1,4 @@
-package com.example.sandbox_riverpod
+package com.example.flutter_sandbox
 
 import io.flutter.embedding.android.FlutterActivity
 

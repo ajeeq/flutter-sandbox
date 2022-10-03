@@ -1,5 +1,5 @@
-import 'package:sandbox_riverpod/sandboxes/timetable/models/lane.dart';
-import 'package:sandbox_riverpod/sandboxes/timetable/models/table_event.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/models/lane.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/models/table_event.dart';
 
 class LaneEvents {
   final Lane lane;

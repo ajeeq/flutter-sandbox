@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sandbox_riverpod/sandboxes/timetable/models/table_event_time.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/models/table_event_time.dart';
 
 class TableEvent {
   final String title;

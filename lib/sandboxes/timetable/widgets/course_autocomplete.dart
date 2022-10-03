@@ -2,18 +2,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:substring_highlight/substring_highlight.dart';
-import 'package:sandbox_riverpod/models/course.dart';
+import 'package:flutter_sandbox/models/course.dart';
 
 // API Services
-import 'package:sandbox_riverpod/services.dart';
+import 'package:flutter_sandbox/services.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/group.dart';
+import 'package:flutter_sandbox/models/group.dart';
 
 // Providers
-import 'package:sandbox_riverpod/providers/campus_providers.dart';
-import 'package:sandbox_riverpod/providers/course_providers.dart';
-import 'package:sandbox_riverpod/providers/group_providers.dart';
+import 'package:flutter_sandbox/providers/campus_providers.dart';
+import 'package:flutter_sandbox/providers/course_providers.dart';
+import 'package:flutter_sandbox/providers/group_providers.dart';
 
 
 class CourseAutocomplete extends ConsumerStatefulWidget {

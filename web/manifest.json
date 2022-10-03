@@ -1,6 +1,6 @@
 {
-    "name": "sandbox_riverpod",
-    "short_name": "sandbox_riverpod",
+    "name": "flutter_sandbox",
+    "short_name": "flutter_sandbox",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

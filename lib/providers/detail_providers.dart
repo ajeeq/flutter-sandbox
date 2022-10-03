@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Models
-import 'package:sandbox_riverpod/models/detail.dart';
+import 'package:flutter_sandbox/models/detail.dart';
 
 final detailListProvider = StateNotifierProvider<DetailListNotifier, List<DetailElement>>((ref) => DetailListNotifier());
 

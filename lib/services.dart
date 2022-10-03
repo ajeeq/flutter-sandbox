@@ -3,11 +3,11 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // List of Models
-import 'package:sandbox_riverpod/models/user.dart';
-import 'package:sandbox_riverpod/models/campus.dart';
-import 'package:sandbox_riverpod/models/course.dart';
-import 'package:sandbox_riverpod/models/detail.dart';
-import 'package:sandbox_riverpod/models/group.dart';
+import 'package:flutter_sandbox/models/user.dart';
+import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/course.dart';
+import 'package:flutter_sandbox/models/detail.dart';
+import 'package:flutter_sandbox/models/group.dart';
 
 class Services {
   static Future<List<User>> getUsers() async {
