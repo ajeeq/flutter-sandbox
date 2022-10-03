@@ -1,4 +1,4 @@
-# sandbox
+# flutter-sandbox
 
 A new Flutter project - projects organized in sandbox folder, for learning purposes.
 

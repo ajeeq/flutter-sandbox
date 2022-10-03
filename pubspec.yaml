@@ -1,5 +1,5 @@
-name: sandbox_riverpod
-description: A new Flutter project - using Riverpod state management and of course, for learning purposes.
+name: flutter_sandbox
+description: A new Flutter project - projects organized in sandbox folder, for learning purposes.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
