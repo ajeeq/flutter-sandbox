@@ -12,5 +12,6 @@ A new Flutter project - using Riverpod state management and of course, for learn
 | hive_darkmode  | Dark Mode app using Hive, sample taken from github - hivedb |
 | hive_counter   | Counter app from github - hivedb |
 | hive_books     | backup_restore_books app from github - hivedb |
+| timetable      | using [timetable_view](https://github.com/Lone-Wolf17/timetable_view) source code with functional vertical timetable and time clash detection |
 
-*As of 17/11/2021
+*As of 3/10/2022
