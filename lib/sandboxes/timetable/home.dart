@@ -29,15 +29,15 @@ class Home extends ConsumerWidget{
         title: const Text("Timetable 0.2"),
       ),
       body: selectionListState.isEmpty
-        ? Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                Text(
-                  'Empty :(',
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget>[
+              Center(
+                child: Text(
+                  "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
                 ),
-              ],
-            ),
+              )
+            ],
           )
         : Container(
             margin: const EdgeInsets.symmetric(vertical: 20.0),
@@ -92,9 +92,47 @@ class Home extends ConsumerWidget{
     
               Services.getDetails(jsonString).then((details) {
                 final List<DetailElement> jsonStringData = details;
+                bool clashed = false;
         
                 // updating details list returned from API using Riverpod
-                detailListController.updateDetailList(jsonStringData);
+                detailListController.updateDetailList(jsonStringData); //jsonStringData = detailsList.details
+
+                for (var i=0; i<jsonStringData.length; i++) {
+                  for (var j=i+1; j<jsonStringData.length; j++) {
+                    if(jsonStringData[i].day == jsonStringData[j].day) {
+                      if(jsonStringData[i].end > jsonStringData[j].start && jsonStringData[i].start < jsonStringData[j].end) {
+                        print(jsonStringData[i].course + "(" + jsonStringData[i].start.toString() + "-" + jsonStringData[i].end.toString() + ")" + " is clashed with " + jsonStringData[j].course + "(" + jsonStringData[j].start.toString() + "-" + jsonStringData[j].end.toString() + ")");
+                        clashed = true;
+                        return showDialog<void>(
+                          context: context,
+                          barrierDismissible: false, // user must tap button!
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Time clash occured!'),
+                              content: SingleChildScrollView(
+                                child: ListBody(
+                                  children: <Widget>[
+                                    Text("${jsonStringData[i].course}-${jsonStringData[i].group} (${jsonStringData[i].start}-${jsonStringData[i].end})"),
+                                    Text("is clashed with"),
+                                    Text("${jsonStringData[j].course}-${jsonStringData[j].group} (${jsonStringData[j].start}-${jsonStringData[j].end})"),
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: const Text('Okay'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                    }
+                  }
+                }
     
                 Navigator.pushNamed(context, "/result");
               });

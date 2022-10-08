@@ -26,25 +26,25 @@ class Result extends ConsumerWidget{
 
     // final detailsList = detailFromJson('{"statusCode":200,"details":[{"campus":"M3","faculty":"","course":"CSC577","group":"M3CS2304C","start":15,"end":16,"day":"MONDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":""},{"campus":"M3","faculty":"","course":"CSC577","group":"M3CS2304C","start":16,"end":18,"day":"MONDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":"MAKMAL KOMPUTER 4,MAKMAL KOMPUTER 5"},{"campus":"M3","faculty":"","course":"ICT502","group":"M3CS2303C","start":8,"end":10,"day":"MONDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":"BILIK SEMINAR 01 (PPP)"},{"campus":"M3","faculty":"","course":"ICT502","group":"M3CS2303C","start":10,"end":12,"day":"FRIDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":"BILIK TUTORIAL 01"}]}');
     final detailsList = ref.watch(detailListProvider);
-    bool clashed = false;
+    // bool clashed = false;
 
     try {
-      for (var i=0; i<detailsList.length; i++) {
-        for (var j=i+1; j<detailsList.length; j++) {
-          if(detailsList[i].day == detailsList[j].day) {
-            if(detailsList[i].end > detailsList[j].start && detailsList[i].start < detailsList[j].end) {
-            	print(detailsList[i].course + "(" + detailsList[i].start.toString() + "-" + detailsList[i].end.toString() + ")" + " clashed with " + detailsList[j].course + "(" + detailsList[j].start.toString() + "-" + detailsList[j].end.toString() + ")");
-              clashed = true;
-              return Scaffold(
-                appBar: AppBar(
-                  title: Text("Timetable"),
-                ),
-                body: Text(detailsList[i].course + "(" + detailsList[i].start.toString() + "-" + detailsList[i].end.toString() + ")" + " clashed with " + detailsList[j].course + "(" + detailsList[j].start.toString() + "-" + detailsList[j].end.toString() + ")")
-              );
-            }
-          }
-        }
-      }
+      // for (var i=0; i<detailsList.length; i++) {
+      //   for (var j=i+1; j<detailsList.length; j++) {
+      //     if(detailsList[i].day == detailsList[j].day) {
+      //       if(detailsList[i].end > detailsList[j].start && detailsList[i].start < detailsList[j].end) {
+      //       	print(detailsList[i].course + "(" + detailsList[i].start.toString() + "-" + detailsList[i].end.toString() + ")" + " clashed with " + detailsList[j].course + "(" + detailsList[j].start.toString() + "-" + detailsList[j].end.toString() + ")");
+      //         clashed = true;
+      //         return Scaffold(
+      //           appBar: AppBar(
+      //             title: Text("Timetable"),
+      //           ),
+      //           body: Text("${detailsList[i].course}(${detailsList[i].start}-${detailsList[i].end}) clashed with ${detailsList[j].course}(${detailsList[j].start}-${detailsList[j].end})")
+      //         );
+      //       }
+      //     }
+      //   }
+      // }
 
       return Scaffold(
         appBar: AppBar(
@@ -97,19 +97,27 @@ class Result extends ConsumerWidget{
   }
 
   List<LaneEvents> _buildLaneEvents(detailsList) {
+    var startDay = "";
     final dates = {
       "mon": <String>['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'],
       "sun": <String>['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY'],
     };
 
+    for (var i=0; i<detailsList.length; i++) {
+      if (detailsList[i].day == "MONDAY")
+        startDay = "mon";
+      else if (detailsList[i].day == "SUNDAY")
+        startDay = "sun";
+    }
+
     int k = 10;
 
     return [
-      for (var i=0; i<dates["mon"]!.length; i++) LaneEvents(
-        lane: Lane(name: dates["mon"]![i], laneIndex: i),
+      for (var i=0; i<dates[startDay]!.length; i++) LaneEvents(
+        lane: Lane(name: dates[startDay]![i], laneIndex: i),
         events: [
           for (var j=0; j<detailsList.length; j++)
-            if(detailsList[j].day == dates["mon"]![i]) TableEvent(
+            if(detailsList[j].day == dates[startDay]![i]) TableEvent(
               title: detailsList[j].course,
               eventId: k+1,
               startTime: TableEventTime(hour: detailsList[j].start, minute: 0),
