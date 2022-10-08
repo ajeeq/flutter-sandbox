@@ -55,40 +55,7 @@ class Result extends ConsumerWidget{
           onEventTap: onEventTapCallBack,
           timetableStyle: TimetableStyle(),
           onEmptySlotTap: onTimeSlotTappedCallBack,
-        ),
-
-        floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton(
-              tooltip: "Add course",
-              heroTag: "add",
-              backgroundColor: Colors.lightBlue,
-              child: const Icon(Icons.add),
-              onPressed: () {},
-            ),
-    
-            SizedBox(height: 16),
-    
-            FloatingActionButton(
-              tooltip: "Fetch Details",
-              heroTag: "fetch",
-              backgroundColor: Colors.lightBlue,
-              child: const Icon(Icons.find_in_page),
-              onPressed: () async {},
-            ),
-
-            SizedBox(height: 16),
-
-            FloatingActionButton(
-              tooltip: "Debug that shown in Snackbar",
-              heroTag: "snack",
-              backgroundColor: Colors.lightBlue,
-              child: const Icon(Icons.miscellaneous_services),
-              onPressed: () async {},
-            ),
-          ],
-        ),
+        )
       );
     }
     catch (e) {
@@ -103,21 +70,21 @@ class Result extends ConsumerWidget{
       "sun": <String>['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY'],
     };
 
-    for (var i=0; i<detailsList.length; i++) {
-      if (detailsList[i].day == "MONDAY")
-        startDay = "mon";
-      else if (detailsList[i].day == "SUNDAY")
-        startDay = "sun";
-    }
+    // for (var i=0; i<detailsList.length; i++) {
+    //   if (detailsList[i].day == "MONDAY")
+    //     startDay = "mon";
+    //   else if (detailsList[i].day == "SUNDAY")
+    //     startDay = "sun";
+    // }
 
     int k = 10;
 
     return [
-      for (var i=0; i<dates[startDay]!.length; i++) LaneEvents(
-        lane: Lane(name: dates[startDay]![i], laneIndex: i),
+      for (var i=0; i<dates["mon"]!.length; i++) LaneEvents(
+        lane: Lane(name: dates["mon"]![i], laneIndex: i),
         events: [
           for (var j=0; j<detailsList.length; j++)
-            if(detailsList[j].day == dates[startDay]![i]) TableEvent(
+            if(detailsList[j].day == dates["mon"]![i]) TableEvent(
               title: detailsList[j].course,
               eventId: k+1,
               startTime: TableEventTime(hour: detailsList[j].start, minute: 0),

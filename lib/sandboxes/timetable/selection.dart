@@ -31,6 +31,7 @@ class Selection extends ConsumerStatefulWidget {
 
 class _SelectionState extends ConsumerState<Selection> {
   bool isLoading = false;
+  bool isExist = false;
   late TextEditingController controller;
 
   List<CampusElement> _campuses = [];
@@ -44,8 +45,10 @@ class _SelectionState extends ConsumerState<Selection> {
     super.initState();
 
     isLoading = true;
+
     Services.getCampuses().then((campuses) {
       final List<CampusElement> jsonStringData = campuses;
+      // if(_campuses == null)
 
       setState(() {
         _campuses = jsonStringData;

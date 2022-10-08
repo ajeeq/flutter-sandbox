@@ -117,8 +117,6 @@ class MyApp extends StatelessWidget {
       routes: {
         // main -> sandbox project entry (now = timetable)
         '/': (context) => Home(),
-
-        
         '/selection': (context) => Selection(),
         '/result': (context) => Result(),
 

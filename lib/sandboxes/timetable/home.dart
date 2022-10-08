@@ -1,6 +1,7 @@
 // Import directives
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // Services
 import 'package:flutter_sandbox/services.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_sandbox/providers/detail_providers.dart';
 
 class Home extends ConsumerWidget{
   const Home({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // declaring riverpod state providers
@@ -23,10 +25,17 @@ class Home extends ConsumerWidget{
     // declaring notifiers for updating riverpod states
     final SelectedListNotifier selectionListController = ref.read(selectedListProvider.notifier);
     final DetailListNotifier detailListController = ref.read(detailListProvider.notifier);
+    
+    final Uri _url = Uri.parse('https://discord.gg/2uWksRgT');
+    Future<void> _launchUrl() async {
+      if (!await launchUrl(_url)) {
+        throw 'Could not launch $_url';
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Timetable 0.2"),
+        title: const Text("Timetable 0.3"),
       ),
       body: selectionListState.isEmpty
         ? Column(
@@ -55,9 +64,31 @@ class Home extends ConsumerWidget{
                 for (var i=0; i<selectionListState.length; i++) Card(
                   child: ListTile(
                     title: Text(selectionListState[i].courseSelected),
+                    subtitle: Text(selectionListState[i].groupSelected),
                     trailing: const Icon(Icons.delete),
                     onTap: () {
-                      selectionListController.deleteSelected(selectionListState[i]);
+                      showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: const Text('Delete Course'),
+                          content: const Text('Are you sure to delete this course?'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                selectionListController.deleteSelected(selectionListState[i]);
+                                Navigator.pop(context);
+                              }, 
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        )
+                      );
                     },
                   ),
                 ),
@@ -65,7 +96,35 @@ class Home extends ConsumerWidget{
               ],
             ),
           ),
-          
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('UiTM Scheduler 0.3.0'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.discord,
+              ),
+              title: const Text('Get Help on Discord!'),
+              onTap: () async {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                // Navigator.pop(context);
+                // Navigator.pushNamed(context, '/help');
+                _launchUrl();
+              },
+            ),
+          ]
+        )
+      ),
+
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -89,10 +148,14 @@ class Home extends ConsumerWidget{
             onPressed: () async {
               // reading campus, course, group in Provider state
               final jsonString = selectedToJson(selectionListState);
+
+              if(jsonString == [])
+                print("empty");
     
               Services.getDetails(jsonString).then((details) {
                 final List<DetailElement> jsonStringData = details;
                 bool clashed = false;
+
         
                 // updating details list returned from API using Riverpod
                 detailListController.updateDetailList(jsonStringData); //jsonStringData = detailsList.details
