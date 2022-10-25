@@ -6,6 +6,7 @@ import 'package:flutter_sandbox/models/course.dart';
 
 // API Services
 import 'package:flutter_sandbox/services.dart';
+import 'package:flutter_sandbox/servicestwo.dart';
 
 // Models
 import 'package:flutter_sandbox/models/group.dart';
@@ -79,8 +80,8 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
         // NOTE: course name is from selectedString above
         // NOTE: campus name is campusNameState in provider declared above
     
-        Services.getGroup(campusNameState, facultyNameState, selectedString).then((groups) {
-          final List<GroupElement> jsonStringData = groups;
+        ServicesTwo.getGroup(campusNameState, facultyNameState, selectedString).then((groups) {
+          final List<GroupElement> jsonStringData = groups.groups;
 
           // updating group list state
           groupListController.updateGroupList(jsonStringData);

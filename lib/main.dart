@@ -32,6 +32,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_sandbox/sandboxes/timetable/home.dart';
 import 'package:flutter_sandbox/sandboxes/timetable/selection.dart';
 import 'package:flutter_sandbox/sandboxes/timetable/result.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/about.dart';
 
 // Sandbox - hive_darkmode
 import 'package:flutter_sandbox/sandboxes/hive_darkmode/hive_darkmode.dart';
@@ -119,6 +120,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => Home(),
         '/selection': (context) => Selection(),
         '/result': (context) => Result(),
+        '/about': (context) => About()
 
         // schedulerv0.2
         // '/settings': (context) => Settings(),

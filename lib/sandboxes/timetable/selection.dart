@@ -9,6 +9,7 @@ import 'package:flutter_sandbox/sandboxes/timetable/widgets/group_autocomplete.d
 
 // API Services
 import 'package:flutter_sandbox/services.dart';
+import 'package:flutter_sandbox/servicestwo.dart';
 
 // Models
 import 'package:flutter_sandbox/models/campus.dart';
@@ -46,21 +47,14 @@ class _SelectionState extends ConsumerState<Selection> {
 
     isLoading = true;
 
-    Services.getCampuses().then((campuses) {
-      final List<CampusElement> jsonStringData = campuses;
+    ServicesTwo.getCampusesFaculties().then((campuses) {
+      final List<CampusElement> jsonStringCampusList = campuses.campuses;
+      final List<Faculty> jsonStringFacultyList = campuses.faculties;
       // if(_campuses == null)
 
       setState(() {
-        _campuses = jsonStringData;
-        isLoading = false;
-      });
-    });
-
-    Services.getFaculties().then((faculties) {
-      final List<Faculty> jsonStringData = faculties;
-
-      setState(() {
-        _faculties = jsonStringData;
+        _campuses = jsonStringCampusList;
+        _faculties = jsonStringFacultyList;
         isLoading = false;
       });
     });
@@ -153,8 +147,8 @@ class _SelectionState extends ConsumerState<Selection> {
                             // updating selected campus name in state(riverpod)
                             campusController.updateSelectedCampusName(_selectedCampus);
                       
-                            Services.getCourses(selectedString, "").then((courses) {
-                              final List<CourseElement> jsonStringData = courses;
+                            ServicesTwo.getCourses(selectedString, "").then((courses) {
+                              final List<CourseElement> jsonStringData = courses.courses;
         
                               // updating course list state using Riverpod
                               courseListController.updateCourseList(jsonStringData);
@@ -251,8 +245,8 @@ class _SelectionState extends ConsumerState<Selection> {
                             // updating selected faculty name in state(riverpod)
                             facultyController.updateSelectedFacultyName(_selectedFaculty);
                       
-                            Services.getCourses(_selectedCampus, selectedString).then((courses) {
-                              final List<CourseElement> jsonStringData = courses;
+                            ServicesTwo.getCourses(_selectedCampus, selectedString).then((courses) {
+                              final List<CourseElement> jsonStringData = courses.courses;
         
                               // updating course list state using Riverpod
                               courseListController.updateCourseList(jsonStringData);

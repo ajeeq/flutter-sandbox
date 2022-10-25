@@ -1,0 +1,366 @@
+// Import directives
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' as parser;
+
+// List of Models
+import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/course.dart';
+import 'package:flutter_sandbox/models/detail.dart';
+import 'package:flutter_sandbox/models/group.dart';
+import 'package:flutter_sandbox/models/selected.dart';
+
+class ServicesTwo {
+  static Future<Campus> getCampusesFaculties() async {
+    Campus data;
+    List<CampusElement> campuses = [];
+    List<Faculty> faculties = [];
+
+    var baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
+    var headers = {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+
+    final response = await http.get(Uri.parse(baseUrl), headers: headers);
+    try {
+      if (response.statusCode == 200) {
+        var document = parser.parse(response.body);
+
+        try {
+          var optionCampus = document.querySelectorAll("select#search_campus > option");
+          for (var i=0; i<optionCampus.length; i++) {
+            final id = i;
+            final campus = optionCampus[i].text.trim();
+            var campus_obj = new CampusElement(id: id, campus: campus);
+            campuses.add(campus_obj);
+          }
+
+          var optionFaculty = document.querySelectorAll("select#search_faculty > option");
+          for (var i=0; i<optionFaculty.length; i++) {
+            final id = i;
+            final faculty = optionFaculty[i].text.trim();
+            var faculty_obj = new Faculty(id: id, faculty: faculty);
+            faculties.add(faculty_obj);
+          }
+
+          data = Campus(
+            statusCode: response.statusCode,
+            campuses: campuses,
+            faculties: faculties
+          );
+
+          final campusList = campusToJson(data);
+          return campusFromJson(campusList);
+        }
+        catch (e) {
+          print("Exception 2: $e");
+          throw e;
+        }
+      }
+      else {
+        print("Error: response.statusCode " + (response.statusCode).toString());
+        final campusList = null;
+        return campusList;
+      }
+    } catch (e) {
+      print("Exception 1: $e");
+      throw e;
+    }
+
+  }
+
+
+  static Future<Course> getCourses(selectedCampus, selectedFaculty) async {
+    var campusCode = selectedCampus.split("-")[0].trim();
+    var facultyCode = selectedFaculty.split("-")[0].trim();
+    
+    Course data;
+    List<CourseElement> courses = [];
+
+    var baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
+    var headers = {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    var body = {
+        'yNTU2NDgiiLCJzY29wZSI6Ii9llbGFzdG': campusCode,
+        'eyJ0eXAiOiiJKV1QiLCJhbGciOiJIUzI1NiJ9': facultyCode 
+    };
+
+    final response = await http.post(Uri.parse(baseUrl), headers: headers, body: body);
+
+    try {
+      if (response.statusCode == 302) {
+        if (response.headers.containsKey("location")) {
+          final redirectUrl = response.headers["location"];
+
+          final redirectedResponse = await http.post(Uri.parse(redirectUrl!), headers: headers, body: body);
+          if (redirectedResponse.statusCode == 200) {
+            var document = parser.parse(redirectedResponse.body);
+
+            try {
+              var tableCourse = document.querySelectorAll("#example2 > tbody")[0];
+              var trs = tableCourse.querySelectorAll("tr");
+              
+              for (var i=0; i<trs.length; i++) {
+                final num = trs[i].children[0].text.toString().trim();
+                final course = trs[i].children[1].text.toString().trim();
+                var course_obj = CourseElement(num: num, course: course);
+                courses.add(course_obj);
+              }
+
+              data = Course(
+                statusCode: redirectedResponse.statusCode,
+                courses: courses
+              );
+
+              final courseList = courseToJson(data);
+              return courseFromJson(courseList);
+            }
+            catch (e) {
+              print("Exception 2: $e");
+              throw e;
+            }
+
+          }
+          else {
+            print("Error: redirectedResponse.statusCode " + (redirectedResponse.statusCode).toString());
+            final courseList = null;
+            return courseList; 
+          }
+            
+        }
+        else {
+          print("Error: Redirect URL or location in header not found");
+          final courseList = null;
+          return courseList; 
+        }
+      
+      }
+      else {
+        print("No redirect.");
+        print("Status Code - " + (response.statusCode).toString());
+        final courseList = null;
+        return courseList;
+      }
+    
+    } catch (e) {
+      print("Exception 1: $e");
+      throw e;
+    }
+  }
+
+
+  static Future<Group> getGroup(selectedCampus, selectedFaculty, selectedCourse) async {
+    var campusCode = selectedCampus.split("-")[0].trim();
+    var facultyCode = selectedFaculty.split("-")[0].trim();
+    var courseCode = selectedCourse;
+
+    var groupDuplicated = [];
+    var validity;
+    Group data;
+    List<GroupElement> groups = [];
+
+    final baseUrl = "https://icress.uitm.edu.my/timetable1/list/";
+    var groupListUri;
+    var headers = {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    
+    if (campusCode == "B") {
+      groupListUri = baseUrl + "B/" + facultyCode + "/" + courseCode + ".html";
+      print("\nGroup link url: " + groupListUri);
+    }
+    else {
+      groupListUri = baseUrl + campusCode + "/" + courseCode + ".html";
+      print("\nGroup link url: " + groupListUri);
+    }
+
+    final response = await http.get(Uri.parse(groupListUri), headers: headers);
+
+    try {
+      if (response.statusCode == 200) {
+        var document = parser.parse(response.body);
+
+        try {
+          // fetching date validity
+          var tableCourseValid = document.querySelectorAll("body > table > tbody > tr");
+          final thead = tableCourseValid[0].children[0].text.toString().trim().split("<br>")[0];
+          final theadParts = thead.split("as");
+          validity = theadParts[1].trim();
+
+          // fetching specific course code row table element
+          var tableCourse = document.querySelectorAll("body > table > tbody > tr");
+
+          // fetching all course code data
+          for (var i=2; i<tableCourse.length; i++) {
+            groupDuplicated.add(tableCourse[i].children[2].text.toString().trim());
+          }
+
+          // removing duplicated course code
+          var distinct = groupDuplicated.toSet().toList();
+
+          distinct.forEach((element) {
+            final id = distinct.indexOf(element);
+            final group = element;
+            var group_obj = new GroupElement(id: id, group: group);
+            groups.add(group_obj);
+          });
+
+          data = Group(
+            valid: validity,
+            statusCode: response.statusCode,
+            groups: groups
+          );
+
+          final groupList = groupToJson(data);
+          return groupFromJson(groupList);
+        }
+        catch (e) {
+          print("Exception 2: $e");
+          throw e;
+        }
+      }
+      else {
+        print("No redirect.");
+        print("Status Code - " + (response.statusCode).toString());
+        final groupList = null;
+        return groupList;
+      }
+    
+    } catch (e) {
+      print("Exception 1: $e");
+      throw e;
+    }
+  }
+
+
+  static Future<Detail> getDetails(rawJson) async {
+    final input = selectedFromJson(rawJson);
+    var campusCodeArray = [];
+    var facultySelectedArray = [];
+    var courseSelectedArray = [];
+    var groupSelectedArray = [];
+
+    int statusCode = 0;
+    Detail data;
+    List<DetailElement> details = [];
+
+    final url = "https://icress.uitm.edu.my/timetable1/list/";
+    var newUrl;
+    var headers = {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+
+    for (var i=0; i<input.length; i++) {
+      var counter = input[i];
+      campusCodeArray.add(counter.campusSelected.split("-")[0].trim());
+      facultySelectedArray.add(counter.facultySelected.split("-")[0].trim());
+      courseSelectedArray.add(counter.courseSelected);
+      groupSelectedArray.add(counter.groupSelected);
+    }
+
+    try {
+      for (var i=0; i<input.length; i++) {
+        if (campusCodeArray[i] == "B") {
+          newUrl = url + "B/" + facultySelectedArray[i] + "/" + courseSelectedArray[i] + ".html";
+        }
+        else {
+          newUrl = url + campusCodeArray[i] + "/" + courseSelectedArray[i] + ".html";
+        }
+
+
+        final response = await http.get(Uri.parse(newUrl!), headers: headers);
+        try {
+          if (response.statusCode == 200) {
+            statusCode = response.statusCode;
+            var document = parser.parse(response.body);
+            try {
+              // getting specific element selector
+              var tableCourse = document.querySelectorAll("body > table > tbody > tr");
+
+              // collecting all details in the table
+              for (var j=2; j<tableCourse.length; j++) {
+                final campus = campusCodeArray[i];
+                final faculty = facultySelectedArray[i];
+                final course = courseSelectedArray[i];
+                var group = tableCourse[j].children[2].text.toString().trim();
+                final daytime = tableCourse[j].children[1].text.toString().trim();
+                final mode = tableCourse[j].children[3].text.toString().trim();
+                final status = tableCourse[j].children[4].text.toString().trim();
+                final room = tableCourse[j].children[5].text.toString().trim();
+                
+                if (group == groupSelectedArray[i]) {
+                  group = groupSelectedArray[i];
+                  final day = daytime.split("(")[0];
+                  final both_time = daytime.split("(")[1];
+                  final time = both_time.substring(1, both_time.indexOf(')')).trim();
+                  
+                  var meridiem_start = time.split("-")[0];
+                  var trailed_start = meridiem_start.replaceAll(RegExp('/^(?:00:)?0?/'), '');
+                  var start = int.parse(trailed_start.split(":")[0]);
+
+                  var meridiem_end = time.split("-")[1];
+                  var trailed_end = meridiem_end.replaceAll(RegExp('/^(?:00:)?0?/'), '');
+                  var end = int.parse(trailed_end.split(":")[0]);
+
+                  final detail_obj = new DetailElement(
+                    campus: campus, 
+                    faculty: faculty, 
+                    course: course, 
+                    group: group, 
+                    start: start, 
+                    end: end, 
+                    day: day, 
+                    mode: mode, 
+                    status: status, 
+                    room: room
+                  );
+                  details.add(detail_obj);
+                }
+              }
+
+              data = Detail(
+                statusCode: response.statusCode, 
+                details: details
+              );
+
+              final detailsList = detailToJson(data);
+              return detailFromJson(detailsList);
+            }
+            catch (e) {
+              print("Exception level 2: $e");
+              throw e;
+            }
+          }
+          else {
+            print("Status Code - " + (response.statusCode).toString());
+            final detailsList = null;
+            return detailsList;
+          }
+        }
+        catch (e) {
+          print("Exception level 1: $e");
+          throw e;
+        }
+      }
+
+      data = Detail(
+        statusCode: statusCode, 
+        details: details
+      );
+
+      final detailsList = detailToJson(data);
+      return detailFromJson(detailsList);
+
+    } catch (e) {
+      throw e;
+    }
+  }
+}

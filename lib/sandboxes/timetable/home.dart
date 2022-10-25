@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 // Services
 import 'package:flutter_sandbox/services.dart';
+import 'package:flutter_sandbox/servicestwo.dart';
 
 // Models
 import 'package:flutter_sandbox/models/detail.dart';
@@ -109,6 +110,20 @@ class Home extends ConsumerWidget{
             ),
             ListTile(
               leading: Icon(
+                Icons.info,
+              ),
+              title: const Text('About'),
+              onTap: () async {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                // Navigator.pop(context);
+                // Navigator.pushNamed(context, '/help');
+                Navigator.pushNamed(context, "/about");
+              },
+            ),
+            ListTile(
+              leading: Icon(
                 Icons.discord,
               ),
               title: const Text('Get Help on Discord!'),
@@ -152,8 +167,8 @@ class Home extends ConsumerWidget{
               if(jsonString == [])
                 print("empty");
     
-              Services.getDetails(jsonString).then((details) {
-                final List<DetailElement> jsonStringData = details;
+              ServicesTwo.getDetails(jsonString).then((details) {
+                final List<DetailElement> jsonStringData = details.details;
                 bool clashed = false;
 
         
@@ -199,6 +214,28 @@ class Home extends ConsumerWidget{
     
                 Navigator.pushNamed(context, "/result");
               });
+            },
+          ),
+
+          const SizedBox(height: 16),
+
+          FloatingActionButton(
+            tooltip: "Debug that shown in Snackbar",
+            heroTag: "snack",
+            backgroundColor: Colors.lightBlue,
+            child: const Icon(Icons.miscellaneous_services),
+            onPressed: () async {
+              final jsonString = selectedToJson(selectionListState);
+
+              final snackBar = SnackBar(
+                content: Text("Selection input: " + jsonString),
+                action: SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () {},
+                ),
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
           ),
           
