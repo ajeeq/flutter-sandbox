@@ -13,7 +13,7 @@ import 'package:flutter_sandbox/models/detail.dart';
 import './timetable_view.dart';
 
 // Services
-import 'package:flutter_sandbox/services.dart';
+import 'package:flutter_sandbox/api/services.dart';
 
 // Provider
 import 'package:flutter_sandbox/providers/detail_providers.dart';

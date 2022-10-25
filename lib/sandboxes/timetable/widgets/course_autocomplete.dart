@@ -5,8 +5,8 @@ import 'package:substring_highlight/substring_highlight.dart';
 import 'package:flutter_sandbox/models/course.dart';
 
 // API Services
-import 'package:flutter_sandbox/services.dart';
-import 'package:flutter_sandbox/servicestwo.dart';
+import 'package:flutter_sandbox/api/services.dart';
+import 'package:flutter_sandbox/api/servicestwo.dart';
 
 // Models
 import 'package:flutter_sandbox/models/group.dart';

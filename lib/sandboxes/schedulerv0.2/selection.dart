@@ -11,7 +11,7 @@ import 'package:flutter_sandbox/sandboxes/schedulerv0.1/widgets/course_autocompl
 import 'package:flutter_sandbox/sandboxes/schedulerv0.1/widgets/group_autocomplete.dart';
 
 // API Services
-import 'package:flutter_sandbox/services.dart';
+import 'package:flutter_sandbox/api/services.dart';
 
 // Models
 import 'package:flutter_sandbox/models/campus.dart';

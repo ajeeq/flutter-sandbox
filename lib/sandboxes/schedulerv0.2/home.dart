@@ -9,7 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Services
-import 'package:flutter_sandbox/services.dart';
+import 'package:flutter_sandbox/api/services.dart';
 
 // Models
 import 'package:flutter_sandbox/models/detail.dart';

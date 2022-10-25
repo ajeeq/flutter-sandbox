@@ -8,8 +8,8 @@ import 'package:flutter_sandbox/sandboxes/timetable/widgets/course_autocomplete.
 import 'package:flutter_sandbox/sandboxes/timetable/widgets/group_autocomplete.dart';
 
 // API Services
-import 'package:flutter_sandbox/services.dart';
-import 'package:flutter_sandbox/servicestwo.dart';
+import 'package:flutter_sandbox/api/services.dart';
+import 'package:flutter_sandbox/api/servicestwo.dart';
 
 // Models
 import 'package:flutter_sandbox/models/campus.dart';

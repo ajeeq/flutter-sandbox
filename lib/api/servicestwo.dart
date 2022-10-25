@@ -32,16 +32,16 @@ class ServicesTwo {
           for (var i=0; i<optionCampus.length; i++) {
             final id = i;
             final campus = optionCampus[i].text.trim();
-            var campus_obj = new CampusElement(id: id, campus: campus);
-            campuses.add(campus_obj);
+            var campusObj = CampusElement(id: id, campus: campus);
+            campuses.add(campusObj);
           }
 
           var optionFaculty = document.querySelectorAll("select#search_faculty > option");
           for (var i=0; i<optionFaculty.length; i++) {
             final id = i;
             final faculty = optionFaculty[i].text.trim();
-            var faculty_obj = new Faculty(id: id, faculty: faculty);
-            faculties.add(faculty_obj);
+            var facultyObj = Faculty(id: id, faculty: faculty);
+            faculties.add(facultyObj);
           }
 
           data = Campus(
@@ -60,14 +60,13 @@ class ServicesTwo {
       }
       else {
         print("Error: response.statusCode " + (response.statusCode).toString());
-        final campusList = null;
+        const campusList = null;
         return campusList;
       }
     } catch (e) {
       print("Exception 1: $e");
       throw e;
     }
-
   }
 
 
@@ -85,8 +84,8 @@ class ServicesTwo {
       'content-type': 'application/x-www-form-urlencoded',
     };
     var body = {
-        'yNTU2NDgiiLCJzY29wZSI6Ii9llbGFzdG': campusCode,
-        'eyJ0eXAiOiiJKV1QiLCJhbGciOiJIUzI1NiJ9': facultyCode 
+      'yNTU2NDgiiLCJzY29wZSI6Ii9llbGFzdG': campusCode,
+      'eyJ0eXAiOiiJKV1QiLCJhbGciOiJIUzI1NiJ9': facultyCode 
     };
 
     final response = await http.post(Uri.parse(baseUrl), headers: headers, body: body);
@@ -107,8 +106,8 @@ class ServicesTwo {
               for (var i=0; i<trs.length; i++) {
                 final num = trs[i].children[0].text.toString().trim();
                 final course = trs[i].children[1].text.toString().trim();
-                var course_obj = CourseElement(num: num, course: course);
-                courses.add(course_obj);
+                var courseObj = CourseElement(num: num, course: course);
+                courses.add(courseObj);
               }
 
               data = Course(
@@ -127,14 +126,14 @@ class ServicesTwo {
           }
           else {
             print("Error: redirectedResponse.statusCode " + (redirectedResponse.statusCode).toString());
-            final courseList = null;
+            const courseList = null;
             return courseList; 
           }
             
         }
         else {
           print("Error: Redirect URL or location in header not found");
-          final courseList = null;
+          const courseList = null;
           return courseList; 
         }
       
@@ -142,7 +141,7 @@ class ServicesTwo {
       else {
         print("No redirect.");
         print("Status Code - " + (response.statusCode).toString());
-        final courseList = null;
+        const courseList = null;
         return courseList;
       }
     
@@ -159,12 +158,12 @@ class ServicesTwo {
     var courseCode = selectedCourse;
 
     var groupDuplicated = [];
-    var validity;
+    String validity;
     Group data;
     List<GroupElement> groups = [];
 
-    final baseUrl = "https://icress.uitm.edu.my/timetable1/list/";
-    var groupListUri;
+    const baseUrl = "https://icress.uitm.edu.my/timetable1/list/";
+    String groupListUri;
     var headers = {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -204,12 +203,12 @@ class ServicesTwo {
           // removing duplicated course code
           var distinct = groupDuplicated.toSet().toList();
 
-          distinct.forEach((element) {
+          for (var element in distinct) {
             final id = distinct.indexOf(element);
             final group = element;
-            var group_obj = new GroupElement(id: id, group: group);
-            groups.add(group_obj);
-          });
+            var groupObj = GroupElement(id: id, group: group);
+            groups.add(groupObj);
+          };
 
           data = Group(
             valid: validity,
@@ -228,7 +227,7 @@ class ServicesTwo {
       else {
         print("No redirect.");
         print("Status Code - " + (response.statusCode).toString());
-        final groupList = null;
+        const groupList = null;
         return groupList;
       }
     
@@ -250,8 +249,8 @@ class ServicesTwo {
     Detail data;
     List<DetailElement> details = [];
 
-    final url = "https://icress.uitm.edu.my/timetable1/list/";
-    var newUrl;
+    const url = "https://icress.uitm.edu.my/timetable1/list/";
+    String newUrl;
     var headers = {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -299,18 +298,18 @@ class ServicesTwo {
                 if (group == groupSelectedArray[i]) {
                   group = groupSelectedArray[i];
                   final day = daytime.split("(")[0];
-                  final both_time = daytime.split("(")[1];
-                  final time = both_time.substring(1, both_time.indexOf(')')).trim();
+                  final bothTime = daytime.split("(")[1];
+                  final time = bothTime.substring(1, bothTime.indexOf(')')).trim();
                   
-                  var meridiem_start = time.split("-")[0];
-                  var trailed_start = meridiem_start.replaceAll(RegExp('/^(?:00:)?0?/'), '');
-                  var start = int.parse(trailed_start.split(":")[0]);
+                  var meridiemStart = time.split("-")[0];
+                  var trailedStart = meridiemStart.replaceAll(RegExp('/^(?:00:)?0?/'), '');
+                  var start = int.parse(trailedStart.split(":")[0]);
 
-                  var meridiem_end = time.split("-")[1];
-                  var trailed_end = meridiem_end.replaceAll(RegExp('/^(?:00:)?0?/'), '');
-                  var end = int.parse(trailed_end.split(":")[0]);
+                  var meridiemEnd = time.split("-")[1];
+                  var trailedEnd = meridiemEnd.replaceAll(RegExp('/^(?:00:)?0?/'), '');
+                  var end = int.parse(trailedEnd.split(":")[0]);
 
-                  final detail_obj = new DetailElement(
+                  final detailObj = DetailElement(
                     campus: campus, 
                     faculty: faculty, 
                     course: course, 
@@ -322,7 +321,7 @@ class ServicesTwo {
                     status: status, 
                     room: room
                   );
-                  details.add(detail_obj);
+                  details.add(detailObj);
                 }
               }
 
@@ -341,7 +340,7 @@ class ServicesTwo {
           }
           else {
             print("Status Code - " + (response.statusCode).toString());
-            final detailsList = null;
+            const detailsList = null;
             return detailsList;
           }
         }

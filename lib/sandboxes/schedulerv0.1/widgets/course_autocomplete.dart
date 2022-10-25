@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
 // API Services
-import 'package:flutter_sandbox/services.dart';
+import 'package:flutter_sandbox/api/services.dart';
 
 // Models
 import 'package:flutter_sandbox/models/course.dart';

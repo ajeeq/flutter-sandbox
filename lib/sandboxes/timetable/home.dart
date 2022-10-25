@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Services
-import 'package:flutter_sandbox/services.dart';
-import 'package:flutter_sandbox/servicestwo.dart';
+import 'package:flutter_sandbox/api/services.dart';
+import 'package:flutter_sandbox/api/servicestwo.dart';
 
 // Models
 import 'package:flutter_sandbox/models/detail.dart';
