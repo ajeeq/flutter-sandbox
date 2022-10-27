@@ -12,7 +12,7 @@ import 'package:flutter_sandbox/api/services.dart';
 import 'package:flutter_sandbox/api/servicestwo.dart';
 
 // Models
-import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/campus_faculty.dart';
 import 'package:flutter_sandbox/models/course.dart';
 import 'package:flutter_sandbox/models/selected.dart';
 
@@ -36,7 +36,7 @@ class _SelectionState extends ConsumerState<Selection> {
   late TextEditingController controller;
 
   List<CampusElement> _campuses = [];
-  List<Faculty> _faculties = [];
+  List<FacultyElement> _faculties = [];
 
   late String _selectedCampus;
   late String _selectedFaculty;
@@ -49,7 +49,7 @@ class _SelectionState extends ConsumerState<Selection> {
 
     ServicesTwo.getCampusesFaculties().then((campuses) {
       final List<CampusElement> jsonStringCampusList = campuses.campuses;
-      final List<Faculty> jsonStringFacultyList = campuses.faculties;
+      final List<FacultyElement> jsonStringFacultyList = campuses.faculties;
       // if(_campuses == null)
 
       setState(() {

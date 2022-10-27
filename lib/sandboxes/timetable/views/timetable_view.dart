@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/utils.dart';
+import '../utils/utils_timetable.dart';
 import '../views/controller/timetable_view_controller.dart';
 import '../views/diagonal_scroll_view.dart';
 import '../views/lane_view.dart';

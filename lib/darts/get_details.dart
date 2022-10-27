@@ -297,25 +297,46 @@ void main(List<String> args) async {
           
           if (group == groupSelectedArray[i]) {
             group = groupSelectedArray[i];
+
+            // day: getting day in DAY TIME column
+            // MONDAY
+
+            // bothTime: getting start and end time in DAY TIME column 
+            // 14:00 PM-15:00 PM )
+
+            // time: cleaned start and end time
+            // 14:00 PM-15:00 PM
+
+            // meridiemStart: getting start time including trailing meridiem
+            // 14:00 PM
+            // 08:00 AM
+
+            // trailedStart: removing leading zero
+            // 8:00 AM
+
+            // start: start time in 24h format
+            // 14
+            // 8
+
             final day = daytime.split("(")[0];
             final both_time = daytime.split("(")[1];
             final time = both_time.substring(1, both_time.indexOf(')')).trim();
             
             var meridiem_start = time.split("-")[0];
             var trailed_start = meridiem_start.replaceAll(RegExp('/^(?:00:)?0?/'), '');
-            var start = int.parse(trailed_start.split(":")[0]);
+            // var start = int.parse(trailed_start.split(":")[0]);
 
             var meridiem_end = time.split("-")[1];
             var trailed_end = meridiem_end.replaceAll(RegExp('/^(?:00:)?0?/'), '');
-            var end = int.parse(trailed_end.split(":")[0]);
+            // var end = int.parse(trailed_end.split(":")[0]);
 
             final detail_obj = new DetailElement(
               campus: campus, 
               faculty: faculty, 
               course: course, 
               group: group, 
-              start: start, 
-              end: end, 
+              start: trailed_start, 
+              end: trailed_end, 
               day: day, 
               mode: mode, 
               status: status, 
@@ -330,27 +351,9 @@ void main(List<String> args) async {
           statusCode: 200, 
           details: details
         );
-        print(detailToJson(data));
+        // print(detailToJson(data));
 
-        // var distinct = groupDuplicated.toSet().toList();
-
-        // var group_obj;
-        // distinct.forEach((element) {
-        //   final id = distinct.indexOf(element);
-        //   final group = element;
-        //   group_obj = new GroupElement(id: id, group: group);
-        //   groups.add(group_obj);
-        // });
-        // print(groupDuplicated);
-
-        // data = Group(
-        //   valid: validity,
-        //   statusCode: response.statusCode,
-        //   groups: groups
-        // );
-
-      //   final groupList = groupToJson(data);
-      //   print((groupList));
+        
       }
       catch (e) {
         print("Exception level 2: $e");

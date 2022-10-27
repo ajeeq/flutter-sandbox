@@ -15,6 +15,9 @@ import './timetable_view.dart';
 // Services
 import 'package:flutter_sandbox/api/services.dart';
 
+// Utils
+import 'package:flutter_sandbox/sandboxes/timetable/utils/utils_main.dart';
+
 // Provider
 import 'package:flutter_sandbox/providers/detail_providers.dart';
 
@@ -87,8 +90,8 @@ class Result extends ConsumerWidget{
             if(detailsList[j].day == dates["mon"]![i]) TableEvent(
               title: detailsList[j].course,
               eventId: k+1,
-              startTime: TableEventTime(hour: detailsList[j].start, minute: 0),
-              endTime: TableEventTime(hour: detailsList[j].end, minute: 0),
+              startTime: TableEventTime(hour: UtilsMain.getHourInt(detailsList[j].start), minute: UtilsMain.getMinuteInt(detailsList[j].start)),
+              endTime: TableEventTime(hour: UtilsMain.getHourInt(detailsList[j].end), minute: UtilsMain.getHourInt(detailsList[j].end)),
               laneIndex: i,
             )
         ],

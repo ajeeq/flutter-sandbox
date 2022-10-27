@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 
 // List of Models
-import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/campus_faculty.dart';
 import 'package:flutter_sandbox/models/course.dart';
 import 'package:flutter_sandbox/models/detail.dart';
 import 'package:flutter_sandbox/models/group.dart';
@@ -13,7 +13,7 @@ class ServicesTwo {
   static Future<Campus> getCampusesFaculties() async {
     Campus data;
     List<CampusElement> campuses = [];
-    List<Faculty> faculties = [];
+    List<FacultyElement> faculties = [];
 
     var baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
     var headers = {
@@ -40,7 +40,7 @@ class ServicesTwo {
           for (var i=0; i<optionFaculty.length; i++) {
             final id = i;
             final faculty = optionFaculty[i].text.trim();
-            var facultyObj = Faculty(id: id, faculty: faculty);
+            var facultyObj = FacultyElement(id: id, faculty: faculty);
             faculties.add(facultyObj);
           }
 
@@ -275,7 +275,7 @@ class ServicesTwo {
         }
 
 
-        final response = await http.get(Uri.parse(newUrl!), headers: headers);
+        final response = await http.get(Uri.parse(newUrl), headers: headers);
         try {
           if (response.statusCode == 200) {
             statusCode = response.statusCode;
@@ -302,12 +302,10 @@ class ServicesTwo {
                   final time = bothTime.substring(1, bothTime.indexOf(')')).trim();
                   
                   var meridiemStart = time.split("-")[0];
-                  var trailedStart = meridiemStart.replaceAll(RegExp('/^(?:00:)?0?/'), '');
-                  var start = int.parse(trailedStart.split(":")[0]);
+                  var start = meridiemStart.replaceAll(RegExp('/^(?:00:)?0?/'), '');
 
                   var meridiemEnd = time.split("-")[1];
-                  var trailedEnd = meridiemEnd.replaceAll(RegExp('/^(?:00:)?0?/'), '');
-                  var end = int.parse(trailedEnd.split(":")[0]);
+                  var end = meridiemEnd.replaceAll(RegExp('/^(?:00:)?0?/'), '');
 
                   final detailObj = DetailElement(
                     campus: campus, 

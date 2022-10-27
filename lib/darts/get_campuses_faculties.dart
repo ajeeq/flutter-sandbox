@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 
-import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/campus_faculty.dart';
 
 void main(List<String> args) async {
   String htmlData = """ <!-- saved from url=(0048)https://icress.uitm.edu.my/timetable_/search.asp -->
@@ -546,7 +546,7 @@ void main(List<String> args) async {
   final response = await http.get(url, headers: headers);
   Campus data;
   List<CampusElement> campuses = [];
-  List<Faculty> faculties = [];
+  List<FacultyElement> faculties = [];
   
   try {
     if (response.statusCode == 200) {
@@ -573,7 +573,7 @@ void main(List<String> args) async {
           final id = i;
           final faculty = optionFaculty[i].text.trim();
           // Faculty(id: id, faculty: faculty);
-          var faculty_obj = new Faculty(id: id, faculty: faculty);
+          var faculty_obj = new FacultyElement(id: id, faculty: faculty);
           faculties.add(faculty_obj);
           
         }

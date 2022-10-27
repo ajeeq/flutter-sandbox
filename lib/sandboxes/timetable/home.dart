@@ -7,6 +7,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_sandbox/api/services.dart';
 import 'package:flutter_sandbox/api/servicestwo.dart';
 
+// Utils
+import 'package:flutter_sandbox/sandboxes/timetable/utils/utils_main.dart';
+
 // Models
 import 'package:flutter_sandbox/models/detail.dart';
 import 'package:flutter_sandbox/models/selected.dart';
@@ -178,7 +181,24 @@ class Home extends ConsumerWidget{
                 for (var i=0; i<jsonStringData.length; i++) {
                   for (var j=i+1; j<jsonStringData.length; j++) {
                     if(jsonStringData[i].day == jsonStringData[j].day) {
-                      if(jsonStringData[i].end > jsonStringData[j].start && jsonStringData[i].start < jsonStringData[j].end) {
+                      String startHourFormer = (jsonStringData[i].start).split(":")[0];
+                      String startMinuteFormer = (jsonStringData[i].start).split(":")[1];
+
+                      String endHourFormer = (jsonStringData[i].end).split(":")[0];
+                      String endMinuteFormer = (jsonStringData[i].end).split(":")[1];
+
+                      String startHourLatter = (jsonStringData[j].start).split(":")[0];
+                      String startMinuteLatter = (jsonStringData[j].start).split(":")[1];
+
+                      String endHourLatter = (jsonStringData[j].end).split(":")[0];
+                      String endMinuteLatter = (jsonStringData[j].end).split(":")[1];
+
+                      var summedMinutesStartFormer = UtilsMain.hourToMinute(startHourFormer, startMinuteFormer);
+                      var summedMinutesEndFormer = UtilsMain.hourToMinute(endHourFormer, endMinuteFormer);
+                      var summedMinutesStartLatter = UtilsMain.hourToMinute(startHourLatter, startMinuteLatter);
+                      var summedMinutesEndLatter = UtilsMain.hourToMinute(endHourLatter, endMinuteLatter);
+
+                      if(summedMinutesEndFormer > summedMinutesStartLatter && summedMinutesStartFormer < summedMinutesEndLatter) {
                         print(jsonStringData[i].course + "(" + jsonStringData[i].start.toString() + "-" + jsonStringData[i].end.toString() + ")" + " is clashed with " + jsonStringData[j].course + "(" + jsonStringData[j].start.toString() + "-" + jsonStringData[j].end.toString() + ")");
                         clashed = true;
                         return showDialog<void>(

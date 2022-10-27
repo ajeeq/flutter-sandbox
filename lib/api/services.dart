@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // List of Models
 import 'package:flutter_sandbox/models/user.dart';
-import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/campus_faculty.dart';
 import 'package:flutter_sandbox/models/course.dart';
 import 'package:flutter_sandbox/models/detail.dart';
 import 'package:flutter_sandbox/models/group.dart';
@@ -52,7 +52,7 @@ class Services {
   }
 
   // Fetching campus list
-  static Future<List<Faculty>> getFaculties() async {
+  static Future<List<FacultyElement>> getFaculties() async {
     var url = Uri.parse("${dotenv.env['API_BASE_URI_CAMPUS']}");
     
     try {

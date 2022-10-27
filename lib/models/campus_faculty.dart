@@ -18,12 +18,12 @@ class Campus {
 
     int statusCode;
     List<CampusElement> campuses;
-    List<Faculty> faculties;
+    List<FacultyElement> faculties;
 
     factory Campus.fromJson(Map<String, dynamic> json) => Campus(
         statusCode: json["statusCode"],
         campuses: List<CampusElement>.from(json["campuses"].map((x) => CampusElement.fromJson(x))),
-        faculties: List<Faculty>.from(json["faculties"].map((x) => Faculty.fromJson(x))),
+        faculties: List<FacultyElement>.from(json["faculties"].map((x) => FacultyElement.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -53,8 +53,8 @@ class CampusElement {
     };
 }
 
-class Faculty {
-    Faculty({
+class FacultyElement {
+    FacultyElement({
         required this.id,
         required this.faculty,
     });
@@ -62,7 +62,7 @@ class Faculty {
     int id;
     String faculty;
 
-    factory Faculty.fromJson(Map<String, dynamic> json) => Faculty(
+    factory FacultyElement.fromJson(Map<String, dynamic> json) => FacultyElement(
         id: json["id"],
         faculty: json["faculty"],
     );

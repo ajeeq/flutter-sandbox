@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sandbox/sandboxes/campus/campus_list_provider.dart';
 
 // Models
-import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/campus_faculty.dart';
 
 class HomeCampus extends ConsumerWidget {
   HomeCampus({Key? key}) : super(key: key);

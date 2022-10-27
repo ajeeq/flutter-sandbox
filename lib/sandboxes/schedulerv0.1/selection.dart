@@ -14,7 +14,7 @@ import 'package:flutter_sandbox/sandboxes/schedulerv0.1/widgets/group_autocomple
 import 'package:flutter_sandbox/api/services.dart';
 
 // Models
-import 'package:flutter_sandbox/models/campus.dart';
+import 'package:flutter_sandbox/models/campus_faculty.dart';
 import 'package:flutter_sandbox/models/course.dart';
 import 'package:flutter_sandbox/models/selected.dart';
 
@@ -31,7 +31,7 @@ class Selection extends ConsumerStatefulWidget {
 class _SelectionState extends ConsumerState<Selection> {
   bool isLoading = false;
   List<CampusElement> _campuses = [];
-  List<Faculty> _faculties = [];
+  List<FacultyElement> _faculties = [];
   
   late List<String> autoCompleteData;
   late TextEditingController controller;
@@ -58,7 +58,7 @@ class _SelectionState extends ConsumerState<Selection> {
     });
 
     Services.getFaculties().then((faculties) {
-      final List<Faculty> jsonStringData = faculties;
+      final List<FacultyElement> jsonStringData = faculties;
 
       print("==================================");
       print(jsonStringData);
