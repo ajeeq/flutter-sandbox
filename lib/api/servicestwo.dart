@@ -9,6 +9,12 @@ import 'package:flutter_sandbox/models/detail.dart';
 import 'package:flutter_sandbox/models/group.dart';
 import 'package:flutter_sandbox/models/selected.dart';
 
+var headers = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'content-type': 'application/x-www-form-urlencoded',
+};
+
 class ServicesTwo {
   static Future<Campus> getCampusesFaculties() async {
     Campus data;
@@ -16,11 +22,6 @@ class ServicesTwo {
     List<FacultyElement> faculties = [];
 
     var baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
-    var headers = {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-      'content-type': 'application/x-www-form-urlencoded',
-    };
 
     final response = await http.get(Uri.parse(baseUrl), headers: headers);
     try {
@@ -69,7 +70,7 @@ class ServicesTwo {
     }
   }
 
-
+  // TODO: flow of getting request need to revise
   static Future<Course> getCourses(selectedCampus, selectedFaculty) async {
     var campusCode = selectedCampus.split("-")[0].trim();
     var facultyCode = selectedFaculty.split("-")[0].trim();
@@ -78,17 +79,13 @@ class ServicesTwo {
     List<CourseElement> courses = [];
 
     var baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
-    var headers = {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-      'content-type': 'application/x-www-form-urlencoded',
-    };
     var body = {
       'yNTU2NDgiiLCJzY29wZSI6Ii9llbGFzdG': campusCode,
       'eyJ0eXAiOiiJKV1QiLCJhbGciOiJIUzI1NiJ9': facultyCode 
     };
 
     final response = await http.post(Uri.parse(baseUrl), headers: headers, body: body);
+    // print("response: " + response.body);
 
     try {
       if (response.statusCode == 302) {
@@ -138,6 +135,32 @@ class ServicesTwo {
         }
       
       }
+      else if (response.statusCode == 200) {
+        var document = parser.parse(response.body);
+        try {
+          var tableCourse = document.querySelectorAll("#example2 > tbody")[0];
+          var trs = tableCourse.querySelectorAll("tr");
+          
+          for (var i=0; i<trs.length; i++) {
+            final num = trs[i].children[0].text.toString().trim();
+            final course = trs[i].children[1].text.toString().trim();
+            var courseObj = CourseElement(num: num, course: course);
+            courses.add(courseObj);
+          }
+
+          data = Course(
+            statusCode: response.statusCode,
+            courses: courses
+          );
+
+          final courseList = courseToJson(data);
+          return courseFromJson(courseList);
+        }
+        catch (e) {
+          print("Exception 2: $e");
+          throw e;
+        }
+      }
       else {
         print("No redirect.");
         print("Status Code - " + (response.statusCode).toString());
@@ -151,7 +174,7 @@ class ServicesTwo {
     }
   }
 
-
+  // TODO: flow of getting request need to revise
   static Future<Group> getGroup(selectedCampus, selectedFaculty, selectedCourse) async {
     var campusCode = selectedCampus.split("-")[0].trim();
     var facultyCode = selectedFaculty.split("-")[0].trim();
@@ -162,13 +185,8 @@ class ServicesTwo {
     Group data;
     List<GroupElement> groups = [];
 
-    const baseUrl = "https://icress.uitm.edu.my/timetable1/list/";
+    const baseUrl = "https://icress.uitm.edu.my/timetable/list/";
     String groupListUri;
-    var headers = {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-      'content-type': 'application/x-www-form-urlencoded',
-    };
     
     if (campusCode == "B") {
       groupListUri = baseUrl + "B/" + facultyCode + "/" + courseCode + ".html";
@@ -249,13 +267,8 @@ class ServicesTwo {
     Detail data;
     List<DetailElement> details = [];
 
-    const url = "https://icress.uitm.edu.my/timetable1/list/";
+    const url = "https://icress.uitm.edu.my/timetable/list/";
     String newUrl;
-    var headers = {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-      'content-type': 'application/x-www-form-urlencoded',
-    };
 
     for (var i=0; i<input.length; i++) {
       var counter = input[i];
@@ -337,6 +350,7 @@ class ServicesTwo {
             }
           }
           else {
+            print("URL - " + newUrl.toString());
             print("Status Code - " + (response.statusCode).toString());
             const detailsList = null;
             return detailsList;

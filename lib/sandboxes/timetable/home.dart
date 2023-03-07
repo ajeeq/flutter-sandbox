@@ -18,6 +18,10 @@ import 'package:flutter_sandbox/models/selected.dart';
 import 'package:flutter_sandbox/providers/selected_providers.dart';
 import 'package:flutter_sandbox/providers/detail_providers.dart';
 
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:flutter_sandbox/sandboxes/timetable/utils/hive_selected_course.dart';
+
 class Home extends ConsumerWidget{
   const Home({Key? key}) : super(key: key);
   
@@ -29,6 +33,10 @@ class Home extends ConsumerWidget{
     // declaring notifiers for updating riverpod states
     final SelectedListNotifier selectionListController = ref.read(selectedListProvider.notifier);
     final DetailListNotifier detailListController = ref.read(detailListProvider.notifier);
+
+    final detailsList = ref.watch(detailListProvider);
+
+    final HiveSelectedCourse selectedCourseStore = HiveSelectedCourse();
     
     final Uri _url = Uri.parse('https://discord.gg/2uWksRgT');
     Future<void> _launchUrl() async {
@@ -39,67 +47,157 @@ class Home extends ConsumerWidget{
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Timetable 0.3"),
+        title: const Text("Timetable 0.4"),
       ),
-      body: selectionListState.isEmpty
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Center(
-                child: Text(
-                  "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
-                ),
-              )
-            ],
-          )
-        : Container(
-            margin: const EdgeInsets.symmetric(vertical: 20.0),
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: ListView(
-              children: <Widget>[
-                const Text(
-                  'Course List',
-                  style: TextStyle(
-                    fontFamily: 'avenir',
-                    fontSize: 32,
-                    fontWeight: FontWeight.w900
-                  ),
-                ),
-                for (var i=0; i<selectionListState.length; i++) Card(
-                  child: ListTile(
-                    title: Text(selectionListState[i].courseSelected),
-                    subtitle: Text(selectionListState[i].groupSelected),
-                    trailing: const Icon(Icons.delete),
-                    onTap: () {
-                      showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Delete Course'),
-                          content: const Text('Are you sure to delete this course?'),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
+      body: ValueListenableBuilder(
+          valueListenable: HiveSelectedCourse.box.listenable(),
+          builder: (context, Box box, widget) {
+            return SafeArea(
+              child: box.isEmpty ?
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget>[
+                    Center(
+                      child: Text(
+                        "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
+                      ),
+                    )
+                  ],
+                )
+              : Container(
+                  margin: const EdgeInsets.symmetric(vertical: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Column(
+                    children: [
+                      const Text(
+                        'Course List',
+                        style: TextStyle(
+                          fontFamily: 'avenir',
+                          fontSize: 32,
+                          fontWeight: FontWeight.w900
+                        ),
+                      ),
+
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: box.length,
+                        itemBuilder: (BuildContext context, int index) { 
+                          var courseList = box.getAt(index);
+
+                          return Card(
+                            child: ListTile (
+                              title: Text(courseList.courseSelected),
+                              subtitle: Text(courseList.groupSelected),
+                              trailing: const Icon(Icons.delete),
+                              onTap: () {
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) => AlertDialog(
+                                    title: const Text('Delete Course'),
+                                    content: const Text('Are you sure to delete this course?'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Cancel'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          selectedCourseStore.deleteSelected(index: index);
+                                          Navigator.pop(context);
+                                        }, 
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  )
+                                );
                               },
-                              child: const Text('Cancel'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                selectionListController.deleteSelected(selectionListState[i]);
-                                Navigator.pop(context);
-                              }, 
-                              child: const Text('OK'),
-                            ),
-                          ],
-                        )
-                      );
-                    },
+
+                            )
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                ),
-                  
-              ],
-            ),
-          ),
+
+                      // for (var i=0; i<selectionListState.length; i++) Card(
+                      //   child: ExpansionTile(
+                      //     textColor: Colors.black,
+                      //     title: Text(selectionListState[i].courseSelected),
+                      //     subtitle: Text(selectionListState[i].groupSelected),
+                      //     children: [
+                      //       ListTile(title: Text("detailsList[i].day")),
+                      //       ListTile(
+                      //         trailing: const Icon(Icons.delete),
+                      //         onTap: () {
+                      //           showDialog<String>(
+                      //             context: context,
+                      //             builder: (BuildContext context) => AlertDialog(
+                      //               title: const Text('Delete Course'),
+                      //               content: const Text('Are you sure to delete this course?'),
+                      //               actions: <Widget>[
+                      //                 TextButton(
+                      //                   onPressed: () {
+                      //                     Navigator.pop(context);
+                      //                   },
+                      //                   child: const Text('Cancel'),
+                      //                 ),
+                      //                 TextButton(
+                      //                   onPressed: () {
+                      //                     selectionListController.deleteSelected(selectionListState[i]);
+                      //                     Navigator.pop(context);
+                      //                   }, 
+                      //                   child: const Text('OK'),
+                      //                 ),
+                      //               ],
+                      //             )
+                      //           );
+                      //         },
+                              
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+        
+                      // ExpansionPanelList(
+                      //   expansionCallback: (int index, bool isExpanded) {},
+                      //   children: [
+                      //     ExpansionPanel(
+                      //       headerBuilder: (BuildContext context, bool isExpanded) {
+                      //         return ListTile(
+                      //           title: Text('Item 1'),
+                      //         );
+                      //       },
+                      //       body: ListTile(
+                      //         title: Text('Item 1 child'),
+                      //         subtitle: Text('Details goes here'),
+                      //       ),
+                      //       isExpanded: true,
+                      //     ),
+                      //     ExpansionPanel(
+                      //       headerBuilder: (BuildContext context, bool isExpanded) {
+                      //         return ListTile(
+                      //           title: Text('Item 2'),
+                      //         );
+                      //       },
+                      //       body: ListTile(
+                      //         title: Text('Item 2 child'),
+                      //         subtitle: Text('Details goes here'),
+                      //       ),
+                      //       isExpanded: false,
+                      //     ),
+                      //   ],
+                      // );
+                        
+                
+              )
+            );
+            
+          }
+         
+          
+        ),
 
       drawer: Drawer(
         child: ListView(
@@ -109,7 +207,7 @@ class Home extends ConsumerWidget{
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('UiTM Scheduler 0.3.0'),
+              child: Text('UiTM Scheduler 0.4.0'),
             ),
             ListTile(
               leading: Icon(
@@ -165,7 +263,10 @@ class Home extends ConsumerWidget{
             child: const Icon(Icons.find_in_page),
             onPressed: () async {
               // reading campus, course, group in Provider state
-              final jsonString = selectedToJson(selectionListState);
+              // final jsonString = selectedToJson(selectionListState);
+
+              List<Selected> selectedList = selectedCourseStore.getAllSelected();
+              final String jsonString = selectedToJson(selectedList);
 
               if(jsonString == [])
                 print("empty");
@@ -245,7 +346,8 @@ class Home extends ConsumerWidget{
             backgroundColor: Colors.lightBlue,
             child: const Icon(Icons.miscellaneous_services),
             onPressed: () async {
-              final jsonString = selectedToJson(selectionListState);
+              List<Selected> selectedList = selectedCourseStore.getAllSelected();
+              final String jsonString = selectedToJson(selectedList);
 
               final snackBar = SnackBar(
                 content: Text("Selection input: " + jsonString),

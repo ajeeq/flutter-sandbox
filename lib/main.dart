@@ -97,9 +97,11 @@ Future main() async {
   await dotenv.load(fileName: "local.env");
 
   await Hive.initFlutter();
+  Hive.registerAdapter<Selected>(SelectedAdapter());
+
   await Hive.openBox("darkModeTutorial"); //hive_darkmode
   await Hive.openBox<String>("favorite_books"); //hive_books
-  await Hive.openBox("courseList");
+  await Hive.openBox<Selected>("selectedCourse");
   
   runApp(
     const ProviderScope(
