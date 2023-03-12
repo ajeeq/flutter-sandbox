@@ -1,32 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
-
-var pixelRatio = window.devicePixelRatio;
-
- //Size in physical pixels
-var physicalScreenSize = window.physicalSize;
-var physicalWidth = physicalScreenSize.width;
-var physicalHeight = physicalScreenSize.height;
-
-//Size in logical pixels
-var logicalScreenSize = window.physicalSize / pixelRatio;
-var logicalWidth = logicalScreenSize.width;
-var logicalHeight = logicalScreenSize.height;
-
-//Padding in physical pixels
-var padding = window.padding;
-
-//Safe area paddings in logical pixels
-var paddingLeft = window.padding.left / window.devicePixelRatio;
-var paddingRight = window.padding.right / window.devicePixelRatio;
-var paddingTop = window.padding.top / window.devicePixelRatio;
-var paddingBottom = window.padding.bottom / window.devicePixelRatio;
-
-//Safe area in logical pixels
-var safeWidth = logicalWidth - paddingLeft - paddingRight;
-var safeHeight = logicalHeight - paddingTop - paddingBottom;
 
 class TimetableStyle {
   final int startHour;
@@ -83,7 +55,7 @@ class TimetableStyle {
       this.decorationLineBorderColor: const Color(0x1A000000),
       this.timelineBorderColor: const Color(0x1A000000),
       this.timeItemTextColor: Colors.blue,
-      this.laneWidth: 67.7, //width of lane is here, default is 300
+      this.laneWidth: 300,
       this.laneHeight: 35,
       this.timeItemHeight: 75,
       this.timeItemWidth: 70,

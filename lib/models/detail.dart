@@ -79,4 +79,9 @@ class DetailElement {
         "status": status,
         "room": room,
     };
+
+    @override
+    String toString() {
+      return 'DetailElement{campus: $campus, faculty: $faculty, course: $course, group: $group, start: $start, end: $end, day: $day, mode: $mode, status: $status, room: $room}';
+    }
 }

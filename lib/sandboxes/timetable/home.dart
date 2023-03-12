@@ -46,6 +46,7 @@ class Home extends ConsumerWidget{
     }
 
     return Scaffold(
+      // backgroundColor: Color.fromARGB(255, 217, 217, 217),
       appBar: AppBar(
         title: const Text("Timetable 0.4"),
       ),
@@ -54,15 +55,18 @@ class Home extends ConsumerWidget{
           builder: (context, Box box, widget) {
             return SafeArea(
               child: box.isEmpty ?
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Center(
-                      child: Text(
-                        "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
-                      ),
-                    )
-                  ],
+                Container(
+                  color: Colors.grey[85],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Center(
+                        child: Text(
+                          "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
+                        ),
+                      )
+                    ],
+                  ),
                 )
               : Container(
                   margin: const EdgeInsets.symmetric(vertical: 20.0),
@@ -274,25 +278,27 @@ class Home extends ConsumerWidget{
               ServicesTwo.getDetails(jsonString).then((details) {
                 final List<DetailElement> jsonStringData = details.details;
                 bool clashed = false;
-
+                // print("jsonStringData: $jsonStringData");
         
                 // updating details list returned from API using Riverpod
                 detailListController.updateDetailList(jsonStringData); //jsonStringData = detailsList.details
-
+                
+                // TODO: Refactor and separate this code into Utils
                 for (var i=0; i<jsonStringData.length; i++) {
                   for (var j=i+1; j<jsonStringData.length; j++) {
+                    // if first time is the same day with the second day
                     if(jsonStringData[i].day == jsonStringData[j].day) {
                       String startHourFormer = (jsonStringData[i].start).split(":")[0];
-                      String startMinuteFormer = (jsonStringData[i].start).split(":")[1];
+                      String startMinuteFormer = (jsonStringData[i].start).split(":")[1].split(" ")[0];
 
                       String endHourFormer = (jsonStringData[i].end).split(":")[0];
-                      String endMinuteFormer = (jsonStringData[i].end).split(":")[1];
+                      String endMinuteFormer = (jsonStringData[i].end).split(":")[1].split(" ")[0];
 
                       String startHourLatter = (jsonStringData[j].start).split(":")[0];
-                      String startMinuteLatter = (jsonStringData[j].start).split(":")[1];
+                      String startMinuteLatter = (jsonStringData[j].start).split(":")[1].split(" ")[0];
 
                       String endHourLatter = (jsonStringData[j].end).split(":")[0];
-                      String endMinuteLatter = (jsonStringData[j].end).split(":")[1];
+                      String endMinuteLatter = (jsonStringData[j].end).split(":")[1].split(" ")[0];
 
                       var summedMinutesStartFormer = UtilsMain.hourToMinute(startHourFormer, startMinuteFormer);
                       var summedMinutesEndFormer = UtilsMain.hourToMinute(endHourFormer, endMinuteFormer);
@@ -348,6 +354,7 @@ class Home extends ConsumerWidget{
             onPressed: () async {
               List<Selected> selectedList = selectedCourseStore.getAllSelected();
               final String jsonString = selectedToJson(selectedList);
+              print(jsonString);
 
               final snackBar = SnackBar(
                 content: Text("Selection input: " + jsonString),

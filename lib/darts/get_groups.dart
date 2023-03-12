@@ -242,7 +242,7 @@ void main(List<String> args) async {
   Group data;
   List<GroupElement> groups = [];
 
-  final baseUrl = "https://icress.uitm.edu.my/timetable1/list/";
+  final baseUrl = "https://icress.uitm.edu.my/timetable/list/";
   var groupListUri;
   var headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",

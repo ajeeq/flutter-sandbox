@@ -9,6 +9,8 @@ import 'package:flutter_sandbox/models/detail.dart';
 import 'package:flutter_sandbox/models/group.dart';
 import 'package:flutter_sandbox/models/selected.dart';
 
+const baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
+const baseListUrl = 'https://icress.uitm.edu.my/timetable/list/';
 var headers = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -20,8 +22,6 @@ class ServicesTwo {
     Campus data;
     List<CampusElement> campuses = [];
     List<FacultyElement> faculties = [];
-
-    var baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
 
     final response = await http.get(Uri.parse(baseUrl), headers: headers);
     try {
@@ -60,7 +60,7 @@ class ServicesTwo {
         }
       }
       else {
-        print("Error: response.statusCode " + (response.statusCode).toString());
+        print("Error: response.statusCode: $response.statusCode");
         const campusList = null;
         return campusList;
       }
@@ -77,8 +77,7 @@ class ServicesTwo {
     
     Course data;
     List<CourseElement> courses = [];
-
-    var baseUrl = 'https://icress.uitm.edu.my/timetable/search.asp';
+    
     var body = {
       'yNTU2NDgiiLCJzY29wZSI6Ii9llbGFzdG': campusCode,
       'eyJ0eXAiOiiJKV1QiLCJhbGciOiJIUzI1NiJ9': facultyCode 
@@ -185,15 +184,15 @@ class ServicesTwo {
     Group data;
     List<GroupElement> groups = [];
 
-    const baseUrl = "https://icress.uitm.edu.my/timetable/list/";
+    // baseListUrl = "https://icress.uitm.edu.my/timetable/list/";
     String groupListUri;
     
     if (campusCode == "B") {
-      groupListUri = baseUrl + "B/" + facultyCode + "/" + courseCode + ".html";
+      groupListUri = baseListUrl + "B/" + facultyCode + "/" + courseCode + ".html";
       print("\nGroup link url: " + groupListUri);
     }
     else {
-      groupListUri = baseUrl + campusCode + "/" + courseCode + ".html";
+      groupListUri = baseListUrl + campusCode + "/" + courseCode + ".html";
       print("\nGroup link url: " + groupListUri);
     }
 
@@ -267,7 +266,7 @@ class ServicesTwo {
     Detail data;
     List<DetailElement> details = [];
 
-    const url = "https://icress.uitm.edu.my/timetable/list/";
+    // baseUrl = "https://icress.uitm.edu.my/timetable/list/";
     String newUrl;
 
     for (var i=0; i<input.length; i++) {
@@ -281,13 +280,12 @@ class ServicesTwo {
     try {
       for (var i=0; i<input.length; i++) {
         if (campusCodeArray[i] == "B") {
-          newUrl = url + "B/" + facultySelectedArray[i] + "/" + courseSelectedArray[i] + ".html";
+          newUrl = baseListUrl + "B/" + facultySelectedArray[i] + "/" + courseSelectedArray[i] + ".html";
         }
         else {
-          newUrl = url + campusCodeArray[i] + "/" + courseSelectedArray[i] + ".html";
+          newUrl = baseListUrl + campusCodeArray[i] + "/" + courseSelectedArray[i] + ".html";
         }
-
-
+        
         final response = await http.get(Uri.parse(newUrl), headers: headers);
         try {
           if (response.statusCode == 200) {
@@ -336,13 +334,13 @@ class ServicesTwo {
                 }
               }
 
-              data = Detail(
-                statusCode: response.statusCode, 
-                details: details
-              );
+              // data = Detail(
+              //   statusCode: response.statusCode, 
+              //   details: details
+              // );
 
-              final detailsList = detailToJson(data);
-              return detailFromJson(detailsList);
+              // final detailsList = detailToJson(data);
+              // return detailFromJson(detailsList);
             }
             catch (e) {
               print("Exception level 2: $e");

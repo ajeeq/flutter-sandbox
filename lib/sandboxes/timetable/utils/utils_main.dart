@@ -10,7 +10,7 @@ class UtilsMain {
   }
 
   static int hourToMinute(String hour, String minute) {
-    var totalMinute = int.parse(hour)*60 + int.parse(minute);
+    var totalMinute = (int.parse(hour))*60 + int.parse(minute);
     return totalMinute;
   }
 }

@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:substring_highlight/substring_highlight.dart';
-import 'package:flutter_sandbox/models/course.dart';
 
 // API Services
 import 'package:flutter_sandbox/api/services.dart';
 import 'package:flutter_sandbox/api/servicestwo.dart';
 
 // Models
+import 'package:flutter_sandbox/models/course.dart';
 import 'package:flutter_sandbox/models/group.dart';
 
 // Providers
@@ -34,7 +34,7 @@ class _CourseAutocompleteState extends ConsumerState<CourseAutocomplete> {
     final campusNameState = ref.watch(campusNameProvider);
     final facultyNameState = ref.watch(facultyNameProvider);
 
-      // declaring notifiers for updating riverpod states
+    // declaring notifiers for updating riverpod states
     final CourseNameNotifier courseNameController = ref.read(courseNameProvider.notifier);
     final GroupListNotifier groupListController = ref.read(groupListProvider.notifier);
 
