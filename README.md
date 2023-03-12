@@ -1,6 +1,6 @@
 # flutter-sandbox
 
-A new Flutter project - projects organized in sandbox folder, for learning purposes.
+A new Flutter project, projects organized in sandbox folder, for learning purposes.
 
 ## Sandbox List
 
@@ -13,5 +13,6 @@ A new Flutter project - projects organized in sandbox folder, for learning purpo
 | hive_counter   | Counter app from github - hivedb |
 | hive_books     | backup_restore_books app from github - hivedb |
 | timetable      | using [timetable_view](https://github.com/Lone-Wolf17/timetable_view) source code with functional vertical timetable and time clash detection |
+| timetablev2    | forked from timetable sandbox with independent timetable_view package + separated input fields in different screens |
 
-*As of 3/10/2022
+*As of 12/3/2023

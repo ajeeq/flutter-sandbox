@@ -28,11 +28,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:flutter_sandbox/sandboxes/schedulerv0.2/translate.dart';
 // import 'package:flutter_sandbox/sandboxes/schedulerv0.2/dictionary.dart';
 
-// Sandbox - timetable
-import 'package:flutter_sandbox/sandboxes/timetable/home.dart';
-import 'package:flutter_sandbox/sandboxes/timetable/selection.dart';
-import 'package:flutter_sandbox/sandboxes/timetable/result.dart';
-import 'package:flutter_sandbox/sandboxes/timetable/about.dart';
+// Sandbox - timetablev2
+import 'package:flutter_sandbox/sandboxes/timetablev2/home.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/selection.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/result.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/about.dart';
 
 // Sandbox - hive_darkmode
 import 'package:flutter_sandbox/sandboxes/hive_darkmode/hive_darkmode.dart';
@@ -118,7 +118,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        // main -> sandbox project entry (now = timetable)
+        // main -> sandbox project entry (now = timetablev2)
         '/': (context) => Home(),
         '/selection': (context) => Selection(),
         '/result': (context) => Result(),
