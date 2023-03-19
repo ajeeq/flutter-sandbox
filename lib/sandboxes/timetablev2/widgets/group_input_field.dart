@@ -21,7 +21,7 @@ class _GroupInputFieldState extends ConsumerState<GroupInputField> {
   final TextEditingController _typeAheadController = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
 
-  String? _selectedSaveCampus;
+  String? _selectedSaveGroup;
 
   bool isLoading = false;
 
@@ -100,7 +100,7 @@ class _GroupInputFieldState extends ConsumerState<GroupInputField> {
                     height: 70,
                     child: Center(
                       child: Text(
-                        'No group Found.',
+                        'No group found.',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -120,8 +120,8 @@ class _GroupInputFieldState extends ConsumerState<GroupInputField> {
                   ),
                   autoFlipDirection: true,
                   autoFlipListDirection: true,
-                  validator: (value) => value!.isEmpty ? 'Please select a campus' : null,
-                  onSaved: (value) => this._selectedSaveCampus = value,
+                  validator: (value) => value!.isEmpty ? 'Please select a group' : null,
+                  onSaved: (value) => this._selectedSaveGroup = value,
                 ),
               ],
             ),

@@ -28,28 +28,41 @@ class _CampusInputFieldState extends ConsumerState<CampusInputField> {
 
   String? _selectedSaveCampus;
 
-  bool isLoading = false;
+  bool _isLoading = false;
+  String _errorMessage = '';
   List<CampusElement> _campuses = [];
-  List<FacultyElement> _faculties = [];
 
   late String _selectedCampus;
-  late String _selectedFaculty;
 
   @override
   void initState() {
     super.initState();
 
-    isLoading = true;
+    _isLoading = true;
 
     ServicesTwo.getCampusesFaculties().then((campuses) {
       final List<CampusElement> jsonStringCampusList = campuses.campuses;
-      final List<FacultyElement> jsonStringFacultyList = campuses.faculties;
-
+    
       setState(() {
         _campuses = jsonStringCampusList;
-        _faculties = jsonStringFacultyList;
-        isLoading = false;
+        _isLoading = false;
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Data loaded from iCRESS successfully!"),
+          duration: Duration(seconds: 5),
+        ),
+      );
+    }).catchError((e) {
+        setState(() {
+          _errorMessage = e.toString();
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(_errorMessage),
+            duration: Duration(seconds: 5),
+          ),
+        );
     });
   }
 
@@ -65,108 +78,124 @@ class _CampusInputFieldState extends ConsumerState<CampusInputField> {
     final CampusNameNotifier campusController = ref.read(campusNameProvider.notifier);
     final CourseListNotifier courseListController = ref.read(courseListProvider.notifier);
 
-    return GestureDetector(
-      // close the suggestions box when the user taps outside of it
-      onTap: () {
-        suggestionBoxController.close();
-      },
-      child: Container(
-        // Add zero opacity to make the gesture detector work
-        color: Colors.amber.withOpacity(0),
-        // Create the form for the user
-        child: Form(
-          key: this._formKey,
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  '1. Campus',
-                  style: TextStyle(
-                    fontFamily: 'avenir',
-                    fontSize: 32,
-                    fontWeight: FontWeight.w900),
+    if (_isLoading) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator()
+          ],
+        ),
+      );
+    }
+    else {
+      return SingleChildScrollView(
+        reverse: true,
+        physics: const ClampingScrollPhysics(),
+        child: GestureDetector(
+          // close the suggestions box when the user taps outside of it
+          onTap: () {
+            suggestionBoxController.close();
+          },
+          child: Column(
+            children: [
+              Form(
+                key: this._formKey,
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        '1. Campus',
+                        style: TextStyle(
+                          fontFamily: 'avenir',
+                          fontSize: 32,
+                          fontWeight: FontWeight.w900),
+                      ),
+                      
+                      TypeAheadFormField(
+                        textFieldConfiguration: TextFieldConfiguration(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            suffixIcon: IconButton(
+                              onPressed: () => this._typeAheadController.clear(),
+                              icon: const Icon(Icons.clear),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide:
+                                  BorderSide(color: Colors.grey[300]!),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide:
+                                  BorderSide(color: Colors.grey[300]!),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide:
+                                  BorderSide(color: Colors.grey[300]!),
+                            ),
+                            hintText: 'Search campus here',
+                          ),
+                          controller: this._typeAheadController,
+                        ),
+                        suggestionsCallback: (pattern) {
+                          Iterable<String> items = _campuses.map((e) => (e.campus));
+                          return items.where((e) => e.toLowerCase().contains(pattern.toLowerCase())).toList();
+                        },
+                        itemBuilder: (context, String suggestion) {
+                          return ListTile(
+                            title: Text(suggestion),
+                          );
+                        },
+                        transitionBuilder: (context, suggestionsBox, controller) {
+                          return suggestionsBox;
+                        },
+                        noItemsFoundBuilder: (context) => Container(
+                          height: 70,
+                          child: Center(
+                            child: Text(
+                              'No campus found.',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        ),
+                        onSuggestionSelected: (String suggestion) {
+                          this._typeAheadController.text = suggestion;
+        
+                          _selectedCampus = suggestion;
+                          campusController.updateSelectedCampusName(_selectedCampus);
+        
+                          ServicesTwo.getCourses(suggestion, "").then((courses) {
+                            final List<CourseElement> jsonStringData = courses.courses;
+        
+                            // updating course list state using Riverpod
+                            courseListController.updateCourseList(jsonStringData);
+                          });
+        
+                        },
+                        suggestionsBoxController: suggestionBoxController,
+                        suggestionsBoxDecoration: SuggestionsBoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          elevation: 8.0,
+                          color: Theme.of(context).cardColor,
+                        ),
+                        autoFlipDirection: true,
+                        autoFlipListDirection: true,
+                        validator: (value) => value!.isEmpty ? 'Please select a campus' : null,
+                        onSaved: (value) => this._selectedSaveCampus = value,
+                      ),
+                    ],
+                  ),
                 ),
-                
-                TypeAheadFormField(
-                  textFieldConfiguration: TextFieldConfiguration(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      suffixIcon: IconButton(
-                        onPressed: () => this._typeAheadController.clear(),
-                        icon: const Icon(Icons.clear),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide:
-                            BorderSide(color: Colors.grey[300]!),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide:
-                            BorderSide(color: Colors.grey[300]!),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide:
-                            BorderSide(color: Colors.grey[300]!),
-                      ),
-                      hintText: 'Search campus here',
-                    ),
-                    controller: this._typeAheadController,
-                  ),
-                  suggestionsCallback: (pattern) {
-                    Iterable<String> items = _campuses.map((e) => (e.campus));
-                    return items.where((e) => e.toLowerCase().contains(pattern.toLowerCase())).toList();
-                  },
-                  itemBuilder: (context, String suggestion) {
-                    return ListTile(
-                      title: Text(suggestion),
-                    );
-                  },
-                  transitionBuilder: (context, suggestionsBox, controller) {
-                    return suggestionsBox;
-                  },
-                  noItemsFoundBuilder: (context) => Container(
-                    height: 70,
-                    child: Center(
-                      child: Text(
-                        'No campus Found.',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                  ),
-                  onSuggestionSelected: (String suggestion) {
-                    this._typeAheadController.text = suggestion;
-
-                    _selectedCampus = suggestion;
-                    campusController.updateSelectedCampusName(_selectedCampus);
-
-                    ServicesTwo.getCourses(suggestion, "").then((courses) {
-                      final List<CourseElement> jsonStringData = courses.courses;
-
-                      // updating course list state using Riverpod
-                      courseListController.updateCourseList(jsonStringData);
-                    });
-
-                  },
-                  suggestionsBoxController: suggestionBoxController,
-                  suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    elevation: 8.0,
-                    color: Theme.of(context).cardColor,
-                  ),
-                  autoFlipDirection: true,
-                  autoFlipListDirection: true,
-                  validator: (value) => value!.isEmpty ? 'Please select a campus' : null,
-                  onSaved: (value) => this._selectedSaveCampus = value,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      ),
-    );
+      );
+    }
+
   }
 }

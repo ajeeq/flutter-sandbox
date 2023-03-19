@@ -31,6 +31,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 // Sandbox - timetablev2
 import 'package:flutter_sandbox/sandboxes/timetablev2/home.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/selection.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/campus_selection.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/faculty_selection.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/course_selection.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/group_selection.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/result.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/about.dart';
 
@@ -121,6 +125,10 @@ class MyApp extends StatelessWidget {
         // main -> sandbox project entry (now = timetablev2)
         '/': (context) => Home(),
         '/selection': (context) => Selection(),
+        '/campus_selection': (context) => CampusSelection(),
+        '/faculty_selection': (context) => FacultySelection(),
+        '/course_selection': (context) => CourseSelection(),
+        '/group_selection': (context) => GroupSelection(),
         '/result': (context) => Result(),
         '/about': (context) => About()
 

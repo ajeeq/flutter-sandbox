@@ -29,7 +29,8 @@ class ServicesTwo {
         var document = parser.parse(response.body);
 
         try {
-          var optionCampus = document.querySelectorAll("select#search_campus > option");
+          var optionCampus = document.querySelectorAll("select#search_cam > option");
+          // print("optionCampus: $optionCampus");
           for (var i=0; i<optionCampus.length; i++) {
             final id = i;
             final campus = optionCampus[i].text.trim();
@@ -37,7 +38,7 @@ class ServicesTwo {
             campuses.add(campusObj);
           }
 
-          var optionFaculty = document.querySelectorAll("select#search_faculty > option");
+          var optionFaculty = document.querySelectorAll("select#eyJ0eXAiOiiiJKV1QiLCJhbGciOiJIUzI1NiJ9 > option");
           for (var i=0; i<optionFaculty.length; i++) {
             final id = i;
             final faculty = optionFaculty[i].text.trim();
@@ -60,9 +61,11 @@ class ServicesTwo {
         }
       }
       else {
-        print("Error: response.statusCode: $response.statusCode");
-        const campusList = null;
-        return campusList;
+        print("Error: response.statusCode: ${response.statusCode}");
+        // const campusList = null;
+        // return campusList;
+        throw 'No data available from the iCRESS at the moment😐';
+        
       }
     } catch (e) {
       print("Exception 1: $e");
@@ -78,13 +81,14 @@ class ServicesTwo {
     Course data;
     List<CourseElement> courses = [];
     
+    // body = optionCampus/optionFaculty in getCampusesFaculties
     var body = {
-      'yNTU2NDgiiLCJzY29wZSI6Ii9llbGFzdG': campusCode,
+      'search_cam': campusCode,
       'eyJ0eXAiOiiJKV1QiLCJhbGciOiJIUzI1NiJ9': facultyCode 
     };
 
     final response = await http.post(Uri.parse(baseUrl), headers: headers, body: body);
-    // print("response: " + response.body);
+    // print("response: + ${response.statusCode}");
 
     try {
       if (response.statusCode == 302) {
@@ -189,11 +193,11 @@ class ServicesTwo {
     
     if (campusCode == "B") {
       groupListUri = baseListUrl + "B/" + facultyCode + "/" + courseCode + ".html";
-      print("\nGroup link url: " + groupListUri);
+      // print("\nGroup link url: " + groupListUri);
     }
     else {
       groupListUri = baseListUrl + campusCode + "/" + courseCode + ".html";
-      print("\nGroup link url: " + groupListUri);
+      // print("\nGroup link url: " + groupListUri);
     }
 
     final response = await http.get(Uri.parse(groupListUri), headers: headers);
@@ -257,6 +261,7 @@ class ServicesTwo {
 
   static Future<Detail> getDetails(rawJson) async {
     final input = selectedFromJson(rawJson);
+    // print("rawJson: $rawJson");
     var campusCodeArray = [];
     var facultySelectedArray = [];
     var courseSelectedArray = [];
@@ -366,6 +371,7 @@ class ServicesTwo {
       );
 
       final detailsList = detailToJson(data);
+      // print("detailsList: $detailsList");
       return detailFromJson(detailsList);
 
     } catch (e) {

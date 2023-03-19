@@ -8,7 +8,8 @@ import 'package:flutter_sandbox/api/services.dart';
 import 'package:flutter_sandbox/api/servicestwo.dart';
 
 // Utils
-import 'package:flutter_sandbox/sandboxes/timetable/utils/utils_main.dart';
+import 'package:flutter_sandbox/utils/utils_main.dart';
+import 'package:flutter_sandbox/utils/hive_selected_course.dart';
 
 // Models
 import 'package:flutter_sandbox/models/detail.dart';
@@ -20,7 +21,6 @@ import 'package:flutter_sandbox/providers/detail_providers.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:flutter_sandbox/sandboxes/timetable/utils/hive_selected_course.dart';
 
 class Home extends ConsumerWidget{
   const Home({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class Home extends ConsumerWidget{
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // declaring riverpod state providers
-    final selectionListState = ref.watch(selectedListProvider);
+    // final selectionListState = ref.watch(selectedListProvider);
 
     // declaring notifiers for updating riverpod states
     final SelectedListNotifier selectionListController = ref.read(selectedListProvider.notifier);
@@ -54,20 +54,20 @@ class Home extends ConsumerWidget{
           valueListenable: HiveSelectedCourse.box.listenable(),
           builder: (context, Box box, widget) {
             return SafeArea(
-              child: box.isEmpty ?
-                Container(
-                  color: Colors.grey[85],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      Center(
-                        child: Text(
-                          "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
-                        ),
-                      )
-                    ],
-                  ),
-                )
+              child: box.isEmpty 
+            ? Container(
+                color: Colors.grey[85],
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget>[
+                    Center(
+                      child: Text(
+                        "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
+                      ),
+                    )
+                  ],
+                ),
+              )
               : Container(
                   margin: const EdgeInsets.symmetric(vertical: 20.0),
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -254,7 +254,7 @@ class Home extends ConsumerWidget{
             backgroundColor: Colors.lightBlue,
             child: const Icon(Icons.add),
             onPressed: () {
-              Navigator.pushNamed(context, '/selection');
+              Navigator.pushNamed(context, '/campus_selection');
             },
           ),
   
@@ -278,65 +278,100 @@ class Home extends ConsumerWidget{
               ServicesTwo.getDetails(jsonString).then((details) {
                 final List<DetailElement> jsonStringData = details.details;
                 bool clashed = false;
-                // print("jsonStringData: $jsonStringData");
+                // print("[home.dart] jsonStringData: $jsonStringData");
         
                 // updating details list returned from API using Riverpod
                 detailListController.updateDetailList(jsonStringData); //jsonStringData = detailsList.details
                 
                 // TODO: Refactor and separate this code into Utils
-                for (var i=0; i<jsonStringData.length; i++) {
-                  for (var j=i+1; j<jsonStringData.length; j++) {
-                    // if first time is the same day with the second day
-                    if(jsonStringData[i].day == jsonStringData[j].day) {
-                      String startHourFormer = (jsonStringData[i].start).split(":")[0];
-                      String startMinuteFormer = (jsonStringData[i].start).split(":")[1].split(" ")[0];
+                // for (var i=0; i<jsonStringData.length; i++) {
+                //   for (var j=i+1; j<jsonStringData.length; j++) {
+                //     // if first time is the same day with the second day
+                //     if(jsonStringData[i].day == jsonStringData[j].day) {
+                //       String startHourFormer = (jsonStringData[i].start).split(":")[0];
+                //       String startMinuteFormer = (jsonStringData[i].start).split(":")[1].split(" ")[0];
 
-                      String endHourFormer = (jsonStringData[i].end).split(":")[0];
-                      String endMinuteFormer = (jsonStringData[i].end).split(":")[1].split(" ")[0];
+                //       String endHourFormer = (jsonStringData[i].end).split(":")[0];
+                //       String endMinuteFormer = (jsonStringData[i].end).split(":")[1].split(" ")[0];
 
-                      String startHourLatter = (jsonStringData[j].start).split(":")[0];
-                      String startMinuteLatter = (jsonStringData[j].start).split(":")[1].split(" ")[0];
+                //       String startHourLatter = (jsonStringData[j].start).split(":")[0];
+                //       String startMinuteLatter = (jsonStringData[j].start).split(":")[1].split(" ")[0];
 
-                      String endHourLatter = (jsonStringData[j].end).split(":")[0];
-                      String endMinuteLatter = (jsonStringData[j].end).split(":")[1].split(" ")[0];
+                //       String endHourLatter = (jsonStringData[j].end).split(":")[0];
+                //       String endMinuteLatter = (jsonStringData[j].end).split(":")[1].split(" ")[0];
 
-                      var summedMinutesStartFormer = UtilsMain.hourToMinute(startHourFormer, startMinuteFormer);
-                      var summedMinutesEndFormer = UtilsMain.hourToMinute(endHourFormer, endMinuteFormer);
-                      var summedMinutesStartLatter = UtilsMain.hourToMinute(startHourLatter, startMinuteLatter);
-                      var summedMinutesEndLatter = UtilsMain.hourToMinute(endHourLatter, endMinuteLatter);
+                //       var summedMinutesStartFormer = UtilsMain.hourToMinute(startHourFormer, startMinuteFormer);
+                //       var summedMinutesEndFormer = UtilsMain.hourToMinute(endHourFormer, endMinuteFormer);
+                //       var summedMinutesStartLatter = UtilsMain.hourToMinute(startHourLatter, startMinuteLatter);
+                //       var summedMinutesEndLatter = UtilsMain.hourToMinute(endHourLatter, endMinuteLatter);
 
-                      if(summedMinutesEndFormer > summedMinutesStartLatter && summedMinutesStartFormer < summedMinutesEndLatter) {
-                        print(jsonStringData[i].course + "(" + jsonStringData[i].start.toString() + "-" + jsonStringData[i].end.toString() + ")" + " is clashed with " + jsonStringData[j].course + "(" + jsonStringData[j].start.toString() + "-" + jsonStringData[j].end.toString() + ")");
-                        clashed = true;
-                        return showDialog<void>(
-                          context: context,
-                          barrierDismissible: false, // user must tap button!
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Time clash occured!'),
-                              content: SingleChildScrollView(
-                                child: ListBody(
-                                  children: <Widget>[
-                                    Text("${jsonStringData[i].course}-${jsonStringData[i].group} (${jsonStringData[i].start}-${jsonStringData[i].end})"),
-                                    Text("is clashed with"),
-                                    Text("${jsonStringData[j].course}-${jsonStringData[j].group} (${jsonStringData[j].start}-${jsonStringData[j].end})"),
-                                  ],
-                                ),
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: const Text('Okay'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
-                    }
-                  }
+                //       if(summedMinutesEndFormer > summedMinutesStartLatter && summedMinutesStartFormer < summedMinutesEndLatter) {
+                //         print(jsonStringData[i].course + "(" + jsonStringData[i].start.toString() + "-" + jsonStringData[i].end.toString() + ")" + " is clashed with " + jsonStringData[j].course + "(" + jsonStringData[j].start.toString() + "-" + jsonStringData[j].end.toString() + ")");
+                //         clashed = true;
+                //         return showDialog<void>(
+                //           context: context,
+                //           barrierDismissible: false, // user must tap button!
+                //           builder: (BuildContext context) {
+                //             return AlertDialog(
+                //               title: const Text('Time clash occured!'),
+                //               content: SingleChildScrollView(
+                //                 child: ListBody(
+                //                   children: <Widget>[
+                //                     Text("${jsonStringData[i].course}-${jsonStringData[i].group} (${jsonStringData[i].start}-${jsonStringData[i].end})"),
+                //                     Text("is clashed with"),
+                //                     Text("${jsonStringData[j].course}-${jsonStringData[j].group} (${jsonStringData[j].start}-${jsonStringData[j].end})"),
+                //                   ],
+                //                 ),
+                //               ),
+                //               actions: <Widget>[
+                //                 TextButton(
+                //                   child: const Text('Okay'),
+                //                   onPressed: () {
+                //                     Navigator.of(context).pop();
+                //                   },
+                //                 ),
+                //               ],
+                //             );
+                //           },
+                //         );
+                //       }
+                //     }
+                //   }
+                // }
+                
+                var isClashSet = UtilsMain.isClash(jsonStringData);
+                clashed = isClashSet.elementAt(0);
+                
+                if(clashed == true) {
+                  DetailElement clashOne = isClashSet.elementAt(1);
+                  DetailElement clashTwo = isClashSet.elementAt(2);
+
+                  return showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Time clash occured!'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text("${clashOne.course}-${clashOne.group} (${clashOne.start}-${clashOne.end})"),
+                              Text("is clashed with"),
+                              Text("${clashTwo.course}-${clashTwo.group} (${clashTwo.start}-${clashTwo.end})"),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Okay'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 }
     
                 Navigator.pushNamed(context, "/result");

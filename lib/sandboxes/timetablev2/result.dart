@@ -3,21 +3,20 @@
 /// 
 
 // Import directives
-import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sandbox/models/detail.dart';
-// import '../../Flutter_Weekly_TimeTable-master/lib/weekly_timetable.dart';
-// import '../../timetable_view-master/lib/timetable_view.dart';
+
+// Import packages
 import '../../packages/timetable_view/timetable_view.dart';
 
 // Services
 import 'package:flutter_sandbox/api/services.dart';
 
 // Utils
-import 'package:flutter_sandbox/sandboxes/timetable/utils/utils_main.dart';
+import 'package:flutter_sandbox/utils/utils_main.dart';
 
 // Provider
 import 'package:flutter_sandbox/providers/detail_providers.dart';
@@ -66,6 +65,8 @@ class Result extends ConsumerWidget{
 
     // final detailsList = detailFromJson('{"statusCode":200,"details":[{"campus":"M3","faculty":"","course":"CSC577","group":"M3CS2304C","start":15,"end":16,"day":"MONDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":""},{"campus":"M3","faculty":"","course":"CSC577","group":"M3CS2304C","start":16,"end":18,"day":"MONDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":"MAKMAL KOMPUTER 4,MAKMAL KOMPUTER 5"},{"campus":"M3","faculty":"","course":"ICT502","group":"M3CS2303C","start":8,"end":10,"day":"MONDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":"BILIK SEMINAR 01 (PPP)"},{"campus":"M3","faculty":"","course":"ICT502","group":"M3CS2303C","start":10,"end":12,"day":"FRIDAY","mode":"BOTH - Fulltime and Part-time","status":"First Timer and Repeater","room":"BILIK TUTORIAL 01"}]}');
     final detailsList = ref.watch(detailListProvider);
+    print("detailsList: $detailsList");
+
 
     // bool clashed = false;
 
@@ -107,30 +108,26 @@ class Result extends ConsumerWidget{
   }
 
   List<LaneEvents> _buildLaneEvents(detailsList) {
-    var startDay = "";
-    final dates = {
-      "mon": <String>['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'],
-      "sun": <String>['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY'],
-    };
+    var setStartDay = UtilsMain.setStartDay(detailsList);
+    final dayColumn = setStartDay.elementAt(0);
+    final dayToCompare = setStartDay.elementAt(1);
 
-    // for (var i=0; i<detailsList.length; i++) {
-    //   if (detailsList[i].day == "MONDAY")
-    //     startDay = "mon";
-    //   else if (detailsList[i].day == "SUNDAY")
-    //     startDay = "sun";
-    // }
+    // final dayToCompare = {
+    //   "mon": <String>['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'],
+    //   "sun": <String>['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY'],
+    // };
 
     int k = 10;
 
     return [
-      for (var i=0; i<dates["mon"]!.length; i++) LaneEvents(
+      for (var i=0; i<dayToCompare.length; i++) LaneEvents(
         lane: Lane(
-          name: dates["mon"]![i],
+          name: dayColumn[i],
           laneIndex: i,
         ),
         events: [
           for (var j=0; j<detailsList.length; j++)
-            if(detailsList[j].day == dates["mon"]![i]) TableEvent(
+            if(detailsList[j].day == dayToCompare[i]) TableEvent(
               title: detailsList[j].course,
               eventId: k+1,
               startTime: TableEventTime(hour: UtilsMain.getHourInt(detailsList[j].start), minute: UtilsMain.getMinuteInt(detailsList[j].start)),
@@ -153,5 +150,3 @@ class Result extends ConsumerWidget{
         "Empty Slot Clicked !! LaneIndex: $laneIndex StartHour: ${start.hour} EndHour: ${end.hour}");
   }
 }
-
-// time clash

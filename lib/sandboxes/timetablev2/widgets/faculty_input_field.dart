@@ -26,13 +26,12 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
   final TextEditingController _typeAheadController = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
 
-  String? _selectedSaveCampus;
+  String? _selectedSaveFaculty;
 
   bool isLoading = false;
-  List<CampusElement> _campuses = [];
   List<FacultyElement> _faculties = [];
 
-  late String _selectedCampus;
+  // late String _selectedCampus;
   late String _selectedFaculty;
 
   @override
@@ -42,11 +41,9 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
     isLoading = true;
 
     ServicesTwo.getCampusesFaculties().then((campuses) {
-      final List<CampusElement> jsonStringCampusList = campuses.campuses;
       final List<FacultyElement> jsonStringFacultyList = campuses.faculties;
 
       setState(() {
-        _campuses = jsonStringCampusList;
         _faculties = jsonStringFacultyList;
         isLoading = false;
       });
@@ -55,6 +52,10 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
 
   @override
   Widget build(BuildContext context) {
+    // declaring riverpod state providers
+    final List<CourseElement> courseListState = ref.watch(courseListProvider);
+    final campusNameState = ref.watch(campusNameProvider);
+
     // declaring notifiers for updating riverpod states
     final FacultyNameNotifier facultyController = ref.read(facultyNameProvider.notifier);
     final CourseListNotifier courseListController = ref.read(courseListProvider.notifier);
@@ -76,7 +77,7 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  '2. Faculty (UiTM SA)',
+                  '2. Faculty',
                   style: TextStyle(
                     fontFamily: 'avenir',
                     fontSize: 32,
@@ -126,7 +127,7 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
                     height: 70,
                     child: Center(
                       child: Text(
-                        'No faculty Found.',
+                        'No faculty found.',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -135,11 +136,12 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
                     this._typeAheadController.text = suggestion;
 
                     _selectedFaculty = suggestion;
+                    // _selectedCampus = campusNameState;
 
                     // updating selected faculty name in state(riverpod)
                     facultyController.updateSelectedFacultyName(_selectedFaculty);
 
-                    ServicesTwo.getCourses(_selectedCampus, suggestion).then((courses) {
+                    ServicesTwo.getCourses(campusNameState, suggestion).then((courses) {
                       final List<CourseElement> jsonStringData = courses.courses;
 
                       // updating course list state using Riverpod
@@ -154,9 +156,19 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
                   ),
                   autoFlipDirection: true,
                   autoFlipListDirection: true,
-                  validator: (value) => value!.isEmpty ? 'Please select a campus' : null,
-                  onSaved: (value) => this._selectedSaveCampus = value,
+                  validator: (value) => value!.isEmpty ? 'Please select a faculty' : null,
+                  onSaved: (value) => this._selectedSaveFaculty = value,
                 ),
+
+                SizedBox(height: 4),
+                
+                Text(
+                  "Skip this and hit Next button if you are not UiTM Shah Alam student.",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 12
+                  )
+                )
               ],
             ),
           ),

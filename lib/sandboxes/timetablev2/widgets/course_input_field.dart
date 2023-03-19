@@ -27,7 +27,7 @@ class _CourseInputFieldState extends ConsumerState<CourseInputField> {
   final TextEditingController _typeAheadController = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
 
-  String? _selectedSaveCampus;
+  String? _selectedSaveCourse;
 
   bool isLoading = false;
 
@@ -109,7 +109,7 @@ class _CourseInputFieldState extends ConsumerState<CourseInputField> {
                     height: 70,
                     child: Center(
                       child: Text(
-                        'No course Found.',
+                        'No course found.',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -140,7 +140,7 @@ class _CourseInputFieldState extends ConsumerState<CourseInputField> {
                   autoFlipDirection: true,
                   autoFlipListDirection: true,
                   validator: (value) => value!.isEmpty ? 'Please select a campus' : null,
-                  onSaved: (value) => this._selectedSaveCampus = value,
+                  onSaved: (value) => this._selectedSaveCourse = value,
                 ),
               ],
             ),
