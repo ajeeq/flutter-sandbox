@@ -1,3 +1,8 @@
+/**
+ * Update: 28/11/23, iCRESS now revamped to this website,
+ * https://simsweb4.uitm.edu.my/estudent/class_timetable/index.htm
+ */
+
 // Import directives
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
@@ -17,7 +22,8 @@ var headers = {
   'content-type': 'application/x-www-form-urlencoded',
 };
 
-class ServicesTwo {
+class SimsWeb4 {
+  // Fetching campus list
   static Future<Campus> getCampusesFaculties() async {
     Campus data;
     List<CampusElement> campuses = [];
@@ -30,7 +36,6 @@ class ServicesTwo {
 
         try {
           var optionCampus = document.querySelectorAll("select#search_cam > option");
-          // print("optionCampus: $optionCampus");
           for (var i=0; i<optionCampus.length; i++) {
             final id = i;
             final campus = optionCampus[i].text.trim();
@@ -56,39 +61,32 @@ class ServicesTwo {
           return campusFromJson(campusList);
         }
         catch (e) {
-          print("Exception 2: $e");
-          throw e;
+          rethrow;
         }
       }
       else {
-        print("Error: response.statusCode: ${response.statusCode}");
-        // const campusList = null;
-        // return campusList;
         throw 'Error connecting to iCRESS😐';
-        
       }
     } catch (e) {
-      print("Exception 1: $e");
-      throw e;
+      rethrow;
     }
   }
 
-  // TODO: flow of getting request need to revise
+
+  // Fetching course list
   static Future<Course> getCourses(selectedCampus, selectedFaculty) async {
     var campusCode = selectedCampus.split("-")[0].trim();
     var facultyCode = selectedFaculty.split("-")[0].trim();
     
     Course data;
     List<CourseElement> courses = [];
-    
-    // body = optionCampus/optionFaculty in getCampusesFaculties
+
     var body = {
       'search_cam': campusCode,
       'eyJ0eXAiOiiJKV1QiLCJhbGciOiJIUzI1NiJ9': facultyCode 
     };
 
     final response = await http.post(Uri.parse(baseUrl), headers: headers, body: body);
-    // print("response: + ${response.statusCode}");
 
     try {
       if (response.statusCode == 302) {
@@ -119,20 +117,17 @@ class ServicesTwo {
               return courseFromJson(courseList);
             }
             catch (e) {
-              print("Exception 2: $e");
-              throw e;
+              rethrow;
             }
 
           }
           else {
-            print("Error: redirectedResponse.statusCode " + (redirectedResponse.statusCode).toString());
             const courseList = null;
             return courseList; 
           }
             
         }
         else {
-          print("Error: Redirect URL or location in header not found");
           const courseList = null;
           return courseList; 
         }
@@ -160,24 +155,21 @@ class ServicesTwo {
           return courseFromJson(courseList);
         }
         catch (e) {
-          print("Exception 2: $e");
-          throw e;
+          rethrow;
         }
       }
       else {
-        print("No redirect.");
-        print("Status Code - " + (response.statusCode).toString());
         const courseList = null;
         return courseList;
       }
     
     } catch (e) {
-      print("Exception 1: $e");
-      throw e;
+      rethrow;
     }
   }
 
-  // TODO: flow of getting request need to revise
+
+  // Fetching group list
   static Future<Group> getGroup(selectedCampus, selectedFaculty, selectedCourse) async {
     var campusCode = selectedCampus.split("-")[0].trim();
     var facultyCode = selectedFaculty.split("-")[0].trim();
@@ -187,17 +179,15 @@ class ServicesTwo {
     String validity;
     Group data;
     List<GroupElement> groups = [];
-
-    // baseListUrl = "https://icress.uitm.edu.my/timetable/list/";
     String groupListUri;
     
     if (campusCode == "B") {
+      // ignore: prefer_interpolation_to_compose_strings
       groupListUri = baseListUrl + "B/" + facultyCode + "/" + courseCode + ".html";
-      // print("\nGroup link url: " + groupListUri);
     }
     else {
+      // ignore: prefer_interpolation_to_compose_strings
       groupListUri = baseListUrl + campusCode + "/" + courseCode + ".html";
-      // print("\nGroup link url: " + groupListUri);
     }
 
     final response = await http.get(Uri.parse(groupListUri), headers: headers);
@@ -229,7 +219,7 @@ class ServicesTwo {
             final group = element;
             var groupObj = GroupElement(id: id, group: group);
             groups.add(groupObj);
-          };
+          }
 
           data = Group(
             valid: validity,
@@ -241,27 +231,23 @@ class ServicesTwo {
           return groupFromJson(groupList);
         }
         catch (e) {
-          print("Exception 2: $e");
-          throw e;
+          rethrow;
         }
       }
       else {
-        print("No redirect.");
-        print("Status Code - " + (response.statusCode).toString());
         const groupList = null;
         return groupList;
       }
     
     } catch (e) {
-      print("Exception 1: $e");
-      throw e;
+      rethrow;
     }
   }
 
 
+  // Fetching detail list based on selected campus, course, group
   static Future<Detail> getDetails(rawJson) async {
     final input = selectedFromJson(rawJson);
-    // print("rawJson: $rawJson");
     var campusCodeArray = [];
     var facultySelectedArray = [];
     var courseSelectedArray = [];
@@ -270,8 +256,6 @@ class ServicesTwo {
     int statusCode = 0;
     Detail data;
     List<DetailElement> details = [];
-
-    // baseUrl = "https://icress.uitm.edu.my/timetable/list/";
     String newUrl;
 
     for (var i=0; i<input.length; i++) {
@@ -285,12 +269,15 @@ class ServicesTwo {
     try {
       for (var i=0; i<input.length; i++) {
         if (campusCodeArray[i] == "B") {
+          // ignore: prefer_interpolation_to_compose_strings
           newUrl = baseListUrl + "B/" + facultySelectedArray[i] + "/" + courseSelectedArray[i] + ".html";
         }
         else {
+          // ignore: prefer_interpolation_to_compose_strings
           newUrl = baseListUrl + campusCodeArray[i] + "/" + courseSelectedArray[i] + ".html";
         }
-        
+
+
         final response = await http.get(Uri.parse(newUrl), headers: headers);
         try {
           if (response.statusCode == 200) {
@@ -313,6 +300,22 @@ class ServicesTwo {
                 
                 if (group == groupSelectedArray[i]) {
                   group = groupSelectedArray[i];
+
+                  // day: getting day in DAY TIME column
+                  // MONDAY
+
+                  // bothTime: getting start and end time in DAY TIME column 
+                  // 14:00 PM-15:00 PM )
+
+                  // time: cleaned start and end time
+                  // 14:00 PM-15:00 PM
+
+                  // meridiemStart/meridiemEnd: getting start time including trailing meridiem
+                  // 08:00 AM
+
+                  // start/end: removing leading zero
+                  // 8:00 AM
+
                   final day = daytime.split("(")[0];
                   final bothTime = daytime.split("(")[1];
                   final time = bothTime.substring(1, bothTime.indexOf(')')).trim();
@@ -338,30 +341,18 @@ class ServicesTwo {
                   details.add(detailObj);
                 }
               }
-
-              // data = Detail(
-              //   statusCode: response.statusCode, 
-              //   details: details
-              // );
-
-              // final detailsList = detailToJson(data);
-              // return detailFromJson(detailsList);
             }
             catch (e) {
-              print("Exception level 2: $e");
-              throw e;
+              rethrow;
             }
           }
           else {
-            print("URL - " + newUrl.toString());
-            print("Status Code - " + (response.statusCode).toString());
             const detailsList = null;
             return detailsList;
           }
         }
         catch (e) {
-          print("Exception level 1: $e");
-          throw e;
+          rethrow;
         }
       }
 
@@ -371,11 +362,11 @@ class ServicesTwo {
       );
 
       final detailsList = detailToJson(data);
-      // print("detailsList: $detailsList");
       return detailFromJson(detailsList);
 
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
+
 }

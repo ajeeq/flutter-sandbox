@@ -7,45 +7,24 @@ import 'package:hive_flutter/hive_flutter.dart';
 // .env file for loading environment variables
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-// SharedPreferences
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/utils/result_prefs.dart';
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/utils/selection_prefs.dart';
-
-// Sandbox - basic
-// import 'package:flutter_sandbox/sandboxes/basic/BasicHome.dart';
-
-// Sandbox - userlist
-// import 'package:flutter_sandbox/sandboxes/userlist/screens/home.dart';
-
-// Sandbox - campus
-// import 'package:flutter_sandbox/sandboxes/campus/home_campus.dart';
-
-// Sandbox - schedulerv0.1
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.1/home.dart';
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.1/selection.dart';
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.1/result.dart';
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/settings.dart';
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/translate.dart';
-// import 'package:flutter_sandbox/sandboxes/schedulerv0.2/dictionary.dart';
+// Sandbox - companion
+// import 'package:flutter_sandbox/sandboxes/companion/screens/home.dart';
+// import 'package:flutter_sandbox/sandboxes/companion/screens/schedule/campus_selection.dart';
+// import 'package:flutter_sandbox/sandboxes/companion/screens/schedule/faculty_selection.dart';
+// import 'package:flutter_sandbox/sandboxes/companion/screens/schedule/course_selection.dart';
+// import 'package:flutter_sandbox/sandboxes/companion/screens/schedule/group_selection.dart';
+// import 'package:flutter_sandbox/sandboxes/companion/screens/schedule/schedule_list.dart';
+// import 'package:flutter_sandbox/sandboxes/companion/screens/schedule/schedule_result.dart';
+import 'package:flutter_sandbox/sandboxes/companion/screens/settings/settings.dart';
 
 // Sandbox - timetablev2
 import 'package:flutter_sandbox/sandboxes/timetablev2/home.dart';
+import 'package:flutter_sandbox/sandboxes/timetablev2/result.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/selection.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/campus_selection.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/faculty_selection.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/course_selection.dart';
 import 'package:flutter_sandbox/sandboxes/timetablev2/group_selection.dart';
-import 'package:flutter_sandbox/sandboxes/timetablev2/result.dart';
-import 'package:flutter_sandbox/sandboxes/timetablev2/about.dart';
-
-// Sandbox - hive_darkmode
-import 'package:flutter_sandbox/sandboxes/hive_darkmode/hive_darkmode.dart';
-
-// Sandbox - hive_counter
-import 'package:flutter_sandbox/sandboxes/hive_counter/hive_counter.dart';
-
-// Sandbox - hive_books
-import 'package:flutter_sandbox/sandboxes/hive_books/hive_books.dart';
 
 // Models
 import 'package:flutter_sandbox/models/selected.dart';
@@ -125,17 +104,14 @@ class MyApp extends StatelessWidget {
         // main -> sandbox project entry (now = timetablev2)
         '/': (context) => Home(),
         '/selection': (context) => Selection(),
+        '/result': (context) => Result(),
         '/campus_selection': (context) => CampusSelection(),
         '/faculty_selection': (context) => FacultySelection(),
         '/course_selection': (context) => CourseSelection(),
         '/group_selection': (context) => GroupSelection(),
-        '/result': (context) => Result(),
-        '/about': (context) => About()
-
-        // schedulerv0.2
-        // '/settings': (context) => Settings(),
-        // '/dictionary': (context) => Dictionary(),
-        // '/translate': (context) => Translate(),
+        // '/schedule_list': (context) => ScheduleList(),
+        // '/schedule_result': (context) => ScheduleResult(),
+        '/about': (context) => Settings()
       },
     );
   }
