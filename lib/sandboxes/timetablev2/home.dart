@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 // Services
 import 'package:flutter_sandbox/api/services.dart';
 import 'package:flutter_sandbox/api/servicestwo.dart';
+import 'package:flutter_sandbox/api/simsweb4.dart';
 
 // Utils
 import 'package:flutter_sandbox/utils/utils_main.dart';
@@ -22,11 +23,20 @@ import 'package:flutter_sandbox/providers/detail_providers.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
-class Home extends ConsumerWidget{
+class Home extends ConsumerStatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends ConsumerState<Home>{
+  String _errorMessage = '';
+  bool data = false;
+  bool isExperimental = true;
   
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // declaring riverpod state providers
     // final selectionListState = ref.watch(selectedListProvider);
 
@@ -62,7 +72,7 @@ class Home extends ConsumerWidget{
                   children: const <Widget>[
                     Center(
                       child: Text(
-                        "No data. Please add course(s) by tapping '+' button on the bottom right corner.",
+                        "No data.",
                       ),
                     )
                   ],
@@ -254,7 +264,30 @@ class Home extends ConsumerWidget{
             backgroundColor: Colors.lightBlue,
             child: const Icon(Icons.add),
             onPressed: () {
-              Navigator.pushNamed(context, '/campus_selection');
+              SimsWeb4.getCampuses().then((data) {
+                if(data.results.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("No data available from the iCRESS at the moment😐"),
+                      duration: Duration(seconds: 5),
+                    ),
+                  );
+                } else {
+                  Navigator.pushNamed(context, '/campus_selection', arguments: {
+                    'campuses': data.results
+                  });
+                }
+              }).catchError((e) {
+                  setState(() {
+                    _errorMessage = e.toString();
+                  });
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(_errorMessage),
+                      duration: const Duration(seconds: 5),
+                    ),
+                  );
+              });
             },
           ),
   

@@ -8,6 +8,7 @@ import 'package:flutter_sandbox/api/servicestwo.dart';
 
 // Models
 import 'package:flutter_sandbox/models/campus_faculty.dart';
+import 'package:flutter_sandbox/models/cam_fac.dart';
 import 'package:flutter_sandbox/models/course.dart';
 
 // Providers and Hive
@@ -15,7 +16,12 @@ import 'package:flutter_sandbox/providers/campus_providers.dart';
 import 'package:flutter_sandbox/providers/course_providers.dart';
 
 class FacultyInputField extends ConsumerStatefulWidget {
-  const FacultyInputField({Key? key}) : super(key: key);
+  const FacultyInputField({
+    Key? key,
+    required this.faculties
+  }) : super(key: key);
+
+  final List<Result> faculties;
 
   @override
   _FacultyInputFieldState createState() => _FacultyInputFieldState();
@@ -40,14 +46,14 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
 
     isLoading = true;
 
-    ServicesTwo.getCampusesFaculties().then((campuses) {
-      final List<FacultyElement> jsonStringFacultyList = campuses.faculties;
+    // ServicesTwo.getCampusesFaculties().then((campuses) {
+    //   final List<FacultyElement> jsonStringFacultyList = campuses.faculties;
 
-      setState(() {
-        _faculties = jsonStringFacultyList;
-        isLoading = false;
-      });
-    });
+    //   setState(() {
+    //     _faculties = jsonStringFacultyList;
+    //     isLoading = false;
+    //   });
+    // });
   }
 
   @override
@@ -59,6 +65,7 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
     // declaring notifiers for updating riverpod states
     final FacultyNameNotifier facultyController = ref.read(facultyNameProvider.notifier);
     final CourseListNotifier courseListController = ref.read(courseListProvider.notifier);
+    final faculties = widget.faculties;
     
     return GestureDetector(
       // close the suggestions box when the user taps outside of it
@@ -112,7 +119,7 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
                     controller: this._typeAheadController,
                   ),
                   suggestionsCallback: (pattern) {
-                    Iterable<String> items = _faculties.map((e) => (e.faculty));
+                    Iterable<String> items = faculties.map((e) => (e.text));
                     return items.where((e) => e.toLowerCase().contains(pattern.toLowerCase())).toList();
                   },
                   itemBuilder: (context, String suggestion) {
@@ -141,12 +148,12 @@ class _FacultyInputFieldState extends ConsumerState<FacultyInputField> {
                     // updating selected faculty name in state(riverpod)
                     facultyController.updateSelectedFacultyName(_selectedFaculty);
 
-                    ServicesTwo.getCourses(campusNameState, suggestion).then((courses) {
-                      final List<CourseElement> jsonStringData = courses.courses;
+                    // ServicesTwo.getCourses(campusNameState, suggestion).then((courses) {
+                    //   final List<CourseElement> jsonStringData = courses.courses;
 
-                      // updating course list state using Riverpod
-                      courseListController.updateCourseList(jsonStringData);
-                    });
+                    //   // updating course list state using Riverpod
+                    //   courseListController.updateCourseList(jsonStringData);
+                    // });
                   },
                   suggestionsBoxController: suggestionBoxController,
                   suggestionsBoxDecoration: SuggestionsBoxDecoration(

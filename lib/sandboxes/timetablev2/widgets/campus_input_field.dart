@@ -5,9 +5,11 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 // API Services
 import 'package:flutter_sandbox/api/servicestwo.dart';
+import 'package:flutter_sandbox/api/simsweb4.dart';
 
 // Models
 import 'package:flutter_sandbox/models/campus_faculty.dart';
+import 'package:flutter_sandbox/models/cam_fac.dart';
 import 'package:flutter_sandbox/models/course.dart';
 
 // Providers and Hive
@@ -15,7 +17,12 @@ import 'package:flutter_sandbox/providers/campus_providers.dart';
 import 'package:flutter_sandbox/providers/course_providers.dart';
 
 class CampusInputField extends ConsumerStatefulWidget {
-  const CampusInputField({Key? key}) : super(key: key);
+  const CampusInputField({
+    Key? key,
+    required this.campuses
+  }) : super(key: key);
+
+  final List<Result> campuses;
 
   @override
   _CampusInputFieldState createState() => _CampusInputFieldState();
@@ -30,7 +37,7 @@ class _CampusInputFieldState extends ConsumerState<CampusInputField> {
 
   bool _isLoading = false;
   String _errorMessage = '';
-  List<CampusElement> _campuses = [];
+  List<Result> _campuses = [];
 
   late String _selectedCampus;
 
@@ -38,32 +45,41 @@ class _CampusInputFieldState extends ConsumerState<CampusInputField> {
   void initState() {
     super.initState();
 
-    _isLoading = true;
-
-    ServicesTwo.getCampusesFaculties().then((campuses) {
-      final List<CampusElement> jsonStringCampusList = campuses.campuses;
-    
-      setState(() {
-        _campuses = jsonStringCampusList;
-        _isLoading = false;
-      });
+    Future<Null>.delayed(Duration.zero, () {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Data loaded from iCRESS successfully!"),
           duration: Duration(seconds: 5),
         ),
       );
-    }).catchError((e) {
-        setState(() {
-          _errorMessage = e.toString();
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(_errorMessage),
-            duration: Duration(seconds: 5),
-          ),
-        );
     });
+
+    // _isLoading = true;
+
+    // SimsWeb4.getCampuses().then((campuses) {
+    //   final List<Result> jsonStringCampusList = campuses.results;
+    
+    //   setState(() {
+    //     _campuses = jsonStringCampusList;
+    //     _isLoading = false;
+    //   });
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       content: Text("Data loaded from iCRESS successfully!"),
+    //       duration: Duration(seconds: 5),
+    //     ),
+    //   );
+    // }).catchError((e) {
+    //     setState(() {
+    //       _errorMessage = e.toString();
+    //     });
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //       SnackBar(
+    //         content: Text(_errorMessage),
+    //         duration: Duration(seconds: 5),
+    //       ),
+    //     );
+    // });
   }
 
   @override
@@ -77,6 +93,8 @@ class _CampusInputFieldState extends ConsumerState<CampusInputField> {
     // declaring notifiers for updating riverpod states
     final CampusNameNotifier campusController = ref.read(campusNameProvider.notifier);
     final CourseListNotifier courseListController = ref.read(courseListProvider.notifier);
+    final campuses = widget.campuses;
+    // print(campuses);
 
     if (_isLoading) {
       return Center(
@@ -142,7 +160,7 @@ class _CampusInputFieldState extends ConsumerState<CampusInputField> {
                           controller: this._typeAheadController,
                         ),
                         suggestionsCallback: (pattern) {
-                          Iterable<String> items = _campuses.map((e) => (e.campus));
+                          Iterable<String> items = campuses.map((e) => (e.text));
                           return items.where((e) => e.toLowerCase().contains(pattern.toLowerCase())).toList();
                         },
                         itemBuilder: (context, String suggestion) {
@@ -168,12 +186,12 @@ class _CampusInputFieldState extends ConsumerState<CampusInputField> {
                           _selectedCampus = suggestion;
                           campusController.updateSelectedCampusName(_selectedCampus);
         
-                          ServicesTwo.getCourses(suggestion, "").then((courses) {
-                            final List<CourseElement> jsonStringData = courses.courses;
+                          // ServicesTwo.getCourses(suggestion, "").then((courses) {
+                          //   final List<CourseElement> jsonStringData = courses.courses;
         
-                            // updating course list state using Riverpod
-                            courseListController.updateCourseList(jsonStringData);
-                          });
+                          //   // updating course list state using Riverpod
+                          //   courseListController.updateCourseList(jsonStringData);
+                          // });
         
                         },
                         suggestionsBoxController: suggestionBoxController,
