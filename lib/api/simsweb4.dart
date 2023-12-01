@@ -105,7 +105,7 @@ class SimsWeb4 {
     };
 
     var body = "search_campus=$campusCode&search_faculty=$facultyCode&search_course=";
-    print(body);
+    // print(body);
 
     final response = await http.post(Uri.parse(resultUrl), headers: resultHeaders, body: body);
     try {
@@ -117,11 +117,18 @@ class SimsWeb4 {
         try {
           var tableCourse = document.querySelectorAll("#datatable-buttons > tbody")[0];
           var trs = tableCourse.querySelectorAll("tr");
+          var courseBaseUrl = 'https://simsweb4.uitm.edu.my/estudent/class_timetable/';
           
           for (var i=0; i<trs.length; i++) {
             final num = trs[i].children[0].text.toString().trim();
             final course = trs[i].children[1].text.toString().trim();
-            var course_obj = CourseElement(num: num, course: course);
+            final button = trs[i].getElementsByTagName('button[type="button"]')[0].attributes['onclick'];
+            final parts = button?.split("'");
+            final url = parts?[1] ?? '';
+            final fullUrl = courseBaseUrl + url;
+            // print(fullUrl);
+
+            var course_obj = CourseElement(num: num, course: course, url: fullUrl);
             courses.add(course_obj);
           }
 
@@ -131,7 +138,7 @@ class SimsWeb4 {
           );
 
           final courseList = courseToJson(data);
-          print(courseList);
+          // print(courseList);
           return courseFromJson(courseList);
         }
         catch (e) {

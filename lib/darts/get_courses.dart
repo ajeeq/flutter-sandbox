@@ -7811,7 +7811,7 @@ if (parseInt(navigator.appVersion) >= 4) { win.window.focus(); }
             for (var i=0; i<trs.length; i++) {
               final num = trs[i].children[0].text.toString().trim();
               final course = trs[i].children[1].text.toString().trim();
-              var course_obj = CourseElement(num: num, course: course);
+              var course_obj = CourseElement(num: num, course: course, url: '');
               courses.add(course_obj);
             }
 

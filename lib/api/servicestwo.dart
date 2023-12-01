@@ -106,7 +106,7 @@ class ServicesTwo {
               for (var i=0; i<trs.length; i++) {
                 final num = trs[i].children[0].text.toString().trim();
                 final course = trs[i].children[1].text.toString().trim();
-                var courseObj = CourseElement(num: num, course: course);
+                var courseObj = CourseElement(num: num, course: course, url: '');
                 courses.add(courseObj);
               }
 
@@ -147,7 +147,7 @@ class ServicesTwo {
           for (var i=0; i<trs.length; i++) {
             final num = trs[i].children[0].text.toString().trim();
             final course = trs[i].children[1].text.toString().trim();
-            var courseObj = CourseElement(num: num, course: course);
+            var courseObj = CourseElement(num: num, course: course, url: '');
             courses.add(courseObj);
           }
 

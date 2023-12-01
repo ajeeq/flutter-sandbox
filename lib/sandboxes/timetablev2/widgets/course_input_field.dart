@@ -123,12 +123,12 @@ class _CourseInputFieldState extends ConsumerState<CourseInputField> {
                     // NOTE: course name is from suggestion above
                     // NOTE: campus name is campusNameState in provider declared above
                 
-                    ServicesTwo.getGroup(campusNameState, facultyNameState, suggestion).then((groups) {
-                      final List<GroupElement> jsonStringData = groups.groups;
+                    // ServicesTwo.getGroup(campusNameState, facultyNameState, suggestion).then((groups) {
+                    //   final List<GroupElement> jsonStringData = groups.groups;
 
-                      // updating group list state
-                      groupListController.updateGroupList(jsonStringData);
-                    });
+                    //   // updating group list state
+                    //   groupListController.updateGroupList(jsonStringData);
+                    // });
 
                   },
                   suggestionsBoxController: suggestionBoxController,

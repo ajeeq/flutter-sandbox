@@ -33,18 +33,22 @@ class CourseElement {
     CourseElement({
         required this.num,
         required this.course,
+        required this.url,
     });
 
     String num;
     String course;
+    String url;
 
     factory CourseElement.fromJson(Map<String, dynamic> json) => CourseElement(
         num: json["num"],
         course: json["course"],
+        url: json["url"],
     );
 
     Map<String, dynamic> toJson() => {
         "num": num,
         "course": course,
+        "url": url,
     };
 }
