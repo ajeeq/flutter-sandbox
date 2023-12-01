@@ -159,44 +159,24 @@ class SimsWeb4 {
 
 
   // Fetching group list
-  static Future<Group> getGroup(selectedCampus, selectedFaculty, selectedCourse) async {
-    var campusCode = selectedCampus.split("-")[0].trim();
-    var facultyCode = selectedFaculty.split("-")[0].trim();
-    var courseCode = selectedCourse;
+  static Future<Group> getGroup(url) async {
+    // print("group url: " + url);
 
     var groupDuplicated = [];
-    String validity;
     Group data;
     List<GroupElement> groups = [];
-    String groupListUri;
-    
-    if (campusCode == "B") {
-      // ignore: prefer_interpolation_to_compose_strings
-      groupListUri = baseListUrl + "B/" + facultyCode + "/" + courseCode + ".html";
-    }
-    else {
-      // ignore: prefer_interpolation_to_compose_strings
-      groupListUri = baseListUrl + campusCode + "/" + courseCode + ".html";
-    }
 
-    final response = await http.get(Uri.parse(groupListUri), headers: headers);
-
+    final response = await http.get(Uri.parse(url), headers: headers);
     try {
       if (response.statusCode == 200) {
         var document = parser.parse(response.body);
 
         try {
-          // fetching date validity
-          var tableCourseValid = document.querySelectorAll("body > table > tbody > tr");
-          final thead = tableCourseValid[0].children[0].text.toString().trim().split("<br>")[0];
-          final theadParts = thead.split("as");
-          validity = theadParts[1].trim();
-
           // fetching specific course code row table element
-          var tableCourse = document.querySelectorAll("body > table > tbody > tr");
+          var tableCourse = document.querySelectorAll("#example > tbody > tr");
 
           // fetching all course code data
-          for (var i=2; i<tableCourse.length; i++) {
+          for (var i=1; i<tableCourse.length; i++) {
             groupDuplicated.add(tableCourse[i].children[2].text.toString().trim());
           }
 
@@ -211,12 +191,13 @@ class SimsWeb4 {
           }
 
           data = Group(
-            valid: validity,
+            // valid: validity,
             statusCode: response.statusCode,
             groups: groups
           );
 
           final groupList = groupToJson(data);
+          print("groupList: " + groupList);
           return groupFromJson(groupList);
         }
         catch (e) {

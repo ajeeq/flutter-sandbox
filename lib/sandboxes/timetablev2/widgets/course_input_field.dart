@@ -40,6 +40,7 @@ class _CourseInputFieldState extends ConsumerState<CourseInputField> {
 
     // declaring notifiers for updating riverpod states
     final CourseNameNotifier courseNameController = ref.read(courseNameProvider.notifier);
+    final CourseUrlNotifier courseUrlController = ref.read(courseUrlProvider.notifier);
     final GroupListNotifier groupListController = ref.read(groupListProvider.notifier);
 
     return GestureDetector(
@@ -116,9 +117,21 @@ class _CourseInputFieldState extends ConsumerState<CourseInputField> {
                   ),
                   onSuggestionSelected: (String suggestion) {
                     this._typeAheadController.text = suggestion;
+                    // bool found = false;
+                    var url = '';
 
-                    // updating selected course name in state(riverpod)
-                    courseNameController.updateSelectedCourseName(suggestion.toString());
+                    for (var obj in courseListState) {
+                      if (obj.course == suggestion) {
+                        url = obj.url;
+                        // found = true;
+                        break;
+                      }
+                      // print(jsonEncode(obj));
+                    }
+                      // updating selected course name and course url in state(riverpod)
+                      courseNameController.updateSelectedCourseName(suggestion.toString());
+                      courseUrlController.updateCourseUrl(url);
+                      print(suggestion + ", " + url);
 
                     // NOTE: course name is from suggestion above
                     // NOTE: campus name is campusNameState in provider declared above

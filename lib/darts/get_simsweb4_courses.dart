@@ -634,7 +634,7 @@ function check_form_before_submit(){
         final fullUrl = courseBaseUrl + url;
 
 
-        print(fullUrl);
+        // print(fullUrl);
         var course_obj = CourseElement(num: num, course: course, url: fullUrl);
         courses.add(course_obj);
       }
@@ -645,7 +645,7 @@ function check_form_before_submit(){
       );
 
       final courseList = courseToJson(data);
-      // print(courseList);
+      print(courseList);
     }
     catch (e) {
       print("Exception level 2: $e");

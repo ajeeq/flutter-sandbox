@@ -293,7 +293,7 @@ void main(List<String> args) async {
         print(groupDuplicated);
 
         data = Group(
-          valid: validity,
+          // valid: validity,
           statusCode: response.statusCode,
           groups: groups
         );

@@ -3,6 +3,7 @@ import 'package:flutter_sandbox/models/course.dart';
 
 final courseListProvider = StateNotifierProvider<CourseListNotifier, List<CourseElement>>((ref) => CourseListNotifier());
 final courseNameProvider = StateNotifierProvider((ref) => CourseNameNotifier());
+final courseUrlProvider = StateNotifierProvider((ref) => CourseUrlNotifier());
 
 class CourseListNotifier extends StateNotifier<List<CourseElement>> {
   CourseListNotifier() : super([]);
@@ -25,6 +26,14 @@ class CourseNameNotifier extends StateNotifier<String> {
   CourseNameNotifier(): super("");
 
   updateSelectedCourseName(String value) {
+    state = value;
+  }
+}
+
+class CourseUrlNotifier extends StateNotifier<String> {
+  CourseUrlNotifier(): super("");
+
+  updateCourseUrl(String value) {
     state = value;
   }
 }

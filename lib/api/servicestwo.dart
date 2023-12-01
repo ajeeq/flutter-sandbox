@@ -232,7 +232,7 @@ class ServicesTwo {
           };
 
           data = Group(
-            valid: validity,
+            // valid: validity,
             statusCode: response.statusCode,
             groups: groups
           );
