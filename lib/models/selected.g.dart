@@ -20,14 +20,15 @@ class SelectedAdapter extends TypeAdapter<Selected> {
       campusSelected: fields[1] as String,
       facultySelected: fields[2] as String,
       courseSelected: fields[3] as String,
-      groupSelected: fields[4] as String,
+      courseUrlSelected: fields[4] as String,
+      groupSelected: fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Selected obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(1)
       ..write(obj.campusSelected)
       ..writeByte(2)
@@ -35,6 +36,8 @@ class SelectedAdapter extends TypeAdapter<Selected> {
       ..writeByte(3)
       ..write(obj.courseSelected)
       ..writeByte(4)
+      ..write(obj.courseUrlSelected)
+      ..writeByte(5)
       ..write(obj.groupSelected);
   }
 

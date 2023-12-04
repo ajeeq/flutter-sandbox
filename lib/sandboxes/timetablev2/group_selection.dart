@@ -32,6 +32,7 @@ class _GroupSelectionState extends ConsumerState<GroupSelection> {
     // declaring riverpod state providers
     final campusNameState = ref.watch(campusNameProvider);
     final courseNameState = ref.watch(courseNameProvider);
+    final courseUrlState = ref.watch(courseUrlProvider);
     final facultyNameState = ref.watch(facultyNameProvider);
     final groupNameState = ref.watch(groupNameProvider);
 
@@ -51,6 +52,7 @@ class _GroupSelectionState extends ConsumerState<GroupSelection> {
           final selection = Selected(
             campusSelected: campusNameState.toString(),
             courseSelected: courseNameState.toString(),
+            courseUrlSelected: courseUrlState.toString(),
             facultySelected: facultyNameState.toString(),
             groupSelected: groupNameState.toString()
           );

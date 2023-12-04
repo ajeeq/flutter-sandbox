@@ -37,7 +37,9 @@ class SimsWeb4 {
     try {
       if (response.statusCode == 200) {
         try {
-          return campusFacultyFromJson(response.body);
+          final campusList = response.body;
+          print(">>>>> CAMPUS: " + campusList);
+          return campusFacultyFromJson(campusList);
         }
         catch (e) {
           rethrow;
@@ -57,7 +59,9 @@ class SimsWeb4 {
     try {
       if (response.statusCode == 200) {
         try {
-          return campusFacultyFromJson(response.body);
+          final facultyList = response.body;
+          print(">>>>> FACULTY: " + facultyList);
+          return campusFacultyFromJson(facultyList);
         }
         catch (e) {
           rethrow;
@@ -138,7 +142,7 @@ class SimsWeb4 {
           );
 
           final courseList = courseToJson(data);
-          // print(courseList);
+          print(">>>>> COURSE: " + courseList);
           return courseFromJson(courseList);
         }
         catch (e) {
@@ -176,7 +180,7 @@ class SimsWeb4 {
           var tableCourse = document.querySelectorAll("#example > tbody > tr");
 
           // fetching all course code data
-          for (var i=1; i<tableCourse.length; i++) {
+          for (var i=0; i<tableCourse.length; i++) {
             groupDuplicated.add(tableCourse[i].children[2].text.toString().trim());
           }
 
@@ -197,7 +201,7 @@ class SimsWeb4 {
           );
 
           final groupList = groupToJson(data);
-          print("groupList: " + groupList);
+          print(">>>>> GROUP: " + groupList);
           return groupFromJson(groupList);
         }
         catch (e) {
@@ -218,47 +222,43 @@ class SimsWeb4 {
   // Fetching detail list based on selected campus, course, group
   static Future<Detail> getDetails(rawJson) async {
     final input = selectedFromJson(rawJson);
+
     var campusCodeArray = [];
     var facultySelectedArray = [];
     var courseSelectedArray = [];
+    var courseUrlSelectedArray = [];
     var groupSelectedArray = [];
 
     int statusCode = 0;
     Detail data;
     List<DetailElement> details = [];
-    String newUrl;
+    String courseUrl;
 
     for (var i=0; i<input.length; i++) {
       var counter = input[i];
       campusCodeArray.add(counter.campusSelected.split("-")[0].trim());
       facultySelectedArray.add(counter.facultySelected.split("-")[0].trim());
       courseSelectedArray.add(counter.courseSelected);
+      courseUrlSelectedArray.add(counter.courseUrlSelected);
       groupSelectedArray.add(counter.groupSelected);
     }
 
     try {
       for (var i=0; i<input.length; i++) {
-        if (campusCodeArray[i] == "B") {
-          // ignore: prefer_interpolation_to_compose_strings
-          newUrl = baseListUrl + "B/" + facultySelectedArray[i] + "/" + courseSelectedArray[i] + ".html";
-        }
-        else {
-          // ignore: prefer_interpolation_to_compose_strings
-          newUrl = baseListUrl + campusCodeArray[i] + "/" + courseSelectedArray[i] + ".html";
-        }
+        courseUrl = courseUrlSelectedArray[i].toString();
+        print(">>>>> DETAILS(COURSE): " + courseUrl);
 
-
-        final response = await http.get(Uri.parse(newUrl), headers: headers);
+        final response = await http.get(Uri.parse(courseUrl), headers: headers);
         try {
           if (response.statusCode == 200) {
             statusCode = response.statusCode;
             var document = parser.parse(response.body);
             try {
               // getting specific element selector
-              var tableCourse = document.querySelectorAll("body > table > tbody > tr");
+              var tableCourse = document.querySelectorAll("#example > tbody > tr");
 
               // collecting all details in the table
-              for (var j=2; j<tableCourse.length; j++) {
+              for (var j=0; j<tableCourse.length; j++) {
                 final campus = campusCodeArray[i];
                 final faculty = facultySelectedArray[i];
                 final course = courseSelectedArray[i];
@@ -269,7 +269,7 @@ class SimsWeb4 {
                 final room = tableCourse[j].children[5].text.toString().trim();
                 
                 if (group == groupSelectedArray[i]) {
-                  group = groupSelectedArray[i];
+                  // group = groupSelectedArray[i];
 
                   // day: getting day in DAY TIME column
                   // MONDAY
@@ -332,6 +332,7 @@ class SimsWeb4 {
       );
 
       final detailsList = detailToJson(data);
+      print(">>>>> DETAILS: " + detailsList);
       return detailFromJson(detailsList);
 
     } catch (e) {

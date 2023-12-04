@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Services
-import 'package:flutter_sandbox/api/services.dart';
-import 'package:flutter_sandbox/api/servicestwo.dart';
+// import 'package:flutter_sandbox/api/services.dart';
+// import 'package:flutter_sandbox/api/servicestwo.dart';
 import 'package:flutter_sandbox/api/simsweb4.dart';
 
 // Utils
@@ -308,7 +308,7 @@ class _HomeState extends ConsumerState<Home>{
               if(jsonString == [])
                 print("empty");
     
-              ServicesTwo.getDetails(jsonString).then((details) {
+              SimsWeb4.getDetails(jsonString).then((details) {
                 final List<DetailElement> jsonStringData = details.details;
                 bool clashed = false;
                 // print("[home.dart] jsonStringData: $jsonStringData");

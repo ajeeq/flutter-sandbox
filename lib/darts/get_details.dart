@@ -222,7 +222,13 @@ void main(List<String> args) async {
   """;
 
   var input = [
-    Selected(campusSelected: "B-Kampus Shah Alam", facultySelected: "AP", courseSelected: "PMG610", groupSelected: "AP2305A"),
+    Selected(
+      campusSelected: "B-Kampus Shah Alam", 
+      facultySelected: "AP", 
+      courseSelected: "PMG610", 
+      courseUrlSelected: "", 
+      groupSelected: "AP2305A"
+    ),
   ];
   final url = "https://icress.uitm.edu.my/timetable1/list/";
 

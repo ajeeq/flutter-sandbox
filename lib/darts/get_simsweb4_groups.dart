@@ -313,7 +313,7 @@ void main(List<String> args) async {
   Group data;
   List<GroupElement> groups = [];
 
-  final url = Uri.parse("https://simsweb4.uitm.edu.my/estudent/class_timetable/index_tt.cfm?id1=5C0496B1F1A5A489D9EF22CD045CA25F0A18&id2=415CD497F950983A8BCDC711707D9BBD486C");
+  final url = Uri.parse("https://simsweb4.uitm.edu.my/estudent/class_timetable/index_tt.cfm?id1=41543381CCB06AAD41EBA2CC9052C39CC3BC&id2=415CD4B7D57AAB0DC5CDC3D5049641998B95");
   var groupListUri;
   var headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
@@ -333,8 +333,10 @@ void main(List<String> args) async {
         var tableCourse = document.querySelectorAll("#example > tbody > tr");
 
         // id and group
-        for (var i=1; i<tableCourse.length; i++) {
+        for (var i=0; i<tableCourse.length; i++) {
           groupDuplicated.add(tableCourse[i].children[2].text.toString().trim());
+
+          // print(tableCourse[i].children[0].text.toString().trim());
         }
 
         var distinct = groupDuplicated.toSet().toList();

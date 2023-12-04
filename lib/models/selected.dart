@@ -21,6 +21,7 @@ class Selected {
         required this.campusSelected,
         required this.facultySelected,
         required this.courseSelected,
+        required this.courseUrlSelected,
         required this.groupSelected,
     });
 
@@ -34,12 +35,16 @@ class Selected {
     String courseSelected;
 
     @HiveField(4)
+    String courseUrlSelected;
+
+    @HiveField(5)
     String groupSelected;
 
     factory Selected.fromJson(Map<String, dynamic> json) => Selected(
         campusSelected: json["campusSelected"],
         facultySelected: json["facultySelected"],
         courseSelected: json["courseSelected"],
+        courseUrlSelected: json["courseUrlSelected"],
         groupSelected: json["groupSelected"],
     );
 
@@ -47,11 +52,12 @@ class Selected {
         "campusSelected": campusSelected,
         "facultySelected": facultySelected,
         "courseSelected": courseSelected,
+        "courseUrlSelected": courseUrlSelected,
         "groupSelected": groupSelected,
     };
 
     @override
     String toString() {
-      return 'Selected{campusSelected: $campusSelected, facultySelected: $facultySelected, courseSelected: $courseSelected, groupSelected: $groupSelected}';
+      return 'Selected{campusSelected: $campusSelected, facultySelected: $facultySelected, courseSelected: $courseSelected, courseUrlSelected: $courseUrlSelected, groupSelected: $groupSelected}';
     }
 }
